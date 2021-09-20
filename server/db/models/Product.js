@@ -23,8 +23,8 @@ const Product = db.define('product', {
   imageUrl: {
     type: Sequelize.TEXT
   },
-  reviews: {
-    type: Sequelize.TEXT
+  stars: {
+    type: Sequelize.FLOAT
   }
 })
 
