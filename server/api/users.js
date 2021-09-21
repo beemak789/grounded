@@ -31,7 +31,7 @@ router.get('/:id', async (req, res, next) => {
       },
       attributes: ['id', 'username']
     })
-    res.json(users)
+    res.json(user)
   } catch (err) {
     next(err)
   }
