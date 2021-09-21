@@ -18,14 +18,15 @@ const User = db.define('user', {
   },
   name: {
     type: Sequelize.STRING,
+    defaultValue: "Guest"
+  },
+  email: {
+    type: Sequelize.STRING,
     allowNull: false,
     validate: {
       notEmpty: true,
       isEmail: true,
     },
-  },
-  email: {
-     type: Sequelize.TEXT
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,
