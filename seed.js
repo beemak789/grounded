@@ -87,6 +87,8 @@ const seed = async () => {
   } catch (err) {
     console.log(red(err));
   }
+
+
 };
 
 module.exports = seed;

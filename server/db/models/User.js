@@ -21,17 +21,14 @@ const User = db.define('user', {
     defaultValue: "Guest"
   },
   email: {
-    type: Sequelize.email,
-
+    type: Sequelize.STRING,
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,
-    ç
   },
   imageUrl: {
     type: Sequelize.TEXT,
   }
-
 })
 
 module.exports = User
