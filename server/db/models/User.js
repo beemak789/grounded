@@ -18,7 +18,11 @@ const User = db.define('user', {
   },
   name: {
     type: Sequelize.STRING,
-    defaultValue: "Guest"
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      isEmail: true,
+    },
   },
   email: {
     type: Sequelize.TEXT
