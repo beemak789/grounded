@@ -423,6 +423,8 @@ const seed = async () => {
   } catch (err) {
     console.log(err);
   }
+
+
 };
 
 module.exports = seed;

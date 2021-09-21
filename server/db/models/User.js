@@ -21,7 +21,7 @@ const User = db.define('user', {
     defaultValue: "Guest"
   },
   email: {
-    type: Sequelize.TEXT
+     type: Sequelize.TEXT
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,
@@ -29,7 +29,6 @@ const User = db.define('user', {
   imageUrl: {
     type: Sequelize.TEXT,
   }
-
 })
 
 module.exports = User
