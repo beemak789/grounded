@@ -1,7 +1,8 @@
 const { db } = require('./db')
 const PORT = process.env.PORT || 8080
 const app = require('./app')
-const seed = require("../seed");
+const seed = require('../seed');
+
 
 //    '../../seed'
 const init = async () => {
