@@ -66,7 +66,7 @@ const coffees = [
     name: "Truly Espresso’d",
     description: "A cosmopolitan blend that combines coffees from Latin America, the Pacific, and east Africa. Fruit and chocolate-toned aromatics shimmer over robust, slightly earthy bottom tones. Edgy yet elegant.",
     price: 25.99,
-    quantity: 0,
+    quantity: 200,
     stars: 4.5
   },
 ]
