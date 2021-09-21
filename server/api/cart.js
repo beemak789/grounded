@@ -1,49 +1,69 @@
 const express = require("express");
 const router = express.Router();
-const {Cart} = require("../db");
-const { User } = require("../db");
-const { Product } = require("../db");
+const {Cart, User, Product } = require("../db");
 
-
-
-
-//@description     Fetch my shopping cart
+//@description     Get all cart items associated w/ user
 //@router          GET/api/cart
 router.get("/", async (req, res, next) => {
   try {
-    const cartItems = await Cart.findAll();
+    const cartItems = await Cart.findAll({
+      include: User,
+      where: {
+        id: userId
+      }
+    });
     res.status(200).json(cartItems);
   } catch (err) {
     next(err);
   }
 });
+// Include Cart Model in user api routes
 
 
-//@description    Adding to Cart
+//@description    Add products to cart
 //@router         POST/api/cart
 router.post("/", async (req, res, next) => {
   try {
-    const object = req.body
-    const createCart = await Cart.create(object)
+    const addedProduct = req.body
+    const createCart = await Cart.create(addedProduct)
     res.json(createCart)
   } catch (err) {
     next(err);
   }
 });
+//Group ideas
+    //This has a connection to the product --> join?
+    //Grab product by product id? cart or product?
+    //Magic Method with query?
+    //Cart.setProduct()
 
 
 
-//@description    Post/put in the user's shopping cart; The added product is sent as the request body
-//@router         POST/api/cart/:id
-router.post("/:id", async (req, res, next) => {
+
+//@description    Delete the shopping cart
+//@router         DELETE/api/cart/:id
+router.delete("/:id", async (req, res, next) => {
   try {
-    const productToAdd = req.body;
-    const addTheProduct = await Cart.create(productToAdd)
-    res.json(addTheProduct)
+    const deletedProduct = await Cart.findByPk(req.params.id)
+    await deletedProduct.destroy();
   } catch (err) {
-    next(err);
+    next (err)
   }
-});
+})
+
+
+//@description    Update quantity of product in shopping cart
+//@router         PUT/api/cart/:id
+router.put("/:id", async (req, res, next) => {
+  try {
+    const updatedProduct = await Cart.findByPk(req.params.id)
+    await updatedProduct.update(req.body);
+    res.json(updatedProduct)
+  } catch (err) {
+    next(err)
+  }
+})
+
 
 
 
@@ -55,20 +75,3 @@ module.exports = router
 
 
 
-
-//Not sure about this?
-//@description     Fetch the contents of my shopping cart, associated with User
-//@router          GET/api/cart/:id
-// router.get("/:id", async (req, res, next) => {
-//   try {
-//     const cartItemsByUser= await Cart.findAll({
-//       include: User,
-//       where: {
-//         id: userId
-//       }
-//     });
-//     res.status(200).json(cartItemsByUser);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
