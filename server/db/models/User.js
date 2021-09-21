@@ -22,11 +22,11 @@ const User = db.define('user', {
   },
   email: {
     type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-      isEmail: true,
-    },
+    allowNull: true,
+    // validate: {
+    //   notEmpty: true,
+    //   isEmail: true,
+    // },
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,
