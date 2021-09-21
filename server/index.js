@@ -3,6 +3,8 @@ const PORT = process.env.PORT || 8080
 const app = require('./app')
 const seed = require('../seed');
 
+
+//    '../../seed'
 const init = async () => {
   try {
     if(process.env.SEED === 'true'){
