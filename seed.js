@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 const { db } = require("./server/db");
-const { User, Product, Cart } = require("./server/db");
+const { models: {User, Product, Cart} } = require("./server/db/index");
 
 const seed = async () => {
   try {
@@ -420,8 +421,10 @@ const seed = async () => {
 
     // await student1.setCampus(campus1);
   } catch (err) {
-    console.log(red(err));
+    console.log(err);
   }
+
+
 };
 
 module.exports = seed;
@@ -431,7 +434,7 @@ module.exports = seed;
 if (require.main === module) {
   seed()
     .then(() => {
-      console.log("Seeding success!");
+      console.log("Seeding success - seedJS!");
       db.close();
     })
     .catch((err) => {
