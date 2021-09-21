@@ -21,12 +21,10 @@ const User = db.define('user', {
     defaultValue: "Guest"
   },
   email: {
-    type: Sequelize.email,
-
+    type: Sequelize.TEXT
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,
-    ç
   },
   imageUrl: {
     type: Sequelize.TEXT,
