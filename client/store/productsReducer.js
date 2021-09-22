@@ -28,5 +28,7 @@ export const singleProductReducer = (state = {}, action) => {
   switch (action.type) {
     case SINGLE_PRODUCT_REQUEST:
       return action.product
+    default:
+      return state
   }
 }

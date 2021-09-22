@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchSingleProduct } from '../store/productsReducer';
 import { Link } from 'react-router-dom';
 
+
+//products/:productId
 const SingleProduct = ({ history, match }) => {
   //UseState -- state should be used for increasing quantity of the product
   //The quantity?
-// const [qty, setQty] = useState(0
+// const [qty, setQty] = useState(0)
 
   // = mapDispatchToProps
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ const SingleProduct = ({ history, match }) => {
   }
 
   singleProduct = singleProduct || {}
+
 
   if (Object.keys(singleProduct).length === 0) {
     return <h1>Loading...</h1>;
