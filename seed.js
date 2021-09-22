@@ -93,10 +93,7 @@ const seed = async () => {
     //-------------------------------------------------------------------
     // ------------------- MAGIC METHODS ---------------------------------
 
-    // console.log(Object.keys(User.prototype))
-    // console.log(Object.keys(Cart.prototype))
-    // console.log(Object.keys(Product.prototype))
-
+    console.log(Object.keys(User.prototype))
     //Setting User to Cart
     await user1.addCart(cart1);
     await user1.addCart(cart3);
@@ -112,7 +109,7 @@ const seed = async () => {
     await coffee4.addCart(cart2);
     await coffee5.addCart(cart2);
 
-    // ---> 3 Products in Cart2, associated to user2
+    // ---> 1 Products in Cart3, associated to user2
     await coffee4.addCart(cart3);
 
   } catch (err) {

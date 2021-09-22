@@ -1,21 +1,20 @@
 //How did I find magic methods?
+//Run it in your seed function and it will show in your terminal
 console.log(Object.keys(User.prototype))
 console.log(Object.keys(Cart.prototype))
 console.log(Object.keys(Product.prototype))
 
 //Magic Methods -- User Model
 [
-  '_customGetters',
-  '_customSetters',
-  'validators',
-  '_hasCustomGetters',
-  '_hasCustomSetters',
-  'rawAttributes',
-  '_isAttribute',
-  'correctPassword',
-  'generateToken',
-  'getCart',
-  'setCart',
+  '_customGetters',    '_customSetters',
+  'validators',        '_hasCustomGetters',
+  '_hasCustomSetters', 'rawAttributes',
+  '_isAttribute',      'correctPassword',
+  'generateToken',     'getCarts',
+  'countCarts',        'hasCart',
+  'hasCarts',          'setCarts',
+  'addCart',           'addCarts',
+  'removeCart',        'removeCarts',
   'createCart'
 ]
 
