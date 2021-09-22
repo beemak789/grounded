@@ -8,6 +8,7 @@ import Landing from "./components/Landing";
 import { me } from "./store";
 import SingleProduct from "./components/SingleProduct";
 import AllProducts from "./components/AllProducts"
+import Cart from "./components/Cart"
 
 
 /**
@@ -27,12 +28,13 @@ function Routes() {
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
-            <Redirect to="/home" />
             <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/products" component={AllProducts} />
             <Route path="/products/:id" component={SingleProduct} />
+            <Route path="/cart" component={Cart} />
+
           </Switch>
         ) : (
           <Switch>
@@ -41,6 +43,7 @@ function Routes() {
             <Route path="/signup" component={Signup} />
             <Route exact path="/products" component={AllProducts} />
             <Route path="/products/:id" component={SingleProduct} />
+            <Route path="/cart" component={Cart} />
           </Switch>
         )}
     </div>
