@@ -1,5 +1,6 @@
 body {
   font-family: sans-serif;
+  background-image: linear-gradient(white, ac9485e);
 }
 
 a {
@@ -15,7 +16,46 @@ nav a {
   margin: 1em;
 }
 
+#nav-container-logged-in {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#nav-container-logged-out {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+.landing-container {
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 0px;
+  background-image: url("http://localhost:8080/beans.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  font-weight: 400;
+  color: #4f3017;
+  padding: 0rem 5.6rem;
+  margin-bottom: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+#landing-text {
+  font-size: 8rem;
+  font-family: "Garamound";
+  font-weight: bold;
+  justify-content: center;
 }
