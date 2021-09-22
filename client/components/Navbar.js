@@ -25,7 +25,7 @@ const Navbar = () => {
           <div id="nav-container-logged-out">
             {/* The navbar will show these links before you log in */}
             <Link to="/">grounded</Link>
-            <Link to="/">All</Link>
+            <Link to="/products">All</Link>
             <Link to="/login">Login</Link>
             <Link to="/signup">Sign Up</Link>
           </div>

@@ -6,6 +6,7 @@ router.get('/', async (req, res, next) => {
 	try {
 		res.send(await Product.findAll({
 			attributes: [
+				'id',
 				'name',
 				'description',
 				'price',
@@ -26,10 +27,12 @@ router.get('/:id', async (req, res, next) => {
 				id: req.params.id,
 			},
 			attributes: [
+				'id',
 				'name',
 				'description',
 				'price',
-				'imageUrl'
+				'imageUrl',
+				'quantity'
 			]
 		});
 		res.json(product);

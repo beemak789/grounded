@@ -41,9 +41,9 @@ const SingleProduct = ({ history, match }) => {
       <h1>{singleProduct.name}</h1>
       <img src={singleProduct.imageUrl}></img>
       <h2>{singleProduct.description}</h2>
-      <h3>{singleProduct.price}</h3> <span>{singleProduct.stars}</span>
+      <h3>${singleProduct.price}</h3> <span>{singleProduct.stars}</span>
       <h1>
-        {singleProduct.quantity > 0 ? <h5>In Stock</h5> : <h5>Out of Stock</h5>}
+        {singleProduct && singleProduct.quantity > 0 ? "In Stock": "Out of Stock"}
       </h1>
       <button
         onClick={addToCartHandler}
