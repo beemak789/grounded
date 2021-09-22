@@ -21,7 +21,8 @@ const Product = db.define('product', {
     type: Sequelize.INTEGER
   },
   imageUrl: {
-    type: Sequelize.TEXT
+    type: Sequelize.TEXT,
+    defaultValue: "https://post.healthline.com/wp-content/uploads/2020/08/safe-to-eat-coffee-beans-732x549-thumbnail-732x549.jpg"
   },
   stars: {
     type: Sequelize.FLOAT

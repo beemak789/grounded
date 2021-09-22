@@ -14,10 +14,20 @@ const Cart = db.define("cart", {
   totalPrice: {
     type: Sequelize.FLOAT,
   },
-  paymentTime: {
-    type: Sequelize.TIME
-  }
 })
 
+//This is hard-coding a table with one property called "quantity"
+//Adding a property to the through table
+const Cart_Product = db.define("Cart_Product", {
+  quantity: Sequelize.INTEGER
+});
 
-module.exports = Cart
+// NOTE: This is throwing an error when testing; updatedAt takes care of this scenario.
+// paymentTime: {
+//   type: Sequelize.DATE
+// }
+
+module.exports = {
+  Cart,
+  Cart_Product
+}

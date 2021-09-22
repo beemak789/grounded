@@ -33,6 +33,7 @@ const User = db.define('user', {
   },
   imageUrl: {
     type: Sequelize.TEXT,
+    defaultValue: "https://cdn5.vectorstock.com/i/1000x1000/73/39/user-icon-male-person-symbol-profile-avatar-vector-20787339.jpg"
   }
 })
 
