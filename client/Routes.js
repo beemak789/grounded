@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, Redirect, Link} from "react-router-dom";
@@ -5,7 +6,6 @@ import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
 import Landing from "./components/Landing";
 import { me } from "./store";
-
 
 /**
  * COMPONENT
