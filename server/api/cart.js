@@ -2,22 +2,33 @@ const express = require("express");
 const router = express.Router();
 const {Cart, User, Product } = require("../db");
 
-//@description     Get all cart items associated w/ user
-//@router          GET/api/cart
-router.get("/", async (req, res, next) => {
+//@description     Get all items in cart by cart/orderId
+//@router          GET/api/cart/:orderId
+router.get("/:orderId", async (req, res, next) => {
   try {
-    const cartItems = await Cart.findAll({
-      include: User,
+    const orderById = Cart.find({
+      include: Product,
       where: {
-        id: userId
+
       }
-    });
-    res.status(200).json(cartItems);
+    })
+    res.json(orderById)
   } catch (err) {
     next(err);
   }
-});
-// Include Cart Model in user api routes
+})
+
+
+//Get the userID when the user signs in
+//Look for orders that belong to userid and are  open (payment status: false)
+// Using my through table (Cart_Products) fetch the products that are associated or linked to a specified orderID.
+
+//User Story --
+//Brandy is already logged into Amazon. When she adds a phone to cart, her userid is linked to "Brandy's Unpaid Orders" [Remember I can have multiple carts with various other orders from previous purchases, but I am now just focusing on current order]. To view items in my current order cart, I need to identify the products that are linked to my open order id.
+
+
+
+
 
 
 //@description    Add products to cart
@@ -68,10 +79,3 @@ router.put("/:id", async (req, res, next) => {
 
 
 module.exports = router
-
-
-
-
-
-
-
