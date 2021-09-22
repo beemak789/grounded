@@ -4,10 +4,11 @@ import {fetchProducts} from '../store/products'
 
 function allProducts() {
 
-  const products = useSelector((state) => state.allProducts);
+  const products = useSelector((state) => state.productsReducer);
+
   const dispatch = useDispatch();
 
-  useEffect( () => {  //from reducer
+  useEffect( () => {
     dispatch(fetchProducts())
   }, [])
 
@@ -15,14 +16,8 @@ function allProducts() {
     <div>
       <h1>Shop Coffee</h1>
       {products.map((product) => (
-        <p>product.name</p>
-					// <div key={product.id}>
-					// 	<Link to={`/products/${product.id}`}>
-					// 		<div>
-					// 			<img src={product.imageUrl} />
-					// 			<p>{product.name}</p>
-					// 		</div>
-					// 	</Link>
+        <p>{product.name}</p>
+
       ))}
     </div>
   )
