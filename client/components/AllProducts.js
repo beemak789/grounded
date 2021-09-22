@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../store/productsReducer';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { fetchProducts } from "../store/productsReducer";
 
 function allProducts() {
-  const products = useSelector((state) => state.allProducts);
+  let products = useSelector((state) => state.allProducts);
 
   const dispatch = useDispatch();
 
@@ -11,11 +12,17 @@ function allProducts() {
     dispatch(fetchProducts());
   }, []);
 
+  products = products || [];
+
   return (
     <div>
       <h1>Shop Coffee</h1>
       {products.map((product) => (
-        <p>{product.name}</p>
+        <div id="coffee-items" key={product.id}>
+          <Link to={`/products/${product.id}`}>
+            <p>{product.name}</p>
+          </Link>
+        </div>
       ))}
     </div>
   );
