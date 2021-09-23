@@ -31,7 +31,7 @@ const seed = async () => {
       name: 'Brewing Trouble',
       description:
         'Feeling like you want some excitement?  Turn to these peaberry coffee beans that offer a tarty blend of acidity and sweetness guaranteed to wake you up and put a mischevious smile on your face.',
-      quantity: 4,
+      quantity: 0,
       price: 27.99,
       stars: 4.0,
     });

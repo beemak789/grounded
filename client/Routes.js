@@ -11,8 +11,13 @@ import Home from "./components/Home";
 import Landing from "./components/Landing";
 import Me from "./components/SingleUser";
 import SingleProduct from "./components/SingleProduct";
-import AllProducts from "./components/AllProducts";
+import AllProducts from "./components/AllProducts"
+import Cart from "./components/Cart"
 
+
+/**
+ * COMPONENT
+ */
 function Routes() {
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const dispatch = useDispatch();
@@ -27,6 +32,7 @@ function Routes() {
           <Route exact path="/products" component={AllProducts} />
           <Route path="/products/:id" component={SingleProduct} />
           <Route path="/users" component={AllUsers} />
+          <Route path="/cart" component={Cart} />
           <Redirect to="/" />
         </Switch>
       ) : (
@@ -36,6 +42,7 @@ function Routes() {
           <Route path="/signup" component={Signup} />
           <Route exact path="/products" component={AllProducts} />
           <Route path="/products/:id" component={SingleProduct} />
+          <Route path="/cart" component={Cart} />
         </Switch>
       )}
     </div>
