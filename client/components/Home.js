@@ -1,26 +1,31 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 /**
  * COMPONENT
  */
-export const Home = props => {
-  const {username} = props
+const Home = () => {
+  const username = useSelector((state) => state.auth.username);
 
-  return (
-    <div>
-      <h3>Welcome, {username}</h3>
-    </div>
-  )
+      if(username){
+        return (
+          <div>
+        <h3>Welcome, {username}</h3>
+        </div>
+        )
+      }else{
+        return (
+          <div>
+        <p></p>
+        </div>
+        )
+      }
+ 
+
 }
 
 /**
  * CONTAINER
  */
-const mapState = state => {
-  return {
-    username: state.auth.username
-  }
-}
 
-export default connect(mapState)(Home)
+export default Home;

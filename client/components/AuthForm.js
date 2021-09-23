@@ -6,7 +6,7 @@ import {authenticate} from '../store'
  * COMPONENT
  */
 const AuthForm = props => {
-  const {name, displayName, email, handleSubmit, error} = props
+  const {name, displayName, handleSubmit, error} = props
   console.log("props----->",props)
 
   return (
@@ -52,7 +52,6 @@ const mapSignup = state => {
   return {
     name: 'signup',
     displayName: 'Sign Up',
-    email: 'email',
     error: state.auth.error
   }
 }
@@ -64,7 +63,7 @@ const mapDispatch = dispatch => {
       const formName = evt.target.name
       const username = evt.target.username.value
       const password = evt.target.password.value
-      dispatch(authenticate(username, password, formName, email))
+      dispatch(authenticate(username, password, formName))
     }
   }
 }
