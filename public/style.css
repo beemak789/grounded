@@ -125,3 +125,44 @@ form div {
   margin-left: 2rem;
 }
 
+.cart-container {
+  min-height: 100vh;
+  height: 100vh;
+  font-family: "Garamound";
+  color: #4f3017;
+  margin-top: 1.3rem;
+
+}
+
+#cart-title {
+  text-align: center;
+  color: #4f3017;
+  font-family: "Garamound";
+}
+
+.cart-container-items {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: space-evenly;
+  gap: 50px;
+}
+
+
+
+
+#product-photo {
+  width: 100px;
+  height: 100px;
+}
