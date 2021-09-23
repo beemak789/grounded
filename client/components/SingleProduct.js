@@ -13,7 +13,7 @@ const SingleProduct = ({ history, match }) => {
   const dispatch = useDispatch();
 
   // = mapStateToProps
-  let singleProduct = useSelector((state) => state.singleProduct);
+  let singleProduct = useSelector((state) => state.singleProduct) || null;
 
   //same as componentDidMount
   useEffect(() => {
@@ -23,12 +23,16 @@ const SingleProduct = ({ history, match }) => {
   //Add Button Handler
   const addToCartHandler = () => {
     //When the "add to cart" button is clicked - our cart's total quantity should increase.
-    console.log("The Add To Cart Button was clicked!");
+
+    console.log('The Add To Cart Button was clicked!');
   };
 
-  singleProduct = singleProduct || {};
+  //Add To Quantity Handler
+  const addToQuantityHandler = () => {
+    console.log("Customer changed quantity of the item!")
+  }
 
-  if (Object.keys(singleProduct).length === 0) {
+  if (!singleProduct) {
     return <h1>Loading...</h1>;
   }
 
