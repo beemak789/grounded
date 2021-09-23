@@ -1,58 +1,43 @@
+import { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { withRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Login, Signup } from "./components/AuthForm";
 
-import {Component, Fragment} from 'react'
-import {connect} from 'react-redux'
-import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
-import {  Link} from "react-router-dom";
-import {Login,Signup} from './components/AuthForm';
-// import {Signup}  from './components/SignUp';
-
-import AllUsers from './components/AllUsers';
+import AllUsers from "./components/AllUsers";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Home from "./components/Home";
 import Landing from "./components/Landing";
 import Me from "./components/SingleUser";
 import SingleProduct from "./components/SingleProduct";
-import AllProducts from "./components/AllProducts"
-
-
-/**
- * COMPONENT
- */
+import AllProducts from "./components/AllProducts";
 
 function Routes() {
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(loadInitialData());
-  // }, []);
-
   return (
     <div>
-     
-     <Route path="/" component={Home} />
-        {isLoggedIn ? (
-
-          <Switch>
-           
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/me" component={Me} />
-            <Route path="/products" component={AllProducts} />
-            <Route path="/products/:id" component={SingleProduct} />
-            <Route  path="/users" component={AllUsers} />
-            <Redirect to="/" />
-          </Switch>
-        ) : (
-          <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route exact path="/products" component={AllProducts} />
-            <Route path="/products/:id" component={SingleProduct} />
-
-          </Switch>
-        )}
+      <Route path="/" component={Home} />
+      {isLoggedIn ? (
+        <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/me" component={Me} />
+          <Route path="/products" component={AllProducts} />
+          <Route path="/products/:id" component={SingleProduct} />
+          <Route path="/users" component={AllUsers} />
+          <Redirect to="/" />
+        </Switch>
+      ) : (
+        <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route exact path="/products" component={AllProducts} />
+          <Route path="/products/:id" component={SingleProduct} />
+        </Switch>
+      )}
     </div>
   );
 }
