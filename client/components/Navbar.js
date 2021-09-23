@@ -7,7 +7,7 @@ const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const dispatch = useDispatch();
   const handleClick = () => {
-    dispatch(logout);
+    dispatch(logout())
   };
 
   return (
