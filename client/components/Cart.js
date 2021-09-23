@@ -5,6 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
  * COMPONENT
  */
 const Cart = () => {
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
+  if(!isLoggedIn){
+    const products = window.localStorage.getItem("products")
+  }else{
+
+  }
   //find cartId to set state - array of items associated with cartID
   return (
     <>
