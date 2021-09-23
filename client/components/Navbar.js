@@ -22,20 +22,11 @@ const Navbar = ({ handleClick, isLoggedIn }) => {
       <nav>
         {isLoggedIn ? (
           <div id="nav-container-logged-in">
-// <<<<<<< Tia
             <Link to="/">grounded</Link>
             <Link to="/products">All</Link>
             <Link to="/me">Me</Link>
+            <Link to="/cart">Cart</Link>
 
-// =======
-//             {/* The navbar will show these links after you log in */}
-//             <Link to="/">grounded</Link>
-//             <Link to="/home">Home</Link>
-//             <Link to="/products">All</Link>
-//             <Link to="/login">Login</Link>
-//             <Link to="/signup">Sign Up</Link>
-//             <Link to="/cart">Cart</Link>
-// >>>>>>> main
             <a href="#" onClick={handleClick}>
               Logout
             </a>
