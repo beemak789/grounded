@@ -49,7 +49,7 @@ const seed = async () => {
       name: 'Feeling Lucky',
       description:
         'This bold and dark roast has the sweetness of a medium roast and the unique attributes of peaberry. The blend includes ethically sourced organic beans from Colombia, Hondura and Ethiopia.',
-      quantity: 5,
+      quantity: 0,
       price: 29.99,
       stars: 3.5,
     });
