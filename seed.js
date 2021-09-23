@@ -65,13 +65,6 @@ const seed = async () => {
     });
 
     const user2 = await User.create({
-      username: 'alan',
-      password: 'banana',
-      name: 'Alan',
-      email: 'alan@gmail.com',
-      isAdmin: false,
-    });
-    const user3 = await User.create({
       username: 'tia',
       password: '1234',
       name: 'Tia',
@@ -79,14 +72,14 @@ const seed = async () => {
       isAdmin: false,
     });
 
-    const user4 = await User.create({
+    const user3 = await User.create({
       username: 'sonja',
       password: '1234',
       name: 'Sonja',
       email: 's@gmail.com',
       isAdmin: false,
     });
-    const user5 = await User.create({
+    const user4 = await User.create({
       username: 'victoria',
       password: '1234',
       name: 'Victoria',
@@ -96,26 +89,25 @@ const seed = async () => {
     //-------------------------------------------------------------------
     //Cart Instances
     const cart1 = await Cart.create({
-      paymentStatus: true,
+      orderStatus: "PAID",
       totalQty: 2,
       totalPrice: 10.0,
     });
 
     const cart2 = await Cart.create({
-      paymentStatus: false,
+      orderStatus: "UNPAID",
       totalQty: 1,
       totalPrice: 5.0,
     });
 
     const cart3 = await Cart.create({
-      paymentStatus: false,
+      orderStatus: "UNPAID",
       totalQty: 3,
       totalPrice: 15.0,
     });
     //-------------------------------------------------------------------
     // ------------------- MAGIC METHODS ---------------------------------
 
-    console.log(Object.keys(User.prototype))
     //Setting User to Cart
     await user1.addCart(cart1);
     await user1.addCart(cart3);

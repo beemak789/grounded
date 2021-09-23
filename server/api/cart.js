@@ -1,7 +1,9 @@
 const router = require('express').Router();
+const { reporters } = require('mocha');
 const {
   models: { Cart, User, Product, Cart_Product },
 } = require('../db');
+const { isLoggedIn } = require("./gatekeepingMiddleware")
 
 //@description     Get all items in cart for the user logged in/passed in
 //@router          GET/api/cart/:userId
@@ -10,7 +12,7 @@ router.get('/:userId', async (req, res, next) => {
     const orderById = await Cart.findAll({
       include: Product,
       where: {
-        paymentStatus: false,
+        orderStatus: "UNPAID",
         userId: req.params.userId,
       },
     });
@@ -24,9 +26,15 @@ router.get('/:userId', async (req, res, next) => {
 //@router         POST/api/cart/:userId
 router.post('/:userId', async (req, res, next) => {
   try {
-    const addedProduct = req.body;
-    const createCart = await Cart.create(addedProduct);
-    res.json(createCart);
+    const addedProduct = await Product.findByPk(req.body.id);
+    const userCart = await Cart.findAll({
+      where: {
+        orderStatus: "UNPAID",
+        userId: req.params.userId
+      }
+    })
+    const add = await addedProduct.addCart(userCart)
+    res.json(add)
   } catch (err) {
     next(err);
   }
@@ -56,7 +64,7 @@ router.put('/:userId', async (req, res, next) => {
   try {
     const orderById = await Cart.findAll({
       include: Product,
-      where: {paymentStatus: false, userId: req.params.userId}
+      where: {orderStatus: "UNPAID", userId: req.params.userId}
     })
     const updatedOrder = await Cart.update(req.body);
     res.json(updatedOrder)
