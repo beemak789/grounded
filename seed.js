@@ -71,6 +71,28 @@ const seed = async () => {
       email: 'alan@gmail.com',
       isAdmin: false,
     });
+    const user3 = await User.create({
+      username: 'tia',
+      password: '1234',
+      name: 'Tia',
+      email: 't@gmail.com',
+      isAdmin: false,
+    });
+
+    const user4 = await User.create({
+      username: 'sonja',
+      password: '1234',
+      name: 'Sonja',
+      email: 's@gmail.com',
+      isAdmin: false,
+    });
+    const user5 = await User.create({
+      username: 'victoria',
+      password: '1234',
+      name: 'Victoria',
+      email: 'v@gmail.com',
+      isAdmin: false,
+    });
     //-------------------------------------------------------------------
     //Cart Instances
     const cart1 = await Cart.create({

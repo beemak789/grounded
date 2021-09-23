@@ -7,12 +7,11 @@ import {Login,Signup} from './components/AuthForm';
 // import {Signup}  from './components/SignUp';
 
 import AllUsers from './components/AllUsers';
-
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Home from "./components/Home";
 import Landing from "./components/Landing";
-import { me } from "./store";
+import Me from "./components/SingleUser";
 import SingleProduct from "./components/SingleProduct";
 import AllProducts from "./components/AllProducts"
 
@@ -38,10 +37,7 @@ function Routes() {
           <Switch>
            
             <Route exact path="/" component={Landing} />
-{/* 
-            <Route path="/" exact component={Login} />
-            <Route path="/login" component={Login} /> */}
-            {/* <Route path="/signup" component={Signup} /> */}
+            <Route exact path="/me" component={Me} />
             <Route path="/products" component={AllProducts} />
             <Route path="/products/:id" component={SingleProduct} />
             <Route  path="/users" component={AllUsers} />
