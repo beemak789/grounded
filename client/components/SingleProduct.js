@@ -11,7 +11,7 @@ const SingleProduct = ({ history, match }) => {
 
   // = mapDispatchToProps
   const dispatch = useDispatch();
-
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
   // = mapStateToProps
   let singleProduct = useSelector((state) => state.singleProduct) || null;
 
@@ -23,8 +23,12 @@ const SingleProduct = ({ history, match }) => {
   //Add Button Handler
   const addToCartHandler = () => {
     //When the "add to cart" button is clicked - our cart's total quantity should increase.
-
-    console.log('The Add To Cart Button was clicked!');
+    if(!isLoggedIn){
+      window.localStorage.setItem()
+    }else{
+      console.log('The Add To Cart Button was clicked!');
+    }
+    
   };
 
   //Add To Quantity Handler

@@ -11,6 +11,15 @@ import { fetchCart } from "../store/cartReducer";
  * COMPONENT
  */
 const Cart = () => {
+
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
+  if(!isLoggedIn){
+    const products = window.localStorage.getItem("products")
+  }else{
+
+  }
+  //find cartId to set state - array of items associated with cartID
+
   //state
 
   /**pick one of the below as applicable once userLoggedIn status works */
@@ -39,6 +48,7 @@ const Cart = () => {
 
   let subtotal = cart.totalPrice || null;
   let totalQuantity = cart.totalQty || null;
+
 
   return (
     <>
