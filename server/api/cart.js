@@ -39,9 +39,11 @@ router.post('/:userId', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
     const deletedProduct = await Cart.findByPk(req.params.id);
+    console.log(deletedProduct)
     await deletedProduct.destroy();
     res.json(deletedProduct)
   } catch (err) {
+    console.log("There is an err in your delete cart route");
     next(err);
   }
 });

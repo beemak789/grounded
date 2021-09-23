@@ -5,14 +5,21 @@ import { useDispatch, useSelector } from "react-redux";
  * COMPONENT
  */
 const Cart = () => {
-
-
+  //find cartId to set state - array of items associated with cartID
   return (
-    <div>
-      <h3>hi from cart</h3>
-    </div>
-  )
-}
+    <>
+      <h1 id="cart-title">Shopping Cart</h1>
+      <div className="cart-container">
+        {/* loop through items: picture | name | quanity | price */}
+        {/* <div id="cart-item" key={idx}> */}
+
+        <span id="cart-subtotal">Subtotal: --</span>
+        <br/>
+        <button>Checkout</button>
+      </div>
+    </>
+  );
+};
 
 /**
  * CONTAINER

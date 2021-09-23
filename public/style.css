@@ -5,6 +5,8 @@ body {
 
 a {
   text-decoration: none;
+  font-family: "Garamound";
+  color: #4f3017;
 }
 
 label {
@@ -14,6 +16,12 @@ label {
 nav a {
   display: inline-block;
   margin: 1em;
+}
+
+p {
+  text-align: left;
+  color: #4f3017;
+  font-family: "Garamound";
 }
 
 #nav-container-logged-in {
@@ -40,7 +48,7 @@ form div {
   align-items: center;
   justify-content: center;
   border-bottom: 0px;
-  background-image: url("http://localhost:8080/beans.jpg");
+  background-image: url("http://localhost:8080/pour.jpg");
   background-repeat: no-repeat;
   background-position: center;
   font-weight: 400;
@@ -59,3 +67,61 @@ form div {
   font-weight: bold;
   justify-content: center;
 }
+
+.all-coffee-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: left;
+}
+
+#coffee-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#coffee-item-img {
+  width: 200px;
+  height: 200px;
+}
+
+#all-coffee-title {
+  font-family: "Garamound";
+  text-align: center;
+  color: #4f3017;
+  font-weight: bold;
+}
+
+.single-coffee-container {
+  min-height: 100vh;
+  height: 100vh;
+  font-family: "Garamound";
+  color: #4f3017;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 1.3rem;
+
+}
+
+#single-coffee-title {
+  text-align: center;
+  color: #4f3017;
+  font-family: "Garamound";
+}
+
+
+#singe-coffee-img {
+  float: left;
+  width: 300px;
+  height: 300px;
+  margin-bottom: 1rem;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
