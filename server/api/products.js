@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const { models: { Product }} = require('../db')
+const { requireToken, isAdmin } = require('./gatekeepingMiddleware')
 
 //GET /api/products
 router.get('/', async (req, res, next) => {
@@ -42,7 +43,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 //POST /api/products
-router.post('/', async (req, res, next) => {
+router.post('/', requireToken, isAdmin, async (req, res, next) => {
 	try {
 		res.status(201).send(await Product.create(req.body));
 	} catch (error) {
@@ -51,7 +52,7 @@ router.post('/', async (req, res, next) => {
 });
 
 //DELETE /api/products/:id
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', requireToken, isAdmin, async (req, res, next) => {
 	try {
 		const product = await Product.findByPk(req.params.id);
 		if (product) {
@@ -66,7 +67,7 @@ router.delete('/:id', async (req, res, next) => {
 });
 
 //PUT /api/products/:id
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', requireToken, isAdmin, async (req, res, next) => {
 	try {
 		const product = await Product.findByPk(req.params.id);
 		res.send(await product.update(req.body));
