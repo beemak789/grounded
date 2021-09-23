@@ -24,7 +24,7 @@ function Routes() {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/me" component={Me} />
-          <Route path="/products" component={AllProducts} />
+          <Route exact path="/products" component={AllProducts} />
           <Route path="/products/:id" component={SingleProduct} />
           <Route path="/users" component={AllUsers} />
           <Redirect to="/" />
