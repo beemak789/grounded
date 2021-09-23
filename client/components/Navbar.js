@@ -1,22 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-// <<<<<<< Tia
 import { logout } from "../store/auth";
-import { connect } from "react-redux";
-// =======
-// import { logout } from "../store";
-// // import cart from "./store";
 
-// const Navbar = () => {
-//   const isLoggedIn = useSelector((state) => !!state.auth.id);
-//   const dispatch = useDispatch();
-//   const handleClick = () => {
-//     const logout = dispatch(logout);
-//   };
-// >>>>>>> main
+const Navbar = () => {
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(logout);
+  };
 
-const Navbar = ({ handleClick, isLoggedIn }) => {
   return (
     <div>
       <nav>
@@ -26,7 +19,6 @@ const Navbar = ({ handleClick, isLoggedIn }) => {
             <Link to="/products">All</Link>
             <Link to="/me">Me</Link>
             <Link to="/cart">Cart</Link>
-
             <a href="#" onClick={handleClick}>
               Logout
             </a>
@@ -46,18 +38,4 @@ const Navbar = ({ handleClick, isLoggedIn }) => {
   );
 };
 
-const mapState = (state) => {
-  return {
-    isLoggedIn: !!state.auth.id,
-  };
-};
-
-const mapDispatch = (dispatch) => {
-  return {
-    handleClick() {
-      dispatch(logout());
-    },
-  };
-};
-
-export default connect(mapState, mapDispatch)(Navbar);
+export default Navbar;
