@@ -11,10 +11,17 @@ const User = db.define('user', {
   username: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    },
   },
   password: {
     type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    },
   },
   name: {
     type: Sequelize.STRING,
@@ -33,7 +40,7 @@ const User = db.define('user', {
   },
   imageUrl: {
     type: Sequelize.TEXT,
-    defaultValue: "https://cdn5.vectorstock.com/i/1000x1000/73/39/user-icon-male-person-symbol-profile-avatar-vector-20787339.jpg"
+    defaultValue: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6a9665EGAgcW_DnpNxhW0tQIzX0FpghbyIQ&usqp=CAU"
   }
 })
 
