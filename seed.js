@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 const { db } = require('./server/db');
 const {
-  models: { Cart, Product, User },
+  models: { Cart, Product, User, Cart_Product },
 } = require('./server/db');
 
 const seed = async () => {
@@ -36,23 +36,7 @@ const seed = async () => {
       stars: 4.0,
     });
 
-    const coffee4 = await Product.create({
-      name: 'Cherry on Top',
-      description:
-        'Handcrafted organic blend from Typica and Caturra. Each cup will taste of sweet cherries.',
-      quantity: 3,
-      price: 27.99,
-      stars: 3.5,
-    });
 
-    const coffee5 = await Product.create({
-      name: 'Feeling Lucky',
-      description:
-        'This bold and dark roast has the sweetness of a medium roast and the unique attributes of peaberry. The blend includes ethically sourced organic beans from Colombia, Hondura and Ethiopia.',
-      quantity: 0,
-      price: 29.99,
-      stars: 3.5,
-    });
     //-------------------------------------------------------------------
 
     //User Instances
@@ -87,44 +71,68 @@ const seed = async () => {
       isAdmin: false,
     });
     //-------------------------------------------------------------------
+
     //Cart Instances
     const cart1 = await Cart.create({
-      orderStatus: "PAID",
-      totalQty: 2,
+      orderStatus: "UNPAID",
+      totalQty: 5,
       totalPrice: 10.0,
     });
 
     const cart2 = await Cart.create({
       orderStatus: "UNPAID",
-      totalQty: 1,
+      totalQty: 2,
       totalPrice: 5.0,
     });
+
 
     const cart3 = await Cart.create({
       orderStatus: "UNPAID",
       totalQty: 3,
       totalPrice: 15.0,
     });
+
+    const cart4 = await Cart.create({
+      orderStatus: "UNPAID",
+      totalQty: 5,
+      totalPrice: 17.0,
+    });
+
     //-------------------------------------------------------------------
     // ------------------- MAGIC METHODS ---------------------------------
 
     //Setting User to Cart
     await user1.addCart(cart1);
-    await user1.addCart(cart3);
     await user2.addCart(cart2);
+    await user4.addCart(cart4)
 
-    //Adding Products to Cart
-    //---> 3 Products in Cart1, associated to user1
+    //Setting Products to Cart
+    //---> 3 Products in Cart1, associated to user1 (Brandy)
     await coffee2.addCart(cart1);
-    await coffee1.addCart(cart1);
-    await coffee3.addCart(cart1);
+    const updatedQuantity = await Cart_Product.update(
+      { quantity: 2 },
+      {
+        where: {
+          productId: coffee2.id,
+          cartId: cart1.id,
+        },
+      }
+    );
+    // await coffee1.addCart(cart1);
 
-    // ---> 3 Products in Cart2, associated to user2
-    await coffee4.addCart(cart2);
-    await coffee5.addCart(cart2);
 
-    // ---> 1 Products in Cart3, associated to user2
-    await coffee4.addCart(cart3);
+    // --> 1 Product in Cart2, associated with User 2 (Tia)
+    // await coffee3.addCart(cart2);
+    // await coffee1.addCart(cart2);
+
+    //--> Adding Products to Cart?
+    // await cart2.addProduct(coffee1)
+
+
+    //cart4 check
+    await coffee2.addCart(cart4);
+    await coffee1.addCart(cart4);
+    await coffee3.addCart(cart4);
 
   } catch (err) {
     console.log(err);
