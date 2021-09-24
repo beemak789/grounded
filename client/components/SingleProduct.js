@@ -21,10 +21,12 @@ const SingleProduct = ({ history, match }) => {
   }, []);
 
   //Add Button Handler
-  const addToCartHandler = () => {
+  const addToCartHandler = (product) => {
     //When the "add to cart" button is clicked - our cart's total quantity should increase.
     if(!isLoggedIn){
-      window.localStorage.setItem()
+      const products =  window.localStorage.getItem("products") || [];
+      procucts.push(product);
+      window.localStorage.setItem("products",products)
     }else{
       console.log('The Add To Cart Button was clicked!');
     }
