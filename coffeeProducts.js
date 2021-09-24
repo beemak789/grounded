@@ -72,7 +72,27 @@ const coffees = [
 ]
 
 
+
+
 //Additional Coffee from seed.js
+// const coffee4 = await Product.create({
+//   name: 'Cherry on Top',
+//   description:
+//     'Handcrafted organic blend from Typica and Caturra. Each cup will taste of sweet cherries.',
+//   quantity: 3,
+//   price: 27.99,
+//   stars: 3.5,
+// });
+
+// const coffee5 = await Product.create({
+//   name: 'Feeling Lucky',
+//   description:
+//     'This bold and dark roast has the sweetness of a medium roast and the unique attributes of peaberry. The blend includes ethically sourced organic beans from Colombia, Hondura and Ethiopia.',
+//   quantity: 0,
+//   price: 29.99,
+//   stars: 3.5,
+// });
+
     // const justPeachy = await Product.create({
     //   name: "Just Peachy",
     //   description:
