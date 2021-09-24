@@ -105,6 +105,12 @@ const seed = async () => {
       totalQty: 3,
       totalPrice: 15.0,
     });
+
+    const cart4 = await Cart.create({
+      orderStatus: "UNPAID",
+      totalQty: 5,
+      totalPrice: 17.0,
+    });
     //-------------------------------------------------------------------
     // ------------------- MAGIC METHODS ---------------------------------
 
@@ -112,6 +118,7 @@ const seed = async () => {
     await user1.addCart(cart1);
     await user1.addCart(cart3);
     await user2.addCart(cart2);
+    await user4.addCart(cart4)
 
     //Adding Products to Cart
     //---> 3 Products in Cart1, associated to user1
@@ -125,6 +132,11 @@ const seed = async () => {
 
     // ---> 1 Products in Cart3, associated to user2
     await coffee4.addCart(cart3);
+
+    //cart4 check
+    await coffee2.addCart(cart4);
+    await coffee1.addCart(cart4);
+    await coffee3.addCart(cart4);
 
   } catch (err) {
     console.log(err);

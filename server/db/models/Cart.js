@@ -16,11 +16,47 @@ const Cart = db.define("cart", {
   },
 })
 
+
+//Methods on Cart Model
+ //update total price - get array of product prices * qty from cart_product; reduce sum
+ Cart.updateTotalPrice = function (pricesArray) {
+  this.totalPrice = pricesArray.reduce((sum, price) => sum + price);
+ }
+
+
 //This is hard-coding a table with one property called "quantity"
 //Adding a property to the through table
 const Cart_Product = db.define("Cart_Product", {
-  quantity: Sequelize.INTEGER,
+  quantityItem: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  pricePerItem: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  totalPricePerItem: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
 });
+
+//Cart_Product Methods
+
+//set price for order history
+Cart_Product.setPrice = function (price) {
+  this.PricePerItem = price;
+ }
+
+  //update quantity
+Cart_Product.updateQuantity = function (qty) {
+  this.quantityItem = qty;
+ }
+
+ //update total price
+Cart_Product.updateTotalPricePerItem = function (price, qty) {
+ this.totalPricePerItem = price * qty;
+}
 
 module.exports = {
   Cart,

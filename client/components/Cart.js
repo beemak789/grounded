@@ -11,35 +11,37 @@ import { fetchCart } from "../store/cartReducer";
  * COMPONENT
  */
 const Cart = () => {
-
   const isLoggedIn = useSelector((state) => !!state.auth.id);
-  if(!isLoggedIn){
-    const products = window.localStorage.getItem("products")
-  }else{
-
+  if (!isLoggedIn) {
+    const products = window.localStorage.getItem("products");
+  } else {
   }
   //find cartId to set state - array of items associated with cartID
 
   //state
 
   /**pick one of the below as applicable once userLoggedIn status works */
-  // let user = useSelector((state) => state.auth)
-  // let userId = useSelector((state) => state.auth.id)
-  let cart = useSelector((state) => state.thisCart) || null;
+  let user = useSelector((state) => state.auth) || null;
+  let userId = useSelector((state) => state.auth.id)|| null;
+
+  console.log('this is user', user);
+  console.log('this is id', userId)
+
+  let cart = useSelector((state) => state.thisCart) || {};
 
   //dispatch
   const dispatch = useDispatch();
 
   //componentDidMount
 
-  //non-hardcoded version
-  // useEffect(() => {
-  //   dispatch(fetchCart(userId))
-  // }, [])
-
+  // non-hardcoded version
   useEffect(() => {
-    dispatch(fetchCart(1));
-  }, []);
+    dispatch(fetchCart(userId))
+  }, [])
+
+  // useEffect(() => {
+  //   dispatch(fetchCart(2));
+  // }, []);
 
   console.log("this is cart", cart);
 
@@ -48,7 +50,6 @@ const Cart = () => {
 
   let subtotal = cart.totalPrice || null;
   let totalQuantity = cart.totalQty || null;
-
 
   return (
     <>

@@ -22,8 +22,8 @@ router.get('/:userId', async (req, res, next) => {
   }
 });
 
-//@description    Add products to cart for the user logged in/passed in
-//@router         POST/api/cart/:userId
+// @description    Add products to cart for the user logged in/passed in
+// @router         POST/api/cart/:userId
 router.post('/:userId', async (req, res, next) => {
   try {
     const addedProduct = await Product.findByPk(req.body.id);
@@ -39,6 +39,7 @@ router.post('/:userId', async (req, res, next) => {
     next(err);
   }
 });
+
 
 
 
@@ -72,6 +73,8 @@ router.put('/:userId', async (req, res, next) => {
     next(err);
   }
 });
+
+
 
 module.exports = router;
 
