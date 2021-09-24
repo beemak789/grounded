@@ -24,6 +24,7 @@ router.get('/:userId', async (req, res, next) => {
   }
 });
 
+
 //@description    Delete the product for the user logged in
 //@router         PUT/api/cart/:userId
 //SECURITY
@@ -59,6 +60,7 @@ try {
 
   const addedItem = await userCart.addProduct(newProduct);
 
+
   // set or increase qty
   //querying through table -- need 2 keys -- many to many*
   //if the product exists in their cart -- update, if not findOrCreate
@@ -72,6 +74,7 @@ try {
     }
   );
   res.json(updatedQuantity);
+
   } catch (err) {
     next(err);
   }
@@ -84,6 +87,8 @@ try {
 // console.log('usercart ID', userCart.id);
 //     console.log('usercart orderStatus', userCart.orderStatus);
 //     console.log('usercart totalQty', userCart.totalQty);
+
+
 
 module.exports = router;
 

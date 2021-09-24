@@ -85,17 +85,26 @@ const seed = async () => {
       totalPrice: 5.0,
     });
 
-    // const cart3 = await Cart.create({
-    //   orderStatus: "UNPAID",
-    //   totalQty: 3,
-    //   totalPrice: 15.0,
-    // });
+
+    const cart3 = await Cart.create({
+      orderStatus: "UNPAID",
+      totalQty: 3,
+      totalPrice: 15.0,
+    });
+
+    const cart4 = await Cart.create({
+      orderStatus: "UNPAID",
+      totalQty: 5,
+      totalPrice: 17.0,
+    });
+
     //-------------------------------------------------------------------
     // ------------------- MAGIC METHODS ---------------------------------
 
     //Setting User to Cart
     await user1.addCart(cart1);
     await user2.addCart(cart2);
+    await user4.addCart(cart4)
 
     //Setting Products to Cart
     //---> 3 Products in Cart1, associated to user1 (Brandy)
@@ -119,6 +128,11 @@ const seed = async () => {
     //--> Adding Products to Cart?
     // await cart2.addProduct(coffee1)
 
+
+    //cart4 check
+    await coffee2.addCart(cart4);
+    await coffee1.addCart(cart4);
+    await coffee3.addCart(cart4);
 
   } catch (err) {
     console.log(err);

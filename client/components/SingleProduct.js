@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleProduct } from "../store/productsReducer";
+import { addProduct, increaseQty } from "../store/cartReducer";
 import { Link } from "react-router-dom";
 
 //products/:productId
@@ -27,8 +29,9 @@ const SingleProduct = ({ history, match }) => {
       window.localStorage.setItem()
     }else{
       console.log('The Add To Cart Button was clicked!');
+      dispatch(addProduct(userId, singleProduct))
     }
-    
+
   };
 
   //Add To Quantity Handler
