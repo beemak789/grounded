@@ -11,7 +11,8 @@ router.get('/', async (req, res, next) => {
 				'name',
 				'description',
 				'price',
-				'imageUrl'
+				'imageUrl',
+				"quantity"
 			]
 		}
 		));
