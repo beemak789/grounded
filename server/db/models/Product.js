@@ -17,7 +17,8 @@ const Product = db.define('product', {
     type: Sequelize.FLOAT,
     allowNull: false
   },
-  quantity: {
+  //this was changed* - better to call this "inventory"
+  inventoryQuantity: {
     type: Sequelize.INTEGER
   },
   imageUrl: {

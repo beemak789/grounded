@@ -7,13 +7,14 @@ const Cart = db.define("cart", {
     defaultValue: "UNPAID",
     allowNull: false
   },
-  totalQty: {
-    type: Sequelize.INTEGER,
-    defaultValue: 0
-  },
-  totalPrice: {
-    type: Sequelize.INTEGER,
-  },
+  //We might not need this*
+  // totalQty: {
+  //   type: Sequelize.INTEGER,
+  //   defaultValue: 0
+  // },
+  // totalPrice: {
+  //   type: Sequelize.INTEGER,
+  // },
 })
 
 
@@ -28,18 +29,18 @@ const Cart = db.define("cart", {
 //This is hard-coding a table with one property called "quantity"
 //Adding a property to the through table
 const Cart_Product = db.define("Cart_Product", {
-  quantityItem: {
+  quantity: {
     type: Sequelize.INTEGER,
     defaultValue: 0
   },
-  pricePerItem: {
-    type: Sequelize.INTEGER,
-    defaultValue: 0
-  },
-  totalPricePerItem: {
-    type: Sequelize.INTEGER,
-    defaultValue: 0
-  },
+  // pricePerItem: {
+  //   type: Sequelize.INTEGER,
+  //   defaultValue: 0
+  // },
+  // totalPricePerItem: {
+  //   type: Sequelize.INTEGER,
+  //   defaultValue: 0
+  // },
 });
 
 //Cart_Product Methods
