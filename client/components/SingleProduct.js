@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSingleProduct } from "../store/productsReducer";
+import { fetchSingleProduct, updateQty } from "../store/productsReducer";
 import { addProduct, increaseQty } from "../store/cartReducer";
 import { Link, useHistory } from "react-router-dom";
 
@@ -42,8 +42,10 @@ const SingleProduct = ({ match }) => {
   };
 
   //Add To Quantity Handler
-  const addToQuantityHandler = () => {
+  const addToQuantityHandler = (event) => {
     console.log("Customer changed quantity of the item!")
+    const qty = Number(event.target.value)
+    dispatch(updateQty(qty))
   }
 
   if (!singleProduct) {
@@ -62,12 +64,27 @@ const SingleProduct = ({ match }) => {
             ? "In Stock"
             : "Out of Stock"}
         </p>
+        <p className="dropdownMenu">
+          <label htmlFor="quantity">Quantity:</label>
+          <select
+            name="qty"
+            id="quantity"
+            key="quantity"
+            onChange = {addToQuantityHandler}
+            value={singleProduct.qtyBags}
+          >
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </p>
         <button onClick={addToCartHandler} type="button">
           Add To Cart
         </button>
 
         <p>{singleProduct.description}</p>
-        <span>{singleProduct.stars}</span>
+        <span>Rating: {singleProduct.stars}</span>
       </div>
     </>
   );
