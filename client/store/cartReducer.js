@@ -35,7 +35,6 @@ export const addProduct = (userId, product) => {
 };
 
 export const deleteProduct = (userId, productId) => {
-  console.log(productId)
   return async (dispatch) => {
    await axios.put(`/api/cart/${userId}`, {productId});
    dispatch(fetchCart(userId))

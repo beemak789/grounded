@@ -27,6 +27,9 @@ const SingleProduct = ({ match }) => {
     dispatch(fetchSingleProduct(match.params.id));
   }, []);
 
+function goCart () {
+  history.push("/cart")
+}
 
   //Add Button Handler
   const addToCartHandler = () => {
@@ -36,7 +39,7 @@ const SingleProduct = ({ match }) => {
     }else{
       console.log('The Add To Cart Button was clicked!');
       dispatch(addProduct(userId, singleProduct));
-      // history.push(`/cart`)
+      goCart();
     }
 
   };

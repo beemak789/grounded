@@ -62,7 +62,7 @@ const Cart = () => {
 
                 <span>{product.name}</span>
 
-                <span> | {cartProduct.quantityItem} bags |</span>
+                <span> | {cartProduct.quantityItem} bag(s) |</span>
 
                 <span> ${product.price} </span>
 
