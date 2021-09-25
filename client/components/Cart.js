@@ -36,12 +36,14 @@ const Cart = () => {
   const products = thisCart.products || [];
   console.log(products);
 
+
   return (
     <>
       <h1 id="cart-title">Shopping Cart</h1>
       <div className="cart-container">
         <div className="cart-container-items">
           {products.map((product) => {
+            const cartProduct = product.Cart_Product || [];
             return (
               <div id="cart-item" key={product.id}>
                 <span>
@@ -54,7 +56,7 @@ const Cart = () => {
 
                 <span>{product.name}</span>
 
-                <span> | {product.Cart_Product.quantityItem} bags |</span>
+                <span> | {cartProduct.quantityItem} bags |</span>
 
                 <span> ${product.price} </span>
 

@@ -51,7 +51,9 @@ router.put('/:userId', async (req, res, next) => {
 router.post('/:userId', async (req, res, next) => {
 try {
   let userIdReq = Number(req.params.userId);
-  const newProduct = await Product.findByPk(req.body.product.id);
+  console.log('body', req.body)
+  const newProduct = await Product.findByPk(req.body.id);
+  console.log('new product', newProduct)
 
   console.log('body', req.body)
   const userCart = await Cart.findOne({
