@@ -69,8 +69,9 @@ try {
   // set or increase qty
   // querying through table -- need 2 keys -- many to many*
   // if the product exists in their cart -- update, if not findOrCreate
-  const updatedQuantity = await Cart_Product.update(
-    { quantityItem: req.body.qtyBags },
+  const updatedInfo = await Cart_Product.update(
+    { quantityItem: req.body.qtyBags,
+     pricePerItem: req.body.price },
     {
       where: {
         productId: newProduct.id,
@@ -78,7 +79,7 @@ try {
       },
     }
   );
-  res.json(updatedQuantity);
+  res.json(updatedInfo);
 
   }
   catch (err) {

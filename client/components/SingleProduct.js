@@ -5,51 +5,45 @@ import { fetchSingleProduct, updateQty } from "../store/productsReducer";
 import { addProduct, increaseQty } from "../store/cartReducer";
 import { Link, useHistory } from "react-router-dom";
 
-
 //products/:productId
 const SingleProduct = ({ match }) => {
-  //UseState -- state should be used for increasing quantity of the product
-  //The quantity?
-  // const [qty, setQty] = useState(0)
-
   // = mapDispatchToProps
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   // = mapStateToProps
   let singleProduct = useSelector((state) => state.singleProduct) || null;
-  let userId = useSelector((state) => state.auth.id)|| null;
+  let userId = useSelector((state) => state.auth.id) || null;
   const history = useHistory();
 
-  console.log(singleProduct)
+  console.log(singleProduct);
 
   //same as componentDidMount
   useEffect(() => {
     dispatch(fetchSingleProduct(match.params.id));
   }, []);
 
-function goCart () {
-  history.push("/cart")
-}
+  function goCart() {
+    history.push("/cart");
+  }
 
   //Add Button Handler
   const addToCartHandler = () => {
     //When the "add to cart" button is clicked - our cart's total quantity should increase.
-    if(!isLoggedIn){
-      window.localStorage.setItem()
-    }else{
-      console.log('The Add To Cart Button was clicked!');
+    if (!isLoggedIn) {
+      window.localStorage.setItem();
+    } else {
+      console.log("The Add To Cart Button was clicked!");
       dispatch(addProduct(userId, singleProduct));
       goCart();
     }
-
   };
 
   //Add To Quantity Handler
   const addToQuantityHandler = (event) => {
-    console.log("Customer changed quantity of the item!")
-    const qty = Number(event.target.value)
-    dispatch(updateQty(qty))
-  }
+    console.log("Customer changed quantity of the item!");
+    const qty = Number(event.target.value);
+    dispatch(updateQty(qty));
+  };
 
   if (!singleProduct) {
     return <h1>Loading...</h1>;
@@ -73,7 +67,7 @@ function goCart () {
             name="qty"
             id="quantity"
             key="quantity"
-            onChange = {addToQuantityHandler}
+            onChange={addToQuantityHandler}
             value={singleProduct.qtyBags}
           >
             <option value="0">0</option>

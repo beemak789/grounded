@@ -81,7 +81,7 @@ const Cart = () => {
           <span id="cart-subtotal">Subtotal: ${subtotal}</span>
           <br />
           <button>Checkout</button>
-          <button>Empty Cart</button>
+          <button>Empty Cart - NA</button>
         </div>
       </div>
     </>
