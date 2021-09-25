@@ -50,11 +50,14 @@ router.put('/:userId', async (req, res, next) => {
 //SECURITY
 router.post('/:userId', async (req, res, next) => {
 try {
-  const newProduct = await Product.findByPk(req.body.productId);
+  let userIdReq = Number(req.params.userId);
+  const newProduct = await Product.findByPk(req.body.product.id);
+
+  console.log('body', req.body)
   const userCart = await Cart.findOne({
     where: {
       orderStatus: 'UNPAID',
-      userId: req.params.userId,
+      userId: userIdReq,
     },
   });
 
@@ -62,8 +65,8 @@ try {
 
 
   // set or increase qty
-  //querying through table -- need 2 keys -- many to many*
-  //if the product exists in their cart -- update, if not findOrCreate
+  // querying through table -- need 2 keys -- many to many*
+  // if the product exists in their cart -- update, if not findOrCreate
   const updatedQuantity = await Cart_Product.update(
     { quantity: req.body.quantity },
     {
@@ -75,7 +78,8 @@ try {
   );
   res.json(updatedQuantity);
 
-  } catch (err) {
+  }
+  catch (err) {
     next(err);
   }
 });

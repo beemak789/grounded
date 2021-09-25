@@ -28,7 +28,7 @@ export const fetchCart = (id) => {
 
 export const addProduct = (userId, product) => {
   return async (dispatch) => {
-    const { data } = await axios.post(`/api/cart/:userId`);
+    const { data } = await axios.post(`/api/cart/${userId}`, product);
     dispatch(setProduct(data));
   };
 };
@@ -39,8 +39,7 @@ export const cartReducer = (state = {}, action) => {
     case CART_REQUEST:
       return action.cart;
     case ADD_PRODUCT: {
-      //filter and return w new product obj
-      let products = state.products;
+      let products = state.products || [];
       let newArray = products.filter((item) => item.id !== action.product.id);
       newArray.push(action.product);
       return { ...state, products: newArray };

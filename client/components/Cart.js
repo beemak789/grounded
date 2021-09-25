@@ -16,40 +16,25 @@ const Cart = () => {
     const products = window.localStorage.getItem("products");
   } else {
   }
-  //find cartId to set state - array of items associated with cartID
 
   //state
+  let userId = useSelector((state) => state.auth.id) || null;
+  let thisCart = useSelector((state) => state.thisCart) || {};
 
-  /**pick one of the below as applicable once userLoggedIn status works */
-  let user = useSelector((state) => state.auth) || null;
-  let userId = useSelector((state) => state.auth.id)|| null;
-
-  console.log('this is user', user);
-  console.log('this is id', userId)
-
-  let cart = useSelector((state) => state.thisCart) || {};
+  let subtotal = thisCart.totalPrice || null;
+  let totalQuantity = thisCart.totalQty || null;
 
   //dispatch
   const dispatch = useDispatch();
 
   //componentDidMount
-
-  // non-hardcoded version
   useEffect(() => {
-    dispatch(fetchCart(userId))
-  }, [])
+    dispatch(fetchCart(userId));
+  }, []);
 
-  // useEffect(() => {
-  //   dispatch(fetchCart(2));
-  // }, []);
-
-  console.log("this is cart", cart);
-
-  let products = cart.products || [];
+  console.log("this is cart", thisCart);
+  const products = thisCart.products || [];
   console.log(products);
-
-  let subtotal = cart.totalPrice || null;
-  let totalQuantity = cart.totalQty || null;
 
   return (
     <>
@@ -69,9 +54,9 @@ const Cart = () => {
 
                 <span>{product.name}</span>
 
-                <span> | {product.quantity} bags |</span>
+                <span> | {product.Cart_Product.quantityItem} bags |</span>
 
-                <span> {product.price} </span>
+                <span> ${product.price} </span>
 
                 <span>
                   <button>Remove Item</button>

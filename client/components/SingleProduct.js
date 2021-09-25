@@ -3,10 +3,11 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleProduct } from "../store/productsReducer";
 import { addProduct, increaseQty } from "../store/cartReducer";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
 
 //products/:productId
-const SingleProduct = ({ history, match }) => {
+const SingleProduct = ({ match }) => {
   //UseState -- state should be used for increasing quantity of the product
   //The quantity?
   // const [qty, setQty] = useState(0)
@@ -16,11 +17,16 @@ const SingleProduct = ({ history, match }) => {
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   // = mapStateToProps
   let singleProduct = useSelector((state) => state.singleProduct) || null;
+  let userId = useSelector((state) => state.auth.id)|| null;
+  const history = useHistory();
+
+  console.log(singleProduct)
 
   //same as componentDidMount
   useEffect(() => {
     dispatch(fetchSingleProduct(match.params.id));
   }, []);
+
 
   //Add Button Handler
   const addToCartHandler = () => {
@@ -29,7 +35,8 @@ const SingleProduct = ({ history, match }) => {
       window.localStorage.setItem()
     }else{
       console.log('The Add To Cart Button was clicked!');
-      dispatch(addProduct(userId, singleProduct))
+      dispatch(addProduct(userId, singleProduct));
+      // history.push(`/cart`)
     }
 
   };
