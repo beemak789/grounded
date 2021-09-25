@@ -19,6 +19,7 @@ router.get('/:userId', async (req, res, next) => {
         userId: req.params.userId,
       },
     });
+    console.log(currentCart);
     res.json(currentCart);
   } catch (err) {
     next(err);

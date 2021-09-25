@@ -13,7 +13,7 @@ const seed = async () => {
       name: 'Friday Night Lattes',
       description:
         'Wind down with our 100% certified organic and non-GMO blend of Hondouran beans. This artisan blend hints at honey, caramel, and cocoa.',
-      quantity: 10,
+      inventoryQuantity: 10,
       price: 25.99,
       stars: 4.0,
     });
@@ -22,7 +22,7 @@ const seed = async () => {
       name: 'Cult Classic',
       description:
         'Small batch roasted coffee that has a cult following stronger than qAnon. This blend has a strong but clean taste with no trace of bitterness. The organic beans are sourced from rain forests in Columbia, Guatemala and Sumatra.',
-      quantity: 5,
+      inventoryQuantity: 5,
       price: 29.99,
       stars: 4.5,
     });
@@ -31,7 +31,7 @@ const seed = async () => {
       name: 'Brewing Trouble',
       description:
         'Feeling like you want some excitement?  Turn to these peaberry coffee beans that offer a tarty blend of acidity and sweetness guaranteed to wake you up and put a mischevious smile on your face.',
-      quantity: 0,
+      inventoryQuantity: 0,
       price: 27.99,
       stars: 4.0,
     });
@@ -98,8 +98,11 @@ const seed = async () => {
       totalPrice: 17.0,
     });
 
-    //-------------------------------------------------------------------
-    // ------------------- MAGIC METHODS ---------------------------------
+  //Note: I removed all set products to cart because I wanted to check my backend add to cart routes were working via Postman instead. However, for testing purposes, feel free to add await and set your products here*.
+
+  await user1.addCart(cart1);
+  await user2.addCart(cart2);
+
   } catch (err) {
     console.log(err);
   }
