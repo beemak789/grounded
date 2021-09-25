@@ -4,6 +4,7 @@ import axios from "axios";
 
 const CART_REQUEST = "CART_REQUEST";
 const ADD_PRODUCT = "ADD_PRODUCT";
+const DELETE_PRODUCT = "DELETE_PRODUCT";
 
 //Action Creator
 
@@ -28,9 +29,17 @@ export const fetchCart = (id) => {
 
 export const addProduct = (userId, product) => {
   return async (dispatch) => {
-    const { data } = await axios.post(`/api/cart/${userId}`, product);
+    const { data } = await axios.post(`/api/cart/${userId}`, {product});
     dispatch(setProduct(data));
   };
+};
+
+export const deleteProduct = (userId, productId) => {
+  console.log(productId)
+  return async (dispatch) => {
+   await axios.put(`/api/cart/${userId}`, {productId});
+   dispatch(fetchCart(userId))
+  }
 };
 
 //reducer

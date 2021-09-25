@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCart } from "../store/cartReducer";
+import { fetchCart, deleteProduct } from "../store/cartReducer";
 
 /**
  *Production Note - once we stay logged in. We won't need to fetch user and set auth. We should have access in hook/state.
@@ -30,12 +30,18 @@ const Cart = () => {
   //componentDidMount
   useEffect(() => {
     dispatch(fetchCart(userId));
-  });
+  }, []);
 
   console.log("this is cart", thisCart);
   const products = thisCart.products || [];
   console.log(products);
 
+  //Delete Button
+  const deleteItemHandler = (event) => {
+    console.log('The delete button was clicked!');
+    console.log(event.target.name)
+    dispatch(deleteProduct(userId, event.target.name))
+  }
 
   return (
     <>
@@ -61,7 +67,7 @@ const Cart = () => {
                 <span> ${product.price} </span>
 
                 <span>
-                  <button>Remove Item</button>
+                  <button onClick = {deleteItemHandler} name = {product.id}>Remove Item</button>
                 </span>
               </div>
             );

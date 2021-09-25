@@ -30,13 +30,14 @@ router.get('/:userId', async (req, res, next) => {
 //SECURITY
 router.put('/:userId', async (req, res, next) => {
   try {
+    const productId = Number(req.body.productId);
     const userCart = await Cart.findOne({
       where: {
         orderStatus: 'UNPAID',
         userId: req.params.userId,
       },
     });
-    const deleteThisProduct = await Product.findByPk(req.body.productId);
+    const deleteThisProduct = await Product.findByPk(productId);
     const removedProduct = userCart.removeProduct(deleteThisProduct);
     res.json(removedProduct);
   } catch (err) {
