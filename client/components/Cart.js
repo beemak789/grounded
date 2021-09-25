@@ -30,7 +30,7 @@ const Cart = () => {
   //componentDidMount
   useEffect(() => {
     dispatch(fetchCart(userId));
-  }, []);
+  });
 
   console.log("this is cart", thisCart);
   const products = thisCart.products || [];

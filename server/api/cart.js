@@ -65,12 +65,11 @@ try {
 
   const addedItem = await userCart.addProduct(newProduct);
 
-
   // set or increase qty
   // querying through table -- need 2 keys -- many to many*
   // if the product exists in their cart -- update, if not findOrCreate
   const updatedQuantity = await Cart_Product.update(
-    { quantity: req.body.quantity },
+    { quantityItem: req.body.qtyBags },
     {
       where: {
         productId: newProduct.id,
