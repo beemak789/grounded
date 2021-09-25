@@ -29,7 +29,7 @@ export const fetchCart = (id) => {
 
 export const addProduct = (userId, product) => {
   return async (dispatch) => {
-    const { data } = await axios.post(`/api/cart/${userId}`, {product});
+    const { data } = await axios.post(`/api/cart/${userId}`, product);
     dispatch(setProduct(data));
   };
 };
