@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCart, deleteProduct } from "../store/cartReducer";
+import { useHistory } from "react-router-dom";
 
 /**
  *Production Note - once we stay logged in. We won't need to fetch user and set auth. We should have access in hook/state.
@@ -11,32 +12,35 @@ import { fetchCart, deleteProduct } from "../store/cartReducer";
  * COMPONENT
  */
 const Cart = () => {
-
-  const isLoggedIn = useSelector((state) => !!state.auth.id);
-
+  const isLoggedIn = useSelector((state) => !!state.auth) || null;
+  let history = useHistory();
+  const  goCart=()=>{
+    history.push("/cart");
+  }
   //state
   // let userId = useSelector((state) => state.auth.id) || null;
   // let thisCart = useSelector((state) => state.thisCart) || {};
 
-
-  const user = useSelector((state) => state.auth);
-  const cart = useSelector((state) => state.thisCart);
-    //dispatch
-    const dispatch = useDispatch();
-
-
   //componentDidMount
-  if (!isLoggedIn) {
+  if (!isLoggedIn || isLoggedIn === null) {
     const currProducts = window.localStorage.products || "[]";
     let products = JSON.parse(currProducts);
     console.log("products---->", products);
-
+    const totalQuantity = products.reduce(
+      (sum, product) => sum + product.qtyBags,
+      0
+    );
+    const subtotal = products.reduce(
+      (sum, product) => sum + product.price * product.qtyBags,
+      0
+    );
     const deleteItemHandler = (event) => {
       console.log(event.target.name);
       products = products.filter(
         (product) => product.id !== +event.target.name
       );
       window.localStorage.products = JSON.stringify(products);
+      goCart();
     };
 
     return (
@@ -81,87 +85,77 @@ const Cart = () => {
       </>
     );
   } else {
-    useEffect(() => {
-      dispatch(fetchCart(userId));
-    }, []);
+    const user = useSelector((state) => state.auth);
+    const cart = useSelector((state) => state.thisCart);
+    //dispatch
+    const dispatch = useDispatch();
 
-    console.log("this is cart", thisCart);
-    const products = thisCart.products || [];
-    console.log(products);
+    useEffect(() => {
+      if (user !== null) {
+        dispatch(fetchCart(user.id));
+      }
+    }, [user]);
+
+    const products = cart.products || [];
+    // let subtotal = thisCart.totalPrice || null;
+    // let totalQuantity = thisCart.totalQty || null;
 
     //Delete Button
     const deleteItemHandler = (event) => {
       console.log("The delete button was clicked!");
       console.log(event.target.name);
-      dispatch(deleteProduct(userId, event.target.name));
+      dispatch(deleteProduct(user.id, event.target.name));
     };
 
-  useEffect(() => {
-    if (user !== null) {
-      dispatch(fetchCart(user.id));
-    }
-  }, [user]);
+    return (
+      <>
+        {console.log("THE USER --->", user)}
+        {console.log("THE CART--->", cart)}
 
-  const products = cart.products || [];
-  // let subtotal = thisCart.totalPrice || null;
-  // let totalQuantity = thisCart.totalQty || null;
+        <h1 id="cart-title">Shopping Cart</h1>
+        <div className="cart-container">
+          <div className="cart-container-items">
+            {products.map((product) => {
+              const cartProduct = product.Cart_Product || [];
+              return (
+                <div id="cart-item" key={product.id}>
+                  <span>
+                    <img
+                      src={product.imageUrl}
+                      alt="product-photo"
+                      id="product-photo"
+                    />
+                  </span>
 
-  //Delete Button
-  const deleteItemHandler = (event) => {
-    console.log('The delete button was clicked!');
-    console.log(event.target.name)
-    dispatch(deleteProduct(user.id, event.target.name))
+                  <span>{product.name}</span>
 
+                  <span> | {cartProduct.quantityItem} bag(s) |</span>
+
+                  <span> ${product.price} </span>
+
+                  <span>
+                    <button onClick={deleteItemHandler} name={product.id}>
+                      Remove Item
+                    </button>
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+          <div className="cart-totals">
+            <span id="cart-total-items">
+              You have {cart.totalQty} items in your cart.{" "}
+            </span>
+            <br />
+            <span id="cart-subtotal">Subtotal: ${cart.totalPrice}.00</span>
+            <br />
+            <button>Checkout</button>
+            <button>Empty Cart - NA</button>
+          </div>
+        </div>
+      </>
+    );
   }
-
-  return (
-    <>
-    {console.log("THE USER --->", user)}
-    {console.log("THE CART--->", cart)}
-
-      <h1 id="cart-title">Shopping Cart</h1>
-      <div className="cart-container">
-        <div className="cart-container-items">
-          {products.map((product) => {
-            const cartProduct = product.Cart_Product || [];
-            return (
-              <div id="cart-item" key={product.id}>
-                <span>
-                  <img
-                    src={product.imageUrl}
-                    alt="product-photo"
-                    id="product-photo"
-                  />
-                </span>
-
-                <span>{product.name}</span>
-
-                <span> | {cartProduct.quantityItem} bag(s) |</span>
-
-                <span> ${product.price} </span>
-
-                <span>
-                  <button onClick={deleteItemHandler} name={product.id}>
-                    Remove Item
-                  </button>
-                </span>
-              </div>
-            );
-          })}
-        </div>
-        <div className="cart-totals">
-          <span id="cart-total-items">
-            You have {cart.totalQty} items in your cart.{" "}
-          </span>
-          <br />
-          <span id="cart-subtotal">Subtotal: ${cart.totalPrice}.00</span>
-          <br />
-          <button>Checkout</button>
-          <button>Empty Cart - NA</button>
-        </div>
-      </div>
-    </>
-  );
 };
 
 /**
