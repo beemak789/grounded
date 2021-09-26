@@ -18,6 +18,7 @@ const SingleProduct = ({ match }) => {
   console.log(singleProduct);
 
   //same as componentDidMount
+
   useEffect(() => {
     dispatch(fetchSingleProduct(match.params.id));
   }, []);
@@ -29,12 +30,25 @@ const SingleProduct = ({ match }) => {
   //Add Button Handler
   const addToCartHandler = () => {
     //When the "add to cart" button is clicked - our cart's total quantity should increase.
+
     if (!isLoggedIn) {
-      window.localStorage.setItem();
+      let selectedProduct = singleProduct;
+      const currProducts = window.localStorage.products || "[]";
+      let products = JSON.parse(currProducts);
+      if (products.find((product) => product.id === singleProduct.id)) {
+        selectedProduct.qtyBags++;
+        products = products.filter(
+          (product) => product.id !== singleProduct.id
+        );
+      }
+      products = [...products, singleProduct];
+      products = JSON.stringify(products);
+
+      window.localStorage.products = products;
+      console.log("products after---->", window.localStorage.products);
     } else {
       console.log("The Add To Cart Button was clicked!");
       dispatch(addProduct(userId, singleProduct));
-      goCart();
     }
   };
 
