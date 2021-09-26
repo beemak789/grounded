@@ -31,7 +31,7 @@ router.get('/:userId', async (req, res, next) => {
 router.put('/:userId', async (req, res, next) => {
   try {
     const productId = Number(req.body.productId);
-    const userCart = await Cart.findOne({
+    const [userCart, created] = await Cart.findOrCreate({
       where: {
         orderStatus: 'UNPAID',
         userId: req.params.userId,
@@ -45,7 +45,6 @@ router.put('/:userId', async (req, res, next) => {
     next(err);
   }
 });
-
 
 //------------------------------------------------------------------------------------
 //@description    Add products to cart for the user logged in/passed in
@@ -78,69 +77,50 @@ router.post('/:userId', async (req, res, next) => {
   }
 });
 
+//@description    Add products to cart for the user logged in/passed in
+//@router         POST/api/cart/:userId
+//SECURITY
+router.post('/:userId', async (req, res, next) => {
+try {
+  let userIdReq = Number(req.params.userId);
+  console.log('body', req.body)
+  const newProduct = await Product.findByPk(req.body.id);
+  console.log('new product', newProduct)
 
-//------------------------------------------------------------------------------------
-//@description    Updating quantity* for each product in a user's cart
-//@router         PUT/api/cart/:userId/update
-router.put('/:userId/quantity', async (req, res, next) => {
-  try {
-    const userCart = await Cart.findOne({
+  console.log('body', req.body)
+  const userCart = await Cart.findOne({
+    where: {
+      orderStatus: 'UNPAID',
+      userId: userIdReq,
+    },
+  });
+
+  const addedItem = await userCart.addProduct(newProduct);
+
+  // set or increase qty
+  // querying through table -- need 2 keys -- many to many*
+  // if the product exists in their cart -- update, if not findOrCreate
+  const updatedInfo = await Cart_Product.update(
+    { quantityItem: req.body.qtyBags,
+     pricePerItem: req.body.price },
+    {
       where: {
-        orderStatus: 'UNPAID',
-        userId: req.params.userId,
+        productId: newProduct.id,
+        cartId: userCart.id,
       },
-    });
-
-    //Find the target product and if it is the chosen product, see if that matches
-    //with what the user selected.
-    const targetProduct = await Product.findByPk(req.body.productId);
-    const cartProducts = await userCart.getProducts();
-    const chosenProduct = cartProducts.filter(
-      (product) => targetProduct.id === product.id
-    )[0];
-
-    //Quantity
-    //the quantity for the item user wants to add:
-    const userQuantity = req.body.quantity;
-
-    //The quantity of items in the user's cart
-    const currentCartQuantity = chosenProduct.Cart_Product.quantity;
-    const updatedQuantity = userQuantity + currentCartQuantity;
-
-    //Feel free to comment out these console logs but it's useful to see them
-    // so you can gain a better understanding of the code / what's going on.
-    //This will print once you've made a PUT request following that URI in postman
-    console.log('THE CHOSEN PRODUCT ID--->', chosenProduct.id);
-    console.log('THE NEW QUANTITY---->', userQuantity);
-    console.log('THE CURRENT QUANTITY--->', currentCartQuantity);
-    console.log('THE UPDATED QUANTITY FOR PRODUCT--->', updatedQuantity);
-
-    //If the quantity for an item is less than zero, remove the product from cart
-    if (updatedQuantity <= 0) {
-      await userCart.removeProduct(targetProduct);
-    } else {
-      //else update the quantity row for each instance in the Cart_Product Model
-      await Cart_Product.update(
-        { quantity: updatedQuantity },
-
-        {
-          where: {
-            productId: targetProduct.id,
-            cartId: userCart.id,
-          },
-        }
-      );
     }
-    //Check on Postman to see if the correct math calculated; example: ordered 3 more of Cult Classics (when I have 5 Cult Classics already in my cart) -- new total is 8 for Cult Classics
-    res.json({ updatedQuantity });
-  } catch (err) {
+  );
+  res.json(updatedInfo);
+
+
+  }
+  catch (err) {
+
     next(err);
   }
 });
 
 module.exports = router;
-
-
 
 
 
