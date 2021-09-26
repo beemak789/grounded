@@ -17,7 +17,8 @@ const Product = db.define('product', {
     type: Sequelize.FLOAT,
     allowNull: false
   },
-  quantity: {
+  //this was changed* - maybe better to call this "inventory"?
+  inventoryQuantity: {
     type: Sequelize.INTEGER
   },
   imageUrl: {
@@ -26,7 +27,11 @@ const Product = db.define('product', {
   },
   stars: {
     type: Sequelize.FLOAT
-  }
+  },
+  qtyBags: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
+  },
 })
 
 module.exports = Product;
