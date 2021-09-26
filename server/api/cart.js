@@ -18,8 +18,8 @@ router.get('/:userId', async (req, res, next) => {
         userId: req.params.userId,
       },
     });
-    console.log(currentCart);
-    res.json(currentCart);
+
+    res.send(currentCart);
   } catch (err) {
     next(err);
   }
@@ -64,7 +64,7 @@ router.post('/:userId', async (req, res, next) => {
     const addedItem = await userCart.addProduct(newProduct);
 
     const updatedInfo = await Cart_Product.update(
-      { quantity: req.body.quantity, pricePerItem: req.body.price },
+      { quantity: req.body.quantity },
       {
         where: {
           productId: newProduct.id,

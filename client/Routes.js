@@ -20,7 +20,7 @@ import { me } from "./store/auth"
  */
 function Routes() {
   //if the user is logged in then the auth is not null.
-  const isLoggedIn = useSelector((state) => state.auth !== null);
+  const isLoggedIn = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   //this is where you have to dispatch the me thunk

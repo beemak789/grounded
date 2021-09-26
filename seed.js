@@ -102,6 +102,8 @@ const seed = async () => {
 
   await user1.addCart(cart1);
   await user2.addCart(cart2);
+  await coffee1.addCart(cart1);
+  await coffee2.addCart(cart1);
 
   } catch (err) {
     console.log(err);
@@ -147,11 +149,11 @@ if (require.main === module) {
 //  );
  // await coffee1.addCart(cart1);
  // --> 1 Product in Cart2, associated with User 2 (Tia)
- // await coffee3.addCart(cart2);
- // await coffee1.addCart(cart2);
+//  await coffee3.addCart(cart2);
+//  await coffee1.addCart(cart2);
 
  //--> Adding Products to Cart?
- // await cart2.addProduct(coffee1
+//  await cart2.addProduct(coffee1)
 
  //cart4 check
 //  await coffee2.addCart(cart4);

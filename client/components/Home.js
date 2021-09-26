@@ -1,30 +1,26 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 /**
  * COMPONENT
  */
 const Home = () => {
+  const user = useSelector((state) => state.auth);
 
-
-  const username = useSelector((state) => state.auth.username);
-
-      if(username){
-        return (
-          <div>
-        <h3>Welcome, {username}</h3>
-        </div>
-        )
-      }else{
-        return (
-          <div>
+  if (user) {
+    return (
+      <div>
+        <h3>Welcome, {user.username}</h3>
+      </div>
+    );
+  } else {
+    return (
+      <div>
         <p></p>
-        </div>
-        )
-      }
-
-
-}
+      </div>
+    );
+  }
+};
 
 /**
  * CONTAINER

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { logout } from "../store/auth";
 
 const Navbar = () => {
-  const isLoggedIn = useSelector((state) => !!state.auth.id);
+  const isLoggedIn = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(logout())
