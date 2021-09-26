@@ -13,14 +13,20 @@ import Me from "./components/SingleUser";
 import SingleProduct from "./components/SingleProduct";
 import AllProducts from "./components/AllProducts"
 import Cart from "./components/Cart"
-
+import { me } from "./store/auth"
 
 /**
  * COMPONENT
  */
 function Routes() {
-  const isLoggedIn = useSelector((state) => !!state.auth.id);
+  //if the user is logged in then the auth is not null.
+  const isLoggedIn = useSelector((state) => state.auth !== null);
   const dispatch = useDispatch();
+
+  //this is where you have to dispatch the me thunk
+  useEffect(() => {
+    dispatch(me());
+  }, [])
 
   return (
     <div>

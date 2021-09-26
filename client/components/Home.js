@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
  * COMPONENT
  */
 const Home = () => {
+
+
   const username = useSelector((state) => state.auth.username);
 
       if(username){
@@ -20,7 +22,7 @@ const Home = () => {
         </div>
         )
       }
- 
+
 
 }
 

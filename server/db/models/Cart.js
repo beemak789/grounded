@@ -32,14 +32,14 @@ const Cart_Product = db.define("Cart_Product", {
   },
 //Not sure if we need these two fields because we have price of item in the Products cart and we will get total price by quantity * price per item
 
-  // pricePerItem: {
-  //   type: Sequelize.INTEGER,
-  //   defaultValue: 0
-  // },
-  // totalPricePerItem: {
-  //   type: Sequelize.INTEGER,
-  //   defaultValue: 0
-  // },
+  pricePerItem: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  totalPricePerItem: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
 });
 
 //Cart_Product Methods

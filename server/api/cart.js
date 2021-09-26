@@ -4,7 +4,6 @@ const {
   models: { Cart, User, Product, Cart_Product },
 } = require('../db');
 
-//Notes
 
 //CRUD OPERATIONS [ CREATE, RETRIEVE, UPDATE, DELETE ]
 //@description     Get all items in cart for the user logged in/passed in
@@ -26,7 +25,9 @@ router.get('/:userId', async (req, res, next) => {
   }
 });
 
-//This handles both ADD TO CART, DELETE FROM CART (update requests)
+//------------------------------------------------------------------------------------
+//@description    Delete the product for the user logged in
+//@router         PUT/api/cart/:userId
 router.put('/:userId', async (req, res, next) => {
   try {
     const productId = Number(req.body.productId);
@@ -36,12 +37,42 @@ router.put('/:userId', async (req, res, next) => {
         userId: req.params.userId,
       },
     });
-
     const deleteThisProduct = await Product.findByPk(productId);
     const removedProduct = userCart.removeProduct(deleteThisProduct);
     res.json(removedProduct);
   } catch (err) {
     console.log('There is an err in your delete cart route');
+    next(err);
+  }
+});
+
+//------------------------------------------------------------------------------------
+//@description    Add products to cart for the user logged in/passed in
+//@router         POST/api/cart/:userId
+router.post('/:userId', async (req, res, next) => {
+  try {
+    let userIdReq = Number(req.params.userId);
+    const newProduct = await Product.findByPk(req.body.id);
+    const userCart = await Cart.findOne({
+      where: {
+        orderStatus: 'UNPAID',
+        userId: userIdReq,
+      },
+    });
+
+    const addedItem = await userCart.addProduct(newProduct);
+
+    const updatedInfo = await Cart_Product.update(
+      { quantity: req.body.quantity, pricePerItem: req.body.price },
+      {
+        where: {
+          productId: newProduct.id,
+          cartId: userCart.id,
+        },
+      }
+    );
+    res.json(updatedInfo);
+  } catch (err) {
     next(err);
   }
 });
@@ -81,6 +112,7 @@ try {
   );
   res.json(updatedInfo);
 
+
   }
   catch (err) {
 
@@ -88,30 +120,57 @@ try {
   }
 });
 
-
 module.exports = router;
 
-///-----------------------------------------------------------------
-//PUT ROUTE
 
 
+//------------------------------------------------------------------------------------
 
-// const newProduct = await Product.findByPk(req.body.productId);
-// const userCart = await Cart.findOne({
-//   where: {
-//     orderStatus: 'UNPAID',
-//     userId: req.params.userId,
-//   },
+//MISCELLANEOUS --- THIS CODE WORKS TOO, just more difficult to render on front-end
+//This handles both ADD TO CART, DELETE FROM CART (update requests)
+
+
+// PUT /api/cart/:userId
+// router.put('/:userId', async (req, res, next) => {
+//   try {
+//     const [userCart, created] = await Cart.findOrCreate({
+//       where: {
+//         orderStatus: 'UNPAID',
+//         userId: req.params.userId,
+//       },
+//     });
+
+//     await userCart.addProduct(targetProduct); //TODO
+
+//     const cartProducts = await userCart.getProducts();
+//     const chosenProduct = cartProducts.filter(
+//       (product) => targetProduct.id === product.id
+//     )[0];
+//     const newQuantity = req.body.quantity;
+//     const currentQuantity = chosenProduct.Cart_Product.quantity; //6
+
+//     const updatedQuantity = newQuantity + currentQuantity;
+
+//     if (updatedQuantity <= 0) {
+//       await userCart.removeProduct(targetProduct);
+//     } else {
+//       await Cart_Product.update(
+//         { quantity: newQuantity + currentQuantity },
+
+//         {
+//           where: {
+//             productId: targetProduct.id,
+//             cartId: userCart.id,
+//           },
+//         }
+//       );
+//     }
+
+//     res.json({ updatedQuantity });
+//   } catch (err) {
+//     next(err);
+//   }
 // });
-// const productExists = await userCart.hasProduct(newProduct)
-
-// console.log("HAS PRODUCT--->", productExists)
-// res.json(userCart)
 
 
-//Some tips
-//Get state
-//initial state to local storage
-//JSON.stringify
-//incrementig decrementing the field -- await the fields update
-//creating model methods - find cart order
+
