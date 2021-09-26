@@ -11,9 +11,9 @@ import Home from "./components/Home";
 import Landing from "./components/Landing";
 import Me from "./components/SingleUser";
 import SingleProduct from "./components/SingleProduct";
-import AllProducts from "./components/AllProducts"
-import Cart from "./components/Cart"
-import { me } from "./store/auth"
+import AllProducts from "./components/AllProducts";
+import Cart from "./components/Cart";
+import { me } from "./store/auth";
 
 /**
  * COMPONENT
@@ -26,7 +26,7 @@ function Routes() {
   //this is where you have to dispatch the me thunk
   useEffect(() => {
     dispatch(me());
-  }, [])
+  }, []);
 
   return (
     <div>

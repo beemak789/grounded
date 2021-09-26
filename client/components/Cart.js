@@ -12,10 +12,6 @@ import { fetchCart, deleteProduct } from "../store/cartReducer";
  */
 const Cart = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.id);
-  if (!isLoggedIn) {
-    const products = window.localStorage.getItem("products");
-  } else {
-  }
 
   //state
   let userId = useSelector((state) => state.auth.id) || null;
@@ -28,19 +24,75 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   //componentDidMount
-  useEffect(() => {
-    dispatch(fetchCart(userId));
-  }, []);
+  if (!isLoggedIn) {
+    const currProducts = window.localStorage.products || "[]";
+    let products = JSON.parse(currProducts);
+    console.log("products---->", products);
 
-  console.log("this is cart", thisCart);
-  const products = thisCart.products || [];
-  console.log(products);
+    const deleteItemHandler = (event) => {
+      console.log(event.target.name);
+      products = products.filter(
+        (product) => product.id !== +event.target.name
+      );
+      window.localStorage.products = JSON.stringify(products);
+    };
 
-  //Delete Button
-  const deleteItemHandler = (event) => {
-    console.log('The delete button was clicked!');
-    console.log(event.target.name)
-    dispatch(deleteProduct(userId, event.target.name))
+    return (
+      <>
+        <h1 id="cart-title">Shopping Cart</h1>
+        <div className="cart-container">
+          <div className="cart-container-items">
+            {products.map((product) => {
+              return (
+                <div id="cart-item" key={product.id}>
+                  <span>
+                    <img
+                      src={product.imageUrl}
+                      alt="product-photo"
+                      id="product-photo"
+                    />
+                  </span>
+
+                  <span>{product.name}</span>
+                  <span> | {product.qtyBags} bag(s) |</span>
+                  <span> ${product.price} </span>
+                  <span>
+                    <button onClick={deleteItemHandler} name={product.id}>
+                      Remove Item
+                    </button>
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+          <div className="cart-totals">
+            <span id="cart-total-items">
+              You have {totalQuantity} items in your cart.{" "}
+            </span>
+            <br />
+            <span id="cart-subtotal">Subtotal: ${subtotal}</span>
+            <br />
+            <button>Checkout</button>
+            <button>Empty Cart - NA</button>
+          </div>
+        </div>
+      </>
+    );
+  } else {
+    useEffect(() => {
+      dispatch(fetchCart(userId));
+    }, []);
+
+    console.log("this is cart", thisCart);
+    const products = thisCart.products || [];
+    console.log(products);
+
+    //Delete Button
+    const deleteItemHandler = (event) => {
+      console.log("The delete button was clicked!");
+      console.log(event.target.name);
+      dispatch(deleteProduct(userId, event.target.name));
+    };
   }
 
   return (
@@ -67,7 +119,9 @@ const Cart = () => {
                 <span> ${product.price} </span>
 
                 <span>
-                  <button onClick = {deleteItemHandler} name = {product.id}>Remove Item</button>
+                  <button onClick={deleteItemHandler} name={product.id}>
+                    Remove Item
+                  </button>
                 </span>
               </div>
             );
