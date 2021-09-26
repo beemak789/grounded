@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
  */
 const Home = () => {
   const user = useSelector((state) => state.auth);
-
+  console.log("the user --->", user)
   if (user) {
     return (
       <div>

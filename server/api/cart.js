@@ -31,7 +31,7 @@ router.get('/:userId', async (req, res, next) => {
 router.put('/:userId', async (req, res, next) => {
   try {
     const productId = Number(req.body.productId);
-    const userCart = await Cart.findOne({
+    const [userCart, created] = await Cart.findOrCreate({
       where: {
         orderStatus: 'UNPAID',
         userId: req.params.userId,
@@ -64,7 +64,7 @@ router.post('/:userId', async (req, res, next) => {
     const addedItem = await userCart.addProduct(newProduct);
 
     const updatedInfo = await Cart_Product.update(
-      { quantity: req.body.quantity },
+      { quantity: req.body.quantity, pricePerItem: req.body.price },
       {
         where: {
           productId: newProduct.id,
