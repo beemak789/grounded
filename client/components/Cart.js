@@ -12,21 +12,15 @@ import { fetchCart, deleteProduct } from "../store/cartReducer";
  */
 const Cart = () => {
 
-  const isLoggedIn = useSelector((state) => !!state.auth.id);
+  const isLoggedIn = useSelector((state) => state.auth) || null;
 
   //state
   // let userId = useSelector((state) => state.auth.id) || null;
   // let thisCart = useSelector((state) => state.thisCart) || {};
 
 
-  const user = useSelector((state) => state.auth);
-  const cart = useSelector((state) => state.thisCart);
-    //dispatch
-    const dispatch = useDispatch();
-
-
   //componentDidMount
-  if (!isLoggedIn) {
+  if (!isLoggedIn || isLoggedIn === null) {
     const currProducts = window.localStorage.products || "[]";
     let products = JSON.parse(currProducts);
     console.log("products---->", products);
@@ -68,12 +62,12 @@ const Cart = () => {
             })}
           </div>
           <div className="cart-totals">
-            <span id="cart-total-items">
+            {/* <span id="cart-total-items">
               You have {totalQuantity} items in your cart.{" "}
             </span>
             <br />
             <span id="cart-subtotal">Subtotal: ${subtotal}</span>
-            <br />
+            <br /> */}
             <button>Checkout</button>
             <button>Empty Cart - NA</button>
           </div>
@@ -81,20 +75,10 @@ const Cart = () => {
       </>
     );
   } else {
-    useEffect(() => {
-      dispatch(fetchCart(userId));
-    }, []);
-
-    console.log("this is cart", thisCart);
-    const products = thisCart.products || [];
-    console.log(products);
-
-    //Delete Button
-    const deleteItemHandler = (event) => {
-      console.log("The delete button was clicked!");
-      console.log(event.target.name);
-      dispatch(deleteProduct(userId, event.target.name));
-    };
+    const user = useSelector((state) => state.auth);
+    const cart = useSelector((state) => state.thisCart);
+      //dispatch
+      const dispatch = useDispatch();
 
   useEffect(() => {
     if (user !== null) {
@@ -103,8 +87,8 @@ const Cart = () => {
   }, [user]);
 
   const products = cart.products || [];
-  // let subtotal = thisCart.totalPrice || null;
-  // let totalQuantity = thisCart.totalQty || null;
+  let subtotal = thisCart.totalPrice || null;
+  let totalQuantity = thisCart.totalQty || null;
 
   //Delete Button
   const deleteItemHandler = (event) => {
@@ -162,8 +146,8 @@ const Cart = () => {
       </div>
     </>
   );
+}
 };
-
 /**
  * CONTAINER
  */

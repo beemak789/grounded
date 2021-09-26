@@ -9,10 +9,9 @@ import { Link, useHistory } from "react-router-dom";
 const SingleProduct = ({ match }) => {
   // = mapDispatchToProps
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state) => !!state.auth.id);
+  const isLoggedIn = useSelector((state) => state.auth) || null;
   // = mapStateToProps
   let singleProduct = useSelector((state) => state.singleProduct) || null;
-  let userId = useSelector((state) => state.auth.id) || null;
   const history = useHistory();
 
   console.log(singleProduct);
@@ -31,7 +30,7 @@ const SingleProduct = ({ match }) => {
   const addToCartHandler = () => {
     //When the "add to cart" button is clicked - our cart's total quantity should increase.
 
-    if (!isLoggedIn) {
+    if (!isLoggedIn || isLoggedIn === null) {
       let selectedProduct = singleProduct;
       const currProducts = window.localStorage.products || "[]";
       let products = JSON.parse(currProducts);
@@ -47,6 +46,7 @@ const SingleProduct = ({ match }) => {
       window.localStorage.products = products;
       console.log("products after---->", window.localStorage.products);
     } else {
+      let userId = useSelector((state) => state.auth.id) || null;
       console.log("The Add To Cart Button was clicked!");
       dispatch(addProduct(userId, singleProduct));
     }
