@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCart, deleteProduct } from "../store/cartReducer";
+import { useHistory } from "react-router-dom";
 
 /**
  *Production Note - once we stay logged in. We won't need to fetch user and set auth. We should have access in hook/state.
@@ -12,7 +13,10 @@ import { fetchCart, deleteProduct } from "../store/cartReducer";
  */
 const Cart = () => {
   const isLoggedIn = useSelector((state) => !!state.auth) || null;
-
+  let history = useHistory();
+  const  goCart=()=>{
+    history.push("/cart");
+  }
   //state
   // let userId = useSelector((state) => state.auth.id) || null;
   // let thisCart = useSelector((state) => state.thisCart) || {};
@@ -36,6 +40,7 @@ const Cart = () => {
         (product) => product.id !== +event.target.name
       );
       window.localStorage.products = JSON.stringify(products);
+      goCart();
     };
 
     return (

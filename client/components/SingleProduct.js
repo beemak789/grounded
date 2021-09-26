@@ -16,7 +16,7 @@ const SingleProduct = ({ match }) => {
     let userId = useSelector((state) => state.auth.id) || null;
   }
 
-  const history = useHistory();
+  let history = useHistory();
 
   console.log(singleProduct);
 
@@ -26,7 +26,7 @@ const SingleProduct = ({ match }) => {
     dispatch(fetchSingleProduct(match.params.id));
   }, []);
 
-  function goCart() {
+  const  goCart=()=>{
     history.push("/cart");
   }
 
