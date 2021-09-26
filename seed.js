@@ -33,6 +33,7 @@ const seed = async () => {
         'Feeling like you want some excitement?  Turn to these peaberry coffee beans that offer a tarty blend of acidity and sweetness guaranteed to wake you up and put a mischevious smile on your face.',
       quantity: 0,
       price: 2799,
+
       stars: 4.0,
     });
 
@@ -98,41 +99,10 @@ const seed = async () => {
       totalPrice: 17.0,
     });
 
-    //-------------------------------------------------------------------
-    // ------------------- MAGIC METHODS ---------------------------------
+  //Note: I removed all set products to cart because I wanted to check my backend add to cart routes were working via Postman instead. However, for testing purposes, feel free to add await and set your products here*.
 
-    //Setting User to Cart
-    await user1.addCart(cart1);
-    await user2.addCart(cart2);
-    await user4.addCart(cart4)
-
-    //Setting Products to Cart
-    //---> 3 Products in Cart1, associated to user1 (Brandy)
-    await coffee2.addCart(cart1);
-    const updatedQuantity = await Cart_Product.update(
-      { quantity: 2 },
-      {
-        where: {
-          productId: coffee2.id,
-          cartId: cart1.id,
-        },
-      }
-    );
-    // await coffee1.addCart(cart1);
-
-
-    // --> 1 Product in Cart2, associated with User 2 (Tia)
-    // await coffee3.addCart(cart2);
-    // await coffee1.addCart(cart2);
-
-    //--> Adding Products to Cart?
-    // await cart2.addProduct(coffee1)
-
-
-    //cart4 check
-    await coffee2.addCart(cart4);
-    await coffee1.addCart(cart4);
-    await coffee3.addCart(cart4);
+  await user1.addCart(cart1);
+  await user2.addCart(cart2);
 
   } catch (err) {
     console.log(err);
@@ -155,3 +125,36 @@ if (require.main === module) {
       db.close();
     });
 }
+
+
+
+//Notes from Seeding DB
+ //Setting User to Cart
+//  await user1.addCart(cart1);
+//  await user2.addCart(cart2);
+//  await user4.addCart(cart4)
+
+ //Setting Products to Cart
+ //---> 3 Products in Cart1, associated to user1 (Brandy)
+//  await coffee2.addCart(cart1);
+//  const updatedQuantity = await Cart_Product.update(
+//    { quantity: 2 },
+//    {
+//      where: {
+//        productId: coffee2.id,
+//        cartId: cart1.id,
+//      },
+//    }
+//  );
+ // await coffee1.addCart(cart1);
+ // --> 1 Product in Cart2, associated with User 2 (Tia)
+ // await coffee3.addCart(cart2);
+ // await coffee1.addCart(cart2);
+
+ //--> Adding Products to Cart?
+ // await cart2.addProduct(coffee1
+
+ //cart4 check
+//  await coffee2.addCart(cart4);
+//  await coffee1.addCart(cart4);
+//  await coffee3.addCart(cart4);

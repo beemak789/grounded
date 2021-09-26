@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
 				'description',
 				'price',
 				'imageUrl',
-				"quantity"
+				"inventoryQuantity"
 			]
 		}
 		));
@@ -34,9 +34,9 @@ router.get('/:id', async (req, res, next) => {
 				'description',
 				'price',
 				'imageUrl',
-				'quantity',
 				"stars",
 				"qtyBags",
+				'inventoryQuantity'
 			]
 		});
 		res.json(product);

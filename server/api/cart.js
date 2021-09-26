@@ -9,34 +9,34 @@ const {
 //CRUD OPERATIONS [ CREATE, RETRIEVE, UPDATE, DELETE ]
 //@description     Get all items in cart for the user logged in/passed in
 //@router          GET/api/cart/:userId
+// https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findOrCreate
 router.get('/:userId', async (req, res, next) => {
   try {
-    const orderById = await Cart.findOrCreate({
+    const [currentCart, created] = await Cart.findOrCreate({
       include: Product,
       where: {
         orderStatus: 'UNPAID',
         userId: req.params.userId,
       },
     });
-    res.json(orderById);
+    console.log(currentCart);
+    res.json(currentCart);
   } catch (err) {
     next(err);
   }
 });
 
-
-//@description    Delete the product for the user logged in
-//@router         PUT/api/cart/:userId
-//SECURITY
+//This handles both ADD TO CART, DELETE FROM CART (update requests)
 router.put('/:userId', async (req, res, next) => {
   try {
     const productId = Number(req.body.productId);
-    const userCart = await Cart.findOne({
+    const [userCart, created] = await Cart.findOrCreate({
       where: {
         orderStatus: 'UNPAID',
         userId: req.params.userId,
       },
     });
+
     const deleteThisProduct = await Product.findByPk(productId);
     const removedProduct = userCart.removeProduct(deleteThisProduct);
     res.json(removedProduct);
@@ -83,18 +83,10 @@ try {
 
   }
   catch (err) {
+
     next(err);
   }
 });
-
-//ConsoleLogs
-// console.log('added product--->', newProduct.name);
-// console.log('added product--->', newProduct.id);
-// console.log('added product quantity--->', newProduct.quantity);
-// console.log('usercart ID', userCart.id);
-//     console.log('usercart orderStatus', userCart.orderStatus);
-//     console.log('usercart totalQty', userCart.totalQty);
-
 
 
 module.exports = router;
