@@ -25,21 +25,21 @@ const Cart = db.define("cart", {
 //  }
 
 
-//This is hard-coding a table with one property called "quantity"
-//Adding a property to the through table
 const Cart_Product = db.define("Cart_Product", {
-  quantityItem: {
+  quantity: {
     type: Sequelize.INTEGER,
     defaultValue: 0
   },
-  pricePerItem: {
-    type: Sequelize.INTEGER,
-    defaultValue: 0
-  },
-  totalPricePerItem: {
-    type: Sequelize.INTEGER,
-    defaultValue: 0
-  },
+//Not sure if we need these two fields because we have price of item in the Products cart and we will get total price by quantity * price per item
+
+  // pricePerItem: {
+  //   type: Sequelize.INTEGER,
+  //   defaultValue: 0
+  // },
+  // totalPricePerItem: {
+  //   type: Sequelize.INTEGER,
+  //   defaultValue: 0
+  // },
 });
 
 //Cart_Product Methods
@@ -58,31 +58,6 @@ Cart_Product.updateQuantity = function (qty) {
 Cart_Product.updateTotalPricePerItem = function (price, qty) {
  this.totalPricePerItem = price * qty;
 }
-
-
-// Not sure about these instance methods?
-// Cart.prototype.getCoffeeQuantity = async function (productId) {
-//   const coffeeOrder = Cart_Product.findOne({
-//     where: {
-//       cartId: cartId,
-//       productId: this.productId
-//     }
-//   })
-//   return coffeeOrder.quantity;
-// }
-
-
-// Cart.prototype.updateCoffeeQuantity = async function (productId, newQuantity) {
-//  const [coffeeOrder] = await Cart_Product.findOrCreate({
-//    where: {
-//      cartId: this.id,
-//      productId: productId
-//    }
-//  })
-//  await coffeeOrder.update({
-//    quantity: newQuantity
-//  })
-// }
 
 
 module.exports = {
