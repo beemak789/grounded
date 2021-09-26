@@ -29,6 +29,7 @@ router.get('/:userId', async (req, res, next) => {
 //This handles both ADD TO CART, DELETE FROM CART (update requests)
 router.put('/:userId', async (req, res, next) => {
   try {
+    const productId = Number(req.body.productId);
     const [userCart, created] = await Cart.findOrCreate({
       where: {
         orderStatus: 'UNPAID',
@@ -36,42 +37,56 @@ router.put('/:userId', async (req, res, next) => {
       },
     });
 
-    const targetProduct = await Product.findByPk(req.body.productId);
-
-    await userCart.addProduct(targetProduct); //TODO
-
-    const cartProducts = await userCart.getProducts();
-    const chosenProduct = cartProducts.filter(
-      (product) => targetProduct.id === product.id
-    )[0];
-    const newQuantity = req.body.quantity;
-    const currentQuantity = chosenProduct.Cart_Product.quantity; //6
-
-    const updatedQuantity = newQuantity + currentQuantity;
-
-    if (updatedQuantity <= 0) {
-      await userCart.removeProduct(targetProduct);
-    } else {
-      await Cart_Product.update(
-        { quantity: newQuantity + currentQuantity },
-
-        {
-          where: {
-            productId: targetProduct.id,
-            cartId: userCart.id,
-          },
-        }
-      );
-    }
-
-    res.json({ updatedQuantity });
+    const deleteThisProduct = await Product.findByPk(productId);
+    const removedProduct = userCart.removeProduct(deleteThisProduct);
+    res.json(removedProduct);
   } catch (err) {
+    console.log('There is an err in your delete cart route');
     next(err);
   }
 });
 
+//@description    Add products to cart for the user logged in/passed in
+//@router         POST/api/cart/:userId
+//SECURITY
+router.post('/:userId', async (req, res, next) => {
+try {
+  let userIdReq = Number(req.params.userId);
+  console.log('body', req.body)
+  const newProduct = await Product.findByPk(req.body.id);
+  console.log('new product', newProduct)
 
+  console.log('body', req.body)
+  const userCart = await Cart.findOne({
+    where: {
+      orderStatus: 'UNPAID',
+      userId: userIdReq,
+    },
+  });
 
+  const addedItem = await userCart.addProduct(newProduct);
+
+  // set or increase qty
+  // querying through table -- need 2 keys -- many to many*
+  // if the product exists in their cart -- update, if not findOrCreate
+  const updatedInfo = await Cart_Product.update(
+    { quantityItem: req.body.qtyBags,
+     pricePerItem: req.body.price },
+    {
+      where: {
+        productId: newProduct.id,
+        cartId: userCart.id,
+      },
+    }
+  );
+  res.json(updatedInfo);
+
+  }
+  catch (err) {
+
+    next(err);
+  }
+});
 
 
 module.exports = router;
