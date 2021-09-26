@@ -50,6 +50,7 @@ export const logout = () => {
 /**
  * REDUCER
  */
+//the reducer here has to be null/set globally
 export default function(state = {}, action) {
   switch (action.type) {
     case SET_AUTH:
