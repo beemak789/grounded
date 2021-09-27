@@ -1,11 +1,10 @@
-
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchSingleProduct, updateQty } from "../store/productsReducer";
-import { addProduct, increaseQty } from "../store/cartReducer";
-import { Link, useHistory } from "react-router-dom";
-import { priceFunction } from "../frontendFunctions";
-import EditProduct from "./EditProduct";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchSingleProduct, updateQty } from '../store/productsReducer';
+import { addProduct, increaseQty } from '../store/cartReducer';
+import { Link, useHistory } from 'react-router-dom';
+import { priceFunction } from '../frontendFunctions';
+import EditProduct from './EditProduct';
 
 //products/:productId
 const SingleProduct = ({ match }) => {
@@ -61,46 +60,53 @@ const SingleProduct = ({ match }) => {
   return (
     <>
 
-      <Link to="/products">Go Back</Link>
-      <h1 id="single-coffee-title">{singleProduct.name}</h1>
-      <div className="singe-coffee-container">
-        <img src={singleProduct.imageUrl} id="singe-coffee-img" />
-        <p>${priceFunction(singleProduct.price)}</p>
-        <p>
-          {singleProduct && singleProduct.quantity > 0
-            ? "In Stock"
-            : "Out of Stock"}
-        </p>
-        <p className="dropdownMenu">
-          <label htmlFor="quantity">Quantity:</label>
-          <select
-            name="qty"
-            id="quantity"
-            key="quantity"
-            onChange={addToQuantityHandler}
-            value={singleProduct.qtyBags}
-          >
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-        </p>
-        <button onClick={addToCartHandler} type="button">
-          Add To Cart
-        </button>
-        <p>{singleProduct.description}</p>
-        <span>Rating: {singleProduct.stars}</span>
-        <br />
-        <br />
-        <br />
-        <br />
-        {/* need to add ADMIN ONLY FUNCTIONALITY */}
-        {/* Edit Product currently broken--> form exits --> id not found?  */}
-        <h2>Edit Product: </h2>
-        <EditProduct />
-      </div>
-    </>
-  );
+	console.log('the single product--->', singleProduct);
+	return (
+		<>
+			<Link to="/products">Go Back</Link>
+			<h1 id="single-coffee-title">{singleProduct.name}</h1>
+			<div className="singe-coffee-container">
+				<img src={singleProduct.imageUrl} id="singe-coffee-img" />
+				<p>${priceFunction(singleProduct.price)}</p>
+				<p>
+					{singleProduct && singleProduct.quantity > 0
+						? 'In Stock'
+						: 'Out of Stock'}
+				</p>
+				<p className="dropdownMenu">
+					<label htmlFor="quantity">Quantity:</label>
+					<select
+						name="qty"
+						id="quantity"
+						key="quantity"
+						onChange={addToQuantityHandler}
+						value={singleProduct.qtyBags}
+					>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
+				</p>
+				<button onClick={addToCartHandler} type="button">
+					Add To Cart
+				</button>
+				<p>{singleProduct.description}</p>
+				{/* <span>Rating: {singleProduct.stars}</span> */}
+				<br />
+				<br />
+				<br />
+				<br />
+				{user && user.isAdmin ? (
+					<>
+						<h2>Edit Product: </h2>
+						<EditProduct />{' '}
+					</>
+				) : (
+					<div> </div>
+				)}
+			</div>
+		</>
+	);
 };
 export default SingleProduct;
