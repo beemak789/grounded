@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchProducts, deleteProduct } from "../store/productsReducer";
+import AddProduct from "./AddProduct";
 
 function allProducts() {
   let products = useSelector((state) => state.allProducts);
@@ -14,12 +15,15 @@ function allProducts() {
     console.log(productId, "productId");
     dispatch(deleteProduct(productId));
   };
+
   const isAdmin = () => {
     if (user && user.isAdmin) {
       return (
         <div className="all-coffee-container">
           <div>
-          <button> Add New Product </button>
+            <Link to="/addproduct">
+              <button> Add New Product </button>
+            </Link>
           </div>
 
           {products.map((product) => (
