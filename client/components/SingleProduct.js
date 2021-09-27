@@ -11,7 +11,7 @@ import EditProduct from "./EditProduct";
 const SingleProduct = ({ match }) => {
   const [qty, setQty] = useState(0)
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state) => state.auth);
+  // const isLoggedIn = useSelector((state) => state.auth);
   let singleProduct = useSelector((state) => state.singleProduct);
   let user = useSelector((state) => state.auth);
   const history = useHistory();
@@ -19,11 +19,18 @@ const SingleProduct = ({ match }) => {
     console.log("in the use effect for single product")
     dispatch(fetchSingleProduct(match.params.id));
   }, []);
-  function goCart() {
+  const goCart = () => {
     history.push("/cart");
   }
+  // let userId = useSelector((state) => state.auth.id) || null;
   const addToCartHandler = () => {
-    if (!isLoggedIn) {
+
+    if(user && user.id){
+      console.log("The Add To Cart Button was clicked!");
+      //the quantity needs to be parsed or else it will change quantity
+      dispatch(addProduct(user.id, {...singleProduct, quantity: +qty}));
+      goCart();
+    }else {
       let selectedProduct = singleProduct;
             const currProducts = window.localStorage.products || "[]";
             let products = JSON.parse(currProducts);
@@ -39,14 +46,9 @@ const SingleProduct = ({ match }) => {
             window.localStorage.products = products;
             goCart();
             console.log("products after---->", window.localStorage.products);
-    } else {
-      let userId = useSelector((state) => state.auth.id) || null;
-      console.log("The Add To Cart Button was clicked!");
-      //the quantity needs to be parsed or else it will change quantity
-      dispatch(addProduct(user.id, {...singleProduct, quantity: +qty}));
-      goCart();
     }
   };
+
   const addToQuantityHandler = (event) => {
     console.log("Customer changed quantity of the item!");
     const qty = Number(event.target.value);

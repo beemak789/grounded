@@ -14,80 +14,18 @@ import { priceFunction } from "../frontendFunctions";
  * COMPONENT
  */
 const Cart = () => {
-  const isLoggedIn = useSelector((state) => !!state.auth) || null;
+  // const isLoggedIn = useSelector((state) => !!state.auth);
   let history = useHistory();
   const goCart = () => {
     history.push("/cart");
   };
   //state
-  // let userId = useSelector((state) => state.auth.id) || null;
-  // let thisCart = useSelector((state) => state.thisCart) || {};
+  const user = useSelector((state) => state.auth);
+  const cart = useSelector((state) => state.thisCart);
 
   //componentDidMount
-  if (!isLoggedIn || isLoggedIn === null) {
-    const currProducts = window.localStorage.products || "[]";
-    let products = JSON.parse(currProducts);
-    const totalQuantity = products.reduce(
-      (sum, product) => sum + product.qtyBags,
-      0
-    );
-    const subtotal = products.reduce(
-      (sum, product) => sum + product.price * product.qtyBags,
-      0
-    );
-    const deleteItemHandler = (event) => {
-      console.log(event.target.name);
-      products = products.filter(
-        (product) => product.id !== +event.target.name
-      );
-      window.localStorage.products = JSON.stringify(products);
-      goCart();
-    };
-
-    return (
-      <>
-        <h1 id="cart-title">Shopping Cart</h1>
-        <div className="cart-container">
-          <div className="cart-container-items">
-            {products.map((product) => {
-              return (
-                <div id="cart-item" key={product.id}>
-                  <span>
-                    <img
-                      src={product.imageUrl}
-                      alt="product-photo"
-                      id="product-photo"
-                    />
-                  </span>
-
-                  <span>{product.name}</span>
-                  <span> | {product.qtyBags} bag(s) |</span>
-                  <span> ${priceFunction(product.price)} </span>
-                  <span>
-                    <button onClick={deleteItemHandler} name={product.id}>
-                      Remove Item
-                    </button>
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-          <div className="cart-totals">
-            {/* <span id="cart-total-items">
-              You have {totalQuantity} items in your cart.{" "}
-            </span>
-            <br />
-            <span id="cart-subtotal">Subtotal: ${subtotal}</span>
-            <br /> */}
-            <button>Checkout</button>
-            <button>Empty Cart - NA</button>
-          </div>
-        </div>
-      </>
-    );
-  } else {
-    const user = useSelector((state) => state.auth);
-    const cart = useSelector((state) => state.thisCart);
+  if (user && user.id) {
+    
     //dispatch
     const dispatch = useDispatch();
 
@@ -131,7 +69,7 @@ const Cart = () => {
         <div className="cart-container">
           <div className="cart-container-items">
             {products.map((product) => {
-              const cartProduct = product.Cart_Product 
+              const cartProduct = product.Cart_Product;
               // || [];
               return (
                 <div id="cart-item" key={product.id}>
@@ -171,6 +109,67 @@ const Cart = () => {
               <h2>Subtotal: ${priceFunction(total)} </h2>
             </span>
 
+            <button>Checkout</button>
+            <button>Empty Cart - NA</button>
+          </div>
+        </div>
+      </>
+    );
+  } else {
+    const currProducts = window.localStorage.products || "[]";
+    let products = JSON.parse(currProducts);
+    const totalQuantity = products.reduce(
+      (sum, product) => sum + product.qtyBags,
+      0
+    );
+    const subtotal = products.reduce(
+      (sum, product) => sum + product.price/100 * product.qtyBags,
+      0
+    );
+    const deleteItemHandler = (event) => {
+      console.log(event.target.name);
+      products = products.filter(
+        (product) => product.id !== +event.target.name
+      );
+      window.localStorage.products = JSON.stringify(products);
+      goCart();
+    };
+
+    return (
+      <>
+        <h1 id="cart-title">Shopping Cart</h1>
+        <div className="cart-container">
+          <div className="cart-container-items">
+            {products.map((product) => {
+              return (
+                <div id="cart-item" key={product.id}>
+                  <span>
+                    <img
+                      src={product.imageUrl}
+                      alt="product-photo"
+                      id="product-photo"
+                    />
+                  </span>
+
+                  <span>{product.name}</span>
+                  <span> | {product.qtyBags} bag(s) |</span>
+                  <span> ${priceFunction(product.price)} </span>
+                  <span>
+                    <button onClick={deleteItemHandler} name={product.id}>
+                      Remove Item
+                    </button>
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+          <div className="cart-totals">
+            <span id="cart-total-items">
+              You have {totalQuantity} items in your cart.{" "}
+            </span>
+            <br />
+            <span id="cart-subtotal">Subtotal: ${subtotal}</span>
+            <br />
             <button>Checkout</button>
             <button>Empty Cart - NA</button>
           </div>
