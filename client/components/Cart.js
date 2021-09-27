@@ -71,12 +71,12 @@ const Cart = () => {
             })}
           </div>
           <div className="cart-totals">
-            <span id="cart-total-items">
+            {/* <span id="cart-total-items">
               You have {totalQuantity} items in your cart.{" "}
             </span>
             <br />
             <span id="cart-subtotal">Subtotal: ${subtotal}</span>
-            <br />
+            <br /> */}
             <button>Checkout</button>
             <button>Empty Cart - NA</button>
           </div>

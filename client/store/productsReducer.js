@@ -1,4 +1,5 @@
 import axios from "axios";
+
 //ACTION TYPES:
 const PRODUCTS_REQUEST = 'PRODUCTS_REQUEST';
 //action creator
@@ -13,6 +14,43 @@ export const fetchProducts = () => {
     dispatch(setProducts(products));
   };
 };
+
+
+export const deleteProduct = (productId) => async (dispatch) => {
+  const TOKEN = 'token'
+  const token = window.localStorage.getItem(TOKEN);
+    try {
+       if (token) {
+          await axios.delete(`/api/products/${productId}`, {
+            headers: {
+              authorization: token,
+            }
+          });
+          dispatch(fetchProducts());
+    }
+  } catch (err) {
+      console.log("error in delete product thunk")
+    }
+  }
+
+  export const addNewProduct = (product) => async (dispatch) => {
+    const TOKEN = 'token'
+    const token = window.localStorage.getItem(TOKEN);
+      try {
+         if (token) {
+            await axios.post('/api/products/', {
+              headers: {
+                authorization: token,
+              }, product
+            });
+            dispatch(fetchProducts());
+      }
+    } catch (err) {
+        console.log("error in add product thunk")
+      }
+    }
+
+
 //reducer
 export function productsReducer(state = [], action) {
   switch (action.type) {
@@ -22,6 +60,8 @@ export function productsReducer(state = [], action) {
       return state;
   }
 }
+
+
 export const SINGLE_PRODUCT_REQUEST = "SINGLE_PRODUCT_REQUEST"
 const UPDATE_QTY_REQUEST = "UPDATE_QTY_REQUEST"
 export const setSingleProduct = (product) => {

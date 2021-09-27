@@ -14,6 +14,7 @@ import SingleProduct from "./components/SingleProduct";
 import AllProducts from "./components/AllProducts";
 import Cart from "./components/Cart";
 import { me } from "./store/auth";
+import AddProduct from "./components/AddProduct";
 
 /**
  * COMPONENT
@@ -39,6 +40,7 @@ function Routes() {
           <Route path="/products/:id" component={SingleProduct} />
           <Route path="/users" component={AllUsers} />
           <Route path="/cart" component={Cart} />
+          <Route path="/addProduct" component={AddProduct} />
           <Redirect to="/" />
         </Switch>
       ) : (

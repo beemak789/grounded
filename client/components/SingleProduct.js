@@ -37,6 +37,7 @@ const SingleProduct = ({ match }) => {
             goCart();
             console.log("products after---->", window.localStorage.products);
     } else {
+      let userId = useSelector((state) => state.auth.id) || null;
       console.log("The Add To Cart Button was clicked!");
       //the quantity needs to be parsed or else it will change quantity
       dispatch(addProduct(user.id, {...singleProduct, quantity: +qty}));
