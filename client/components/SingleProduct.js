@@ -9,6 +9,7 @@ import EditProduct from "./EditProduct";
 
 //products/:productId
 const SingleProduct = ({ match }) => {
+
   const [qty, setQty] = useState(0)
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth);
@@ -35,7 +36,7 @@ const SingleProduct = ({ match }) => {
             }
             products = [...products, singleProduct];
             products = JSON.stringify(products);
-      
+
             window.localStorage.products = products;
             goCart();
             console.log("products after---->", window.localStorage.products);
