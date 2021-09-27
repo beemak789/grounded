@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 /**
  * COMPONENT
  */
- const Home = () => {
+const Home = () => {
   const user = useSelector((state) => state.auth);
   console.log("the user --->", user)
-  if (user && user.id) {
+  if (user) {
     return (
       <div>
         <h3>Welcome, {user.username}</h3>
