@@ -90,6 +90,7 @@ componentDidUpdate(prevProps) {
     this.props.editProduct({ ...this.props.product, ...this.state });
   }
 
+
   render(){
     console.log('this is state', this.state)
     const { name, description, price } = this.state;
