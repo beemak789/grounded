@@ -18,6 +18,10 @@ function allProducts() {
     if (user && user.isAdmin) {
       return (
         <div className="all-coffee-container">
+          <div>
+          <button> Add New Product </button>
+          </div>
+
           {products.map((product) => (
             <div id="coffee-item" key={product.id}>
               <Link to={`/products/${product.id}`}>
