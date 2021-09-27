@@ -35,6 +35,23 @@ export const deleteProduct = (productId) => async (dispatch) => {
     }
   }
 
+  export const addNewProduct = (product) => async (dispatch) => {
+    const TOKEN = 'token'
+    const token = window.localStorage.getItem(TOKEN);
+      try {
+         if (token) {
+            await axios.post('/api/products/', {
+              headers: {
+                authorization: token,
+              }
+            });
+            dispatch(fetchProducts());
+      }
+    } catch (err) {
+        console.log("error in add product thunk")
+      }
+    }
+
 //reducer
 export function productsReducer(state = [], action) {
   switch (action.type) {
