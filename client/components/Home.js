@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 /**
  * COMPONENT
  */
- const Home = () => {
+const Home = () => {
   const user = useSelector((state) => state.auth);
   console.log("the user --->", user)
   if (user) {

@@ -36,12 +36,13 @@ export const deleteProduct = (productId) => async (dispatch) => {
   export const addNewProduct = (product) => async (dispatch) => {
     const TOKEN = 'token'
     const token = window.localStorage.getItem(TOKEN);
+    console.log('token ->', token)
       try {
          if (token) {
-            await axios.post('/api/products/', {
-              headers: {
+            await axios.post('/api/products/', product,
+              {headers: {
                 authorization: token,
-              }, product
+              }
             });
             dispatch(fetchProducts());
       }
