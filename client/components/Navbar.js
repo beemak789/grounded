@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <div>
       <nav>
-        {user && user.id ? (
+        {(user && user.id )? (
           <div id="nav-container-logged-in">
             <Link to="/">grounded</Link>
             <Link to="/products">All</Link>

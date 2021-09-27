@@ -21,7 +21,7 @@ import AddProduct from "./components/AddProduct";
  */
 function Routes() {
   //if the user is logged in then the auth is not null.
-  const isLoggedIn = useSelector((state) => state.auth);
+  let user = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   //this is where you have to dispatch the me thunk
@@ -32,7 +32,7 @@ function Routes() {
   return (
     <div>
       <Route path="/" component={Home} />
-      {isLoggedIn ? (
+      {user && user.id ? (
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/me" component={Me} />
