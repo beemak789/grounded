@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCart, deleteProduct } from "../store/cartReducer";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 /**
  *Production Note - once we stay logged in. We won't need to fetch user and set auth. We should have access in hook/state.
@@ -14,9 +14,9 @@ import { useHistory } from "react-router-dom";
 const Cart = () => {
   const isLoggedIn = useSelector((state) => !!state.auth) || null;
   let history = useHistory();
-  const  goCart=()=>{
+  const goCart = () => {
     history.push("/cart");
-  }
+  };
   //state
   // let userId = useSelector((state) => state.auth.id) || null;
   // let thisCart = useSelector((state) => state.thisCart) || {};
@@ -25,7 +25,6 @@ const Cart = () => {
   if (!isLoggedIn || isLoggedIn === null) {
     const currProducts = window.localStorage.products || "[]";
     let products = JSON.parse(currProducts);
-    console.log("products---->", products);
     const totalQuantity = products.reduce(
       (sum, product) => sum + product.qtyBags,
       0
@@ -97,26 +96,41 @@ const Cart = () => {
     }, [user]);
 
     const products = cart.products || [];
-    // let subtotal = thisCart.totalPrice || null;
-    // let totalQuantity = thisCart.totalQty || null;
-
+    console.log("cart products --->", products);
     //Delete Button
     const deleteItemHandler = (event) => {
       console.log("The delete button was clicked!");
       console.log(event.target.name);
       dispatch(deleteProduct(user.id, event.target.name));
+      goCart();
     };
-
+    //Cart Total Derivative Variables
+    const cartProductQuantity = products.map((product) => {
+      return product.quantity;
+    });
+    const productPrice = products.map((product) => {
+      return product.price;
+    });
+    const subtotal = productPrice.map((price, index) => {
+      const pricePerItem = cartProductQuantity[index] * price;
+      return pricePerItem;
+    });
+    const total = subtotal.reduce((accumulator, value) => {
+      const sum = accumulator + value;
+      return sum;
+    }, 0);
+    console.log("the total --->", total);
     return (
       <>
-        {console.log("THE USER --->", user)}
-        {console.log("THE CART--->", cart)}
-
+        <Link to="/products">
+          <strong>Continue Shopping</strong>
+        </Link>
         <h1 id="cart-title">Shopping Cart</h1>
         <div className="cart-container">
           <div className="cart-container-items">
             {products.map((product) => {
-              const cartProduct = product.Cart_Product || [];
+              const cartProduct = product.Cart_Product 
+              // || [];
               return (
                 <div id="cart-item" key={product.id}>
                   <span>
@@ -126,13 +140,12 @@ const Cart = () => {
                       id="product-photo"
                     />
                   </span>
-
                   <span>{product.name}</span>
-
-                  <span> | {cartProduct.quantityItem} bag(s) |</span>
-
-                  <span> ${product.price} </span>
-
+                  <span>
+                    {" "}
+                    | {product.Cart_Product ? product.quantity : 0} bag(s) |
+                  </span>
+                  <span> ${product.price / 100} </span>
                   <span>
                     <button onClick={deleteItemHandler} name={product.id}>
                       Remove Item
@@ -144,11 +157,15 @@ const Cart = () => {
           </div>
           <div className="cart-totals">
             <span id="cart-total-items">
-              You have {cart.totalQty} items in your cart.{" "}
+              {products.length === 0 ? (
+                <h3>Your Cart is Empty...</h3>
+              ) : (
+                <h3>You have {products.length} items in your cart.</h3>
+              )}
             </span>
-            <br />
-            <span id="cart-subtotal">Subtotal: ${cart.totalPrice}.00</span>
-            <br />
+            <span id="cart-subtotal">
+              <h2>Subtotal: ${total / 100} </h2>
+            </span>
             <button>Checkout</button>
             <button>Empty Cart - NA</button>
           </div>
@@ -157,9 +174,11 @@ const Cart = () => {
     );
   }
 };
-
 /**
  * CONTAINER
  */
 
+/**
+ * CONTAINER
+ */
 export default Cart;
