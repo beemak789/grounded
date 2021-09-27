@@ -90,7 +90,9 @@ componentDidUpdate(prevProps) {
     this.props.editProduct({ ...this.props.product, ...this.state });
   }
 
+
   render(){
+    console.log('this is state', this.state)
     const { name, description, price } = this.state;
     const { handleSubmit, handleChange } = this;
 
@@ -111,9 +113,9 @@ componentDidUpdate(prevProps) {
   }
 }
 
-const mapStateToProps = ({ product }) => ({
-  product
-});
+const mapStateToProps = (state) => {
+  return {product: state.singleProduct}
+};
 
 const mapDispatchToProps = (dispatch) => ({
   editProduct: (product) => dispatch(updateProduct(product)),
