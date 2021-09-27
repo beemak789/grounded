@@ -129,7 +129,8 @@ const Cart = () => {
         <div className="cart-container">
           <div className="cart-container-items">
             {products.map((product) => {
-              const cartProduct = product.Cart_Product || [];
+              const cartProduct = product.Cart_Product 
+              // || [];
               return (
                 <div id="cart-item" key={product.id}>
                   <span>
