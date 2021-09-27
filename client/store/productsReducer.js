@@ -43,7 +43,7 @@ export const deleteProduct = (productId) => async (dispatch) => {
             await axios.post('/api/products/', {
               headers: {
                 authorization: token,
-              }
+              }, product
             });
             dispatch(fetchProducts());
       }
