@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleProduct, updateQty } from "../store/productsReducer";
 import { addProduct, increaseQty } from "../store/cartReducer";
 import { Link, useHistory } from "react-router-dom";
+import { priceFunction } from "../frontendFunctions";
 
 //products/:productId
 const SingleProduct = ({ match }) => {
@@ -72,7 +73,7 @@ const SingleProduct = ({ match }) => {
       <h1 id="single-coffee-title">{singleProduct.name}</h1>
       <div className="singe-coffee-container">
         <img src={singleProduct.imageUrl} id="singe-coffee-img" />
-        <p>${singleProduct.price}</p>
+        <p>${priceFunction(singleProduct.price)}</p>
         <p>
           {singleProduct && singleProduct.quantity > 0
             ? "In Stock"

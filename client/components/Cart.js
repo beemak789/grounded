@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCart, deleteProduct } from "../store/cartReducer";
 import { useHistory } from "react-router-dom";
-
+import { priceFunction } from "../frontendFunctions";
 /**
  *Production Note - once we stay logged in. We won't need to fetch user and set auth. We should have access in hook/state.
  */
@@ -61,7 +61,7 @@ const Cart = () => {
 
                   <span>{product.name}</span>
                   <span> | {product.qtyBags} bag(s) |</span>
-                  <span> ${product.price} </span>
+                  <span> ${priceFunction(product.price)} </span>
                   <span>
                     <button onClick={deleteItemHandler} name={product.id}>
                       Remove Item
@@ -131,7 +131,7 @@ const Cart = () => {
 
                   <span> | {cartProduct.quantityItem} bag(s) |</span>
 
-                  <span> ${product.price} </span>
+                  <span> ${priceFunction(product.price)} </span>
 
                   <span>
                     <button onClick={deleteItemHandler} name={product.id}>
@@ -147,7 +147,7 @@ const Cart = () => {
               You have {cart.totalQty} items in your cart.{" "}
             </span>
             <br />
-            <span id="cart-subtotal">Subtotal: ${cart.totalPrice}.00</span>
+            <span id="cart-subtotal">Subtotal: ${priceFunction(cart.totalPrice)}</span>
             <br />
             <button>Checkout</button>
             <button>Empty Cart - NA</button>
