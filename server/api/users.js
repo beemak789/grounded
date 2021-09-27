@@ -4,7 +4,9 @@ const { requireToken, isAdmin } = require('./gatekeepingMiddleware')
 module.exports = router
 
 //for admin view
-router.get('/', requireToken, isAdmin, async (req, res, next) => {
+router.get('/', requireToken, 
+// isAdmin, 
+async (req, res, next) => {
   try {
     const users = await User.findAll({
       attributes: ['id', 'username']
@@ -27,7 +29,9 @@ router.get('/', requireToken, isAdmin, async (req, res, next) => {
 // })
 
 //for admin view
-router.get('/:id', requireToken, isAdmin, async (req, res, next) => {
+router.get('/:id', requireToken, 
+// isAdmin, 
+async (req, res, next) => {
   try {
     const user = await User.findOne({
       where: {
