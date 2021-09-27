@@ -33,7 +33,7 @@ export function productsReducer(state = [], action) {
 //Function: Render/visualize single product on screen, upon clicking on a product
 //from "All Products" page
 export const SINGLE_PRODUCT_REQUEST = "SINGLE_PRODUCT_REQUEST"
-
+const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 const UPDATE_QTY_REQUEST = "UPDATE_QTY_REQUEST"
 
 export const setSingleProduct = (product) => {
@@ -50,6 +50,11 @@ export const updateQty = (qty) => {
   }
 }
 
+export const updateProduct = (product) => ({
+  type: UPDATE_PRODUCT,
+  product,
+});
+
 //Thunk - Fetching single product from axios
 export const fetchSingleProduct = (id) => {
   return async (dispatch) => {
@@ -62,12 +67,24 @@ export const fetchSingleProduct = (id) => {
   }
 }
 
+export const editProduct = (product) => {
+  return async (dispatch) => {
+    const { data: updated } = await axios.put(
+      `/api/products/${product.id}`,
+      product
+    );
+    dispatch(updateProduct(updated));
+  };
+};
+
 export const singleProductReducer = (state = {}, action) => {
   switch (action.type) {
     case SINGLE_PRODUCT_REQUEST:
       return action.product;
-      case UPDATE_QTY_REQUEST:
-        return {...state, qtyBags: action.qty};
+    case UPDATE_QTY_REQUEST:
+      return {...state, qtyBags: action.qty};
+    case UPDATE_PRODUCT:
+      return state.id === action.product.id ? action.product : state;
     default:
       return state
   }

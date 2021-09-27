@@ -5,6 +5,7 @@ import { fetchSingleProduct, updateQty } from "../store/productsReducer";
 import { addProduct, increaseQty } from "../store/cartReducer";
 import { Link, useHistory } from "react-router-dom";
 import { priceFunction } from "../frontendFunctions";
+import EditProduct from "./EditProduct";
 
 //products/:productId
 const SingleProduct = ({ match }) => {
@@ -97,9 +98,16 @@ const SingleProduct = ({ match }) => {
         <button onClick={addToCartHandler} type="button">
           Add To Cart
         </button>
-
         <p>{singleProduct.description}</p>
         <span>Rating: {singleProduct.stars}</span>
+        <br />
+        <br />
+        <br />
+        <br />
+        {/* need to add ADMIN ONLY FUNCTIONALITY */}
+        {/* Edit Product currently broken--> form exits --> id not found?  */}
+        <h2>Edit Product: </h2>
+        <EditProduct />
       </div>
     </>
   );
