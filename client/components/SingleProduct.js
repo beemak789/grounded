@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleProduct, updateQty } from "../store/productsReducer";
@@ -9,67 +9,56 @@ import EditProduct from "./EditProduct";
 
 //products/:productId
 const SingleProduct = ({ match }) => {
-  // = mapDispatchToProps
+  const [qty, setQty] = useState(0)
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state) => !!state.auth) || null;
-  // = mapStateToProps
-  let singleProduct = useSelector((state) => state.singleProduct) || null;
-  if(isLoggedIn){
-    let userId = useSelector((state) => state.auth.id) || null;
-  }
-
-  let history = useHistory();
-
-  console.log(singleProduct);
-
-  //same as componentDidMount
-
+  const isLoggedIn = useSelector((state) => state.auth);
+  let singleProduct = useSelector((state) => state.singleProduct);
+  let user = useSelector((state) => state.auth);
+  const history = useHistory();
   useEffect(() => {
+    console.log("in the use effect for single product")
     dispatch(fetchSingleProduct(match.params.id));
   }, []);
-
-  const  goCart=()=>{
+  function goCart() {
     history.push("/cart");
   }
-
-  //Add Button Handler
   const addToCartHandler = () => {
-    //When the "add to cart" button is clicked - our cart's total quantity should increase.
-    if (!isLoggedIn || isLoggedIn == null) {
+    if (!isLoggedIn) {
       let selectedProduct = singleProduct;
-      const currProducts = window.localStorage.products || "[]";
-      let products = JSON.parse(currProducts);
-      if (products.find((product) => product.id === singleProduct.id)) {
-        selectedProduct.qtyBags++;
-        products = products.filter(
-          (product) => product.id !== singleProduct.id
-        );
-      }
-      products = [...products, singleProduct];
-      products = JSON.stringify(products);
-
-      window.localStorage.products = products;
-      goCart();
-      console.log("products after---->", window.localStorage.products);
+            const currProducts = window.localStorage.products || "[]";
+            let products = JSON.parse(currProducts);
+            if (products.find((product) => product.id === singleProduct.id)) {
+              selectedProduct.qtyBags++;
+              products = products.filter(
+                (product) => product.id !== singleProduct.id
+              );
+            }
+            products = [...products, singleProduct];
+            products = JSON.stringify(products);
+      
+            window.localStorage.products = products;
+            goCart();
+            console.log("products after---->", window.localStorage.products);
     } else {
+      let userId = useSelector((state) => state.auth.id) || null;
       console.log("The Add To Cart Button was clicked!");
-      dispatch(addProduct(userId, singleProduct));
+      //the quantity needs to be parsed or else it will change quantity
+      dispatch(addProduct(user.id, {...singleProduct, quantity: +qty}));
+      goCart();
     }
   };
-
-  //Add To Quantity Handler
   const addToQuantityHandler = (event) => {
     console.log("Customer changed quantity of the item!");
     const qty = Number(event.target.value);
     dispatch(updateQty(qty));
   };
-
   if (!singleProduct) {
     return <h1>Loading...</h1>;
   }
-
+  console.log("the single product--->", singleProduct)
   return (
     <>
+
       <Link to="/products">Go Back</Link>
       <h1 id="single-coffee-title">{singleProduct.name}</h1>
       <div className="singe-coffee-container">
@@ -112,5 +101,4 @@ const SingleProduct = ({ match }) => {
     </>
   );
 };
-
 export default SingleProduct;

@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 /**
  * COMPONENT
  */
-const Home = () => {
+ const Home = () => {
   const user = useSelector((state) => state.auth);
   console.log("the user --->", user)
   if (user) {
@@ -27,3 +27,5 @@ const Home = () => {
  */
 
 export default Home;
+
+
