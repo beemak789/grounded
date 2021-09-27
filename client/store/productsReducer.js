@@ -19,6 +19,24 @@ export const fetchProducts = () => {
 	};
 };
 
+export const deleteProduct = (productId) => async (dispatch) => {
+  const TOKEN = 'token'
+  const token = window.localStorage.getItem(TOKEN);
+    try {
+       if (token) {
+          await axios.delete(`/api/products/${productId}`, {
+            headers: {
+              authorization: token,
+            }
+          });
+          dispatch(fetchProducts());
+    }
+  } catch (err) {
+      console.log("error in delete product thunk")
+    }
+  }
+
+
 //reducer
 export function productsReducer(state = [], action) {
 	switch (action.type) {
