@@ -1,11 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link ,} from "react-router-dom";
 import { logout } from "../store/auth";
 
 const Navbar = () => {
-  const isLoggedIn = useSelector((state) => state.auth);
+  const isLoggedIn = useSelector((state) =>state.auth);
+  console.log(isLoggedIn)
   const dispatch = useDispatch();
+
   const handleClick = () => {
     dispatch(logout())
   };
@@ -13,7 +15,7 @@ const Navbar = () => {
   return (
     <div>
       <nav>
-        {isLoggedIn ? (
+        {isLoggedIn? (
           <div id="nav-container-logged-in">
             <Link to="/">grounded</Link>
             <Link to="/products">All</Link>
