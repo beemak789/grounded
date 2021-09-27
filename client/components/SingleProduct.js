@@ -41,7 +41,7 @@ const SingleProduct = ({ match }) => {
             }
             products = [...products, singleProduct];
             products = JSON.stringify(products);
-      
+
             window.localStorage.products = products;
             goCart();
             console.log("products after---->", window.localStorage.products);
@@ -56,9 +56,6 @@ const SingleProduct = ({ match }) => {
   if (!singleProduct) {
     return <h1>Loading...</h1>;
   }
-  console.log("the single product--->", singleProduct)
-  return (
-    <>
 
 	console.log('the single product--->', singleProduct);
 	return (
