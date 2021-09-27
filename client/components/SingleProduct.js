@@ -8,52 +8,57 @@ import EditProduct from './EditProduct';
 
 //products/:productId
 const SingleProduct = ({ match }) => {
-	const [qty, setQty] = useState(0);
-	const dispatch = useDispatch();
-	const isLoggedIn = useSelector((state) => state.auth);
-	let singleProduct = useSelector((state) => state.singleProduct);
-	let user = useSelector((state) => state.auth);
-	const history = useHistory();
-	useEffect(() => {
-		console.log('in the use effect for single product');
-		dispatch(fetchSingleProduct(match.params.id));
-	}, []);
-	function goCart() {
-		history.push('/cart');
-	}
-	const addToCartHandler = () => {
-		if (!isLoggedIn) {
-			let selectedProduct = singleProduct;
-			const currProducts = window.localStorage.products || '[]';
-			let products = JSON.parse(currProducts);
-			if (products.find((product) => product.id === singleProduct.id)) {
-				selectedProduct.qtyBags++;
-				products = products.filter(
-					(product) => product.id !== singleProduct.id
-				);
-			}
-			products = [...products, singleProduct];
-			products = JSON.stringify(products);
+  const [qty, setQty] = useState(0)
+  const dispatch = useDispatch();
+  // const isLoggedIn = useSelector((state) => state.auth);
+  let singleProduct = useSelector((state) => state.singleProduct);
+  let user = useSelector((state) => state.auth);
+  const history = useHistory();
+  useEffect(() => {
+    console.log("in the use effect for single product")
+    dispatch(fetchSingleProduct(match.params.id));
+  }, []);
+  const goCart = () => {
+    history.push("/cart");
+  }
+  // let userId = useSelector((state) => state.auth.id) || null;
+  const addToCartHandler = () => {
 
-			window.localStorage.products = products;
-			goCart();
-			console.log('products after---->', window.localStorage.products);
-		} else {
-			let userId = useSelector((state) => state.auth.id) || null;
-			console.log('The Add To Cart Button was clicked!');
-			//the quantity needs to be parsed or else it will change quantity
-			dispatch(addProduct(user.id, { ...singleProduct, quantity: +qty }));
-			goCart();
-		}
-	};
-	const addToQuantityHandler = (event) => {
-		console.log('Customer changed quantity of the item!');
-		const qty = Number(event.target.value);
-		dispatch(updateQty(qty));
-	};
-	if (!singleProduct) {
-		return <h1>Loading...</h1>;
-	}
+    if(user && user.id){
+      console.log("The Add To Cart Button was clicked!");
+      //the quantity needs to be parsed or else it will change quantity
+      dispatch(addProduct(user.id, {...singleProduct, quantity: +qty}));
+      goCart();
+    }else {
+      let selectedProduct = singleProduct;
+            const currProducts = window.localStorage.products || "[]";
+            let products = JSON.parse(currProducts);
+            if (products.find((product) => product.id === singleProduct.id)) {
+              selectedProduct.qtyBags++;
+              products = products.filter(
+                (product) => product.id !== singleProduct.id
+              );
+            }
+            products = [...products, singleProduct];
+            products = JSON.stringify(products);
+      
+            window.localStorage.products = products;
+            goCart();
+            console.log("products after---->", window.localStorage.products);
+    }
+  };
+
+  const addToQuantityHandler = (event) => {
+    console.log("Customer changed quantity of the item!");
+    const qty = Number(event.target.value);
+    dispatch(updateQty(qty));
+  };
+  if (!singleProduct) {
+    return <h1>Loading...</h1>;
+  }
+  console.log("the single product--->", singleProduct)
+  return (
+    <>
 
 	console.log('the single product--->', singleProduct);
 	return (

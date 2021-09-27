@@ -1,21 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link ,} from "react-router-dom";
-import { logout } from "../store/auth";
+import { Link, useHistory } from "react-router-dom";
+import { logout, me } from "../store/auth";
 
 const Navbar = () => {
-  const isLoggedIn = useSelector((state) =>state.auth);
-  console.log(isLoggedIn)
   const dispatch = useDispatch();
-
+  let user = useSelector((state) => state.auth);
+  useEffect(() => {
+    dispatch(me);
+  }, []);
+  // let history = useHistory();
   const handleClick = () => {
-    dispatch(logout())
+    dispatch(logout());
+    // history.push("/");
   };
 
   return (
     <div>
       <nav>
-        {isLoggedIn? (
+        {user && user.id ? (
           <div id="nav-container-logged-in">
             <Link to="/">grounded</Link>
             <Link to="/products">All</Link>
