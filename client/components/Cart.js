@@ -25,12 +25,14 @@ const Cart = () => {
   const user = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.thisCart);
 
+
   //This cannot change or user cart won't run
   useEffect(() => {
     if (user !== null) {
       dispatch(fetchCart(user.id));
     }
   }, [user]);
+
 
 // USER CART BEGINS HERE************************************************************************
   if (user && user.id) {
