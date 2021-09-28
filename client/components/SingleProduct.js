@@ -27,7 +27,7 @@ const SingleProduct = ({ match }) => {
 
   const history = useHistory();
 
-
+	//This cannot change or user cart won't run*
   useEffect(() => {
     dispatch(fetchSingleProduct(match.params.id));
   }, []);

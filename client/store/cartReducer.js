@@ -4,6 +4,10 @@ const CART_REQUEST = 'CART_REQUEST';
 const ADD_PRODUCT = 'ADD_PRODUCT';
 const DELETE_PRODUCT = 'DELETE_PRODUCT';
 //Action Creator
+
+
+//This file cannot change or user cart cannot run******
+
 const setCart = (cart) => ({
   type: CART_REQUEST,
   cart,
