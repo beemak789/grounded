@@ -487,3 +487,187 @@ const coffees = [
       email: "janet@gmail.com",
       isAdmin: false,
     })
+
+    ////-------- VICTORIA'S CSS
+    // body {
+    //   font-family: sans-serif;
+    //   background-image: linear-gradient(white, ac9485e);
+    // }
+
+    // a {
+    //   text-decoration: none;
+    //   font-family: "Garamound";
+    //   color: #4f3017;
+    // }
+
+    // label {
+    //   display: block;
+    // }
+
+    // nav a {
+    //   display: inline-block;
+    //   margin: 1em;
+    // }
+
+    // p {
+    //   text-align: left;
+    //   color: #4f3017;
+    //   font-family: "Garamound";
+    // }
+
+    // #nav-container-logged-in {
+    //   display: flex;
+    //   flex-direction: row;
+    //   justify-content: space-between;
+    // }
+
+    // #nav-container-logged-out {
+    //   display: flex;
+    //   flex-direction: row;
+    //   justify-content: space-between;
+    // }
+
+    // form div {
+    //   margin: 1em;
+    //   display: inline-block;
+    // }
+
+    // .landing-container {
+    //   min-height: 100vh;
+    //   height: 100vh;
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: center;
+    //   border-bottom: 0px;
+    //   background-image: url("http://localhost:8080/pour.jpg");
+    //   background-repeat: no-repeat;
+    //   background-position: center;
+    //   font-weight: 400;
+    //   color: #4f3017;
+    //   padding: 0rem 5.6rem;
+    //   margin-bottom: 0;
+    //   top: 0;
+    //   left: 0;
+    //   bottom: 0;
+    //   right: 0;
+    // }
+
+    // #landing-text {
+    //   font-size: 8rem;
+    //   font-family: "Garamound";
+    //   font-weight: bold;
+    //   justify-content: center;
+    // }
+
+    // .all-coffee-container {
+    //   display: flex;
+    //   flex-direction: row;
+    //   flex-wrap: wrap;
+    //   justify-content: space-between;
+    //   text-align: left;
+    // }
+
+    // #coffee-item {
+    //   display: flex;
+    //   flex-direction: column;
+    //   justify-content: space-evenly;
+    //   margin-bottom: 20px;
+    //   margin-top: 20px;
+    // }
+
+    // #coffee-item-img {
+    //   width: 200px;
+    //   height: 200px;
+    // }
+
+    // #all-coffee-title {
+    //   font-family: "Garamound";
+    //   text-align: center;
+    //   color: #4f3017;
+    //   font-weight: bold;
+    // }
+
+    // .single-coffee-container {
+    //   min-height: 100vh;
+    //   height: 100vh;
+    //   font-family: "Garamound";
+    //   color: #4f3017;
+    //   display: flex;
+    //   flex-direction: row;
+    //   flex-wrap: wrap;
+    //   justify-content: space-between;
+    //   margin-top: 1.3rem;
+    //   margin-bottom: 2rem;
+
+    // }
+
+    // #single-coffee-title {
+    //   text-align: center;
+    //   color: #4f3017;
+    //   font-family: "Garamound";
+    // }
+
+
+    // #singe-coffee-img {
+    //   float: left;
+    //   width: 300px;
+    //   height: 300px;
+    //   margin-bottom: 1rem;
+    //   margin-right: 2rem;
+    //   margin-left: 2rem;
+    // }
+
+    // .cart-container {
+    //   min-height: 100vh;
+    //   height: 100vh;
+    //   font-family: "Garamound";
+    //   color: #4f3017;
+    //   margin-top: 1.3rem;
+
+    // }
+
+    // #cart-title {
+    //   text-align: center;
+    //   color: #4f3017;
+    //   font-family: "Garamound";
+    // }
+
+    // .cart-container-items {
+    //   display: flex;
+    //   flex-direction: column;
+    //   flex-wrap: wrap;
+    //   justify-content: space-evenly;
+    //   margin-top: 1.3rem;
+    //   margin-bottom: 2rem;
+    // }
+
+    // .cart-item {
+    //   display: flex;
+    //   flex-direction: row;
+    //   flex-wrap: wrap;
+    //   align-items: center;
+    //   align-content: center;
+    //   justify-content: space-evenly;
+    //   gap: 50px;
+    // }
+
+
+    // #product-photo {
+    //   width: 100px;
+    //   height: 100px;
+    // }
+
+    // #edit-product {
+    //   clear:both;
+    //   margin-top: 3rem;
+    // }
+
+    // #add-coffee-container{
+    //   display: block;
+    //   text-align: center;
+    // }
+
+    // #add-coffee-title{
+    //   display: block;
+    //   text-align: center;
+    // }
