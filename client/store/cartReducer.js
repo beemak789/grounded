@@ -28,16 +28,16 @@ export const fetchCart = (id) => {
     }
   };
 };
+
 export const addProduct = (userId, productId, qty) => {
   return async (dispatch) => {
     const TOKEN = "token";
     const token = window.localStorage.getItem(TOKEN);
-    console.log(token);
     try {
       if (token) {
         const { data } = await axios.post(
           `/api/cart/${userId}`,
-          { productId: product.id, quantity: product.quantity },
+          { productId, quantity: qty },
           {
             headers: {
               authorization: token,
