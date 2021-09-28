@@ -25,7 +25,7 @@ const Cart = () => {
 
   //componentDidMount
   if (user && user.id) {
-    
+
     //dispatch
     const dispatch = useDispatch();
 
