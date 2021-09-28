@@ -1,61 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { updateProduct } from '../store/productsReducer';
-
-// const EditProduct = () => {
-
-//   const initialState = {
-//     name: '',
-//     description: '',
-//     price: 0
-//   }
-
-//   const [ product, setProduct ] = useState(initialState);
-
-//   const dispatch = useDispatch();
-
-//   useEffect(() => {
-//     dispatch(updateProduct());
-//   }, {});
-
-//   useEffect((prevProps) => {
-//     if (prevProps.product.id !== props.product.id) {
-//       setProduct({
-//         name: props.product.name || '',
-//         address: props.product.description || '',
-//         price: props.product.price || 0
-//       });
-//     }
-//   })
-
-//    const handleChange = (evt) => {
-//     setProduct({
-//       [evt.target.name]: evt.target.value
-//     });
-//   }
-
-//   const handleSubmit = (evt) => {
-//     evt.preventDefault();
-//     props.editProduct({ ...props.product, ...state }); //not sure about this line esp. ""...state"
-//   }
-
-//   return (
-//     <form id="updateProduct-form" onSubmit={handleSubmit}>
-//     <label htmlFor="name"> Name:</label>
-//     <input name="name" onChange={handleChange} value={name} />
-
-//     <label htmlFor="description">Description:</label>
-//     <input name="description" onChange={handleChange} value={description} />
-
-//     <label htmlFor="price">Price:</label>
-//     <input name="price" onChange={handleChange} value={price} />
-
-//     <button type="submit"> Update</button>
-//   </form>
-//   )
-// }
-
-
 class EditProduct extends React.Component {
   constructor(props) {
     super(props)
@@ -123,4 +68,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditProduct);
 
-// export default EditProduct;
+
