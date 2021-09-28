@@ -118,7 +118,7 @@ export const singleProductReducer = (state = {}, action) => {
 		case SINGLE_PRODUCT_REQUEST:
 			return action.product;
 		case UPDATE_QTY_REQUEST:
-			return { ...state, qtyBags: action.qty };
+			return { ...state, qtyBags: action.qty || 1 };
 		case UPDATE_PRODUCT:
 			return state.id === action.product.id ? action.product : state;
 		default:

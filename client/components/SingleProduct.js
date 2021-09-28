@@ -91,7 +91,7 @@ const SingleProduct = ({ match }) => {
                 key='quantity'
                 onChange={addToQuantityHandler}
               >
-             
+
                 <option value='1'>1</option>
                 <option value='2'>2</option>
                 <option value='3'>3</option>
@@ -108,17 +108,17 @@ const SingleProduct = ({ match }) => {
         <br />
         <br />
          <div>
-      
+
         {user && user.isAdmin ? (
           <div id = "edit-product" >
             <h2>Edit Product: </h2>
             <EditProduct />{' '}
           </div>
-          </div>
         ) : (
           <div> </div>
         )}
       </div>
+    </div>
 
 
     </>

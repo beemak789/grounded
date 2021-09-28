@@ -114,7 +114,7 @@ const Cart = () => {
             </span>
 
             <button>Checkout</button>
-            <button>Empty Cart - NA</button>
+
           </div>
         </div>
       </>
