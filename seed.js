@@ -28,7 +28,7 @@ const seed = async () => {
     });
 
     const coffee3 = await Product.create({
-      name: 'Brewing Trouble',
+      name: 'Latte Larrys',
       description:
         'Feeling like you want some excitement?  Turn to these peaberry coffee beans that offer a tarty blend of acidity and sweetness guaranteed to wake you up and put a mischevious smile on your face.',
       inventoryQuantity: 0,

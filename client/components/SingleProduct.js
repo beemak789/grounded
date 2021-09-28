@@ -69,7 +69,8 @@ const SingleProduct = ({ match }) => {
   if (!singleProduct) {
     return <h1>Loading...</h1>;
   }
-
+	const isInStock = singleProduct && singleProduct.inventoryQuantity > 0
+	console.log("single product --->", singleProduct)
 	// SINGLE PRODUCT COMPONENT RENDER*****************************************************
   return (
     <>
@@ -79,7 +80,7 @@ const SingleProduct = ({ match }) => {
         <img src={singleProduct.imageUrl} id='singe-coffee-img' />
         <p>${priceFunction(singleProduct.price)}</p>
         <p>
-          {singleProduct && singleProduct.quantity > 0
+          { isInStock
             ? 'In Stock'
             : 'Out of Stock'}
         </p>
@@ -97,7 +98,7 @@ const SingleProduct = ({ match }) => {
             <option value='3'>3</option>
           </select>
         </p>
-        <button onClick={addToCartHandler} type='button'>
+        <button onClick={addToCartHandler} type='button' disabled={!isInStock}>
           Add To Cart
         </button>
         <p>{singleProduct.description}</p>
