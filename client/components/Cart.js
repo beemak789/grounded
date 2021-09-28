@@ -6,47 +6,54 @@ import { fetchCart, deleteProduct } from "../store/cartReducer";
 import { useHistory, Link } from "react-router-dom";
 import { priceFunction } from "../frontendFunctions";
 
-/**
- *Production Note - once we stay logged in. We won't need to fetch user and set auth. We should have access in hook/state.
- */
+//Notes
+// USER and CART states cannot change or the user cart won't run
+//If things need to change for the guest cart, it must be worked around this code because of the if/else condition
+// Everything changed for the guest cart must borrow from this state [cannot be made null] or else the if statement won't run at all.
+//The variables inside my if block should have no affect on the guest cart "else" block
 
-/**
- * COMPONENT
- */
 const Cart = () => {
-  // const isLoggedIn = useSelector((state) => !!state.auth);
+
   let history = useHistory();
   const goCart = () => {
     history.push("/cart");
   };
-  //state
+
+  const dispatch = useDispatch();
+
+  //This cannot change or user cart won't run****  --- This cannot be null or with an "or" operand.
   const user = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.thisCart);
 
-  //componentDidMount
+
+  //This cannot change or user cart won't run
+  useEffect(() => {
+    if (user !== null) {
+      dispatch(fetchCart(user.id));
+    }
+  }, [user]);
+
+
+// USER CART BEGINS HERE************************************************************************
   if (user && user.id) {
 
-    //dispatch
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-      if (user !== null) {
-        dispatch(fetchCart(user.id));
-      }
-    }, [user]);
-
+    //SingleProduct Quantity Totals
     const products = cart.products || [];
-    console.log("cart products --->", products);
+    const singleProductQuantity = products.map((product) => {
+      return product.Cart_Product.quantity
+    }) || {}
+    const cartQuantity = singleProductQuantity.reduce((accumulator, value) => {
+      return accumulator + value
+    }, 0)
+
     //Delete Button
     const deleteItemHandler = (event) => {
-      console.log("The delete button was clicked!");
-      console.log(event.target.name);
       dispatch(deleteProduct(user.id, event.target.name));
       goCart();
     };
     //Cart Total Derivative Variables
     const cartProductQuantity = products.map((product) => {
-      return product.quantity;
+      return product.Cart_Product.quantity;
     });
     const productPrice = products.map((product) => {
       return product.price;
@@ -59,7 +66,7 @@ const Cart = () => {
       const sum = accumulator + value;
       return sum;
     }, 0);
-    console.log("the total --->", total);
+
     return (
       <>
         <Link to="/products">
@@ -69,8 +76,6 @@ const Cart = () => {
         <div className="cart-container">
           <div className="cart-container-items">
             {products.map((product) => {
-              const cartProduct = product.Cart_Product;
-              // || [];
               return (
                 <div id="cart-item" key={product.id}>
                   <span>
@@ -83,8 +88,7 @@ const Cart = () => {
                   <span>{product.name}</span>
 
                   <span>
-                    {" "}
-                    | {product.Cart_Product ? product.quantity : 0} bag(s) |
+                    | {product.Cart_Product ? product.Cart_Product.quantity : 0} bag(s) |
                   </span>
                   <span> ${product.price / 100} </span>
 
@@ -102,7 +106,7 @@ const Cart = () => {
               {products.length === 0 ? (
                 <h3>Your Cart is Empty...</h3>
               ) : (
-                <h3>You have {products.length} items in your cart.</h3>
+                <h3>You have {cartQuantity} items in your cart.</h3>
               )}
             </span>
             <span id="cart-subtotal">
@@ -114,7 +118,7 @@ const Cart = () => {
           </div>
         </div>
       </>
-    );
+    ); //USER CART ENDS HERE**************************************************************************
   } else {
     const currProducts = window.localStorage.products || "[]";
     let products = JSON.parse(currProducts);
@@ -135,6 +139,7 @@ const Cart = () => {
       goCart();
     };
 
+  //********* CART COMPONENT ****************************** ****************************************/
     return (
       <>
         <h1 id="cart-title">Shopping Cart</h1>
@@ -178,11 +183,5 @@ const Cart = () => {
     );
   }
 };
-/**
- * CONTAINER
- */
 
-/**
- * CONTAINER
- */
 export default Cart;
