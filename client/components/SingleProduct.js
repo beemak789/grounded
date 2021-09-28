@@ -13,21 +13,20 @@ import EditProduct from './EditProduct';
 //The variables inside my if block should have no affect on the guest cart "else" block
 
 const SingleProduct = ({ match }) => {
-
-	//This cannot change or update quantity won't run
+  //This cannot change or update quantity won't run
   const [qty, setQty] = useState(0);
 
   const dispatch = useDispatch();
 
-	//This cannot change or user cart won't run
+  //This cannot change or user cart won't run
   let singleProduct = useSelector((state) => state.singleProduct);
 
-	//This cannot change or user cart won't run
+  //This cannot change or user cart won't run
   let user = useSelector((state) => state.auth);
 
   const history = useHistory();
 
-	//This cannot change or user cart won't run*
+  //This cannot change or user cart won't run*
   useEffect(() => {
     dispatch(fetchSingleProduct(match.params.id));
   }, []);
@@ -36,11 +35,11 @@ const SingleProduct = ({ match }) => {
   };
 
   const addToCartHandler = () => {
-		// USER LOGGED IN*******************************************************
+    // USER LOGGED IN*******************************************************
     if (user && user.id) {
       dispatch(addProduct(user.id, singleProduct.id, +qty));
       goCart();
-		// USER LOGGED IN*******************************************************
+      // USER LOGGED IN*******************************************************
     } else {
       let selectedProduct = singleProduct;
       const currProducts = window.localStorage.products || '[]';
@@ -59,6 +58,7 @@ const SingleProduct = ({ match }) => {
     }
   };
 
+	//setQty function cannot be changed* or user cart won't update*
   const addToQuantityHandler = (event) => {
     const qty = Number(event.target.value);
     //** Set Qty is required for updating quantity in database, this must be done locally */
@@ -69,9 +69,9 @@ const SingleProduct = ({ match }) => {
   if (!singleProduct) {
     return <h1>Loading...</h1>;
   }
-	const isInStock = singleProduct && singleProduct.inventoryQuantity > 0
-	console.log("single product --->", singleProduct)
-	// SINGLE PRODUCT COMPONENT RENDER*****************************************************
+  const isInStock = singleProduct && singleProduct.inventoryQuantity > 0;
+  console.log('single product --->', singleProduct);
+  // SINGLE PRODUCT COMPONENT RENDER*****************************************************
   return (
     <>
       <Link to='/products'>Go Back</Link>
@@ -79,28 +79,28 @@ const SingleProduct = ({ match }) => {
       <div className='singe-coffee-container'>
         <img src={singleProduct.imageUrl} id='singe-coffee-img' />
         <p>${priceFunction(singleProduct.price)}</p>
-        <p>
-          { isInStock
-            ? 'In Stock'
-            : 'Out of Stock'}
-        </p>
-        <p className='dropdownMenu'>
-          <label htmlFor='quantity'>Quantity:</label>
-          <select
-            name='qty'
-            id='quantity'
-            key='quantity'
-            onChange={addToQuantityHandler}
-          >
-            <option value='0'>0</option>
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-          </select>
-        </p>
-        <button onClick={addToCartHandler} type='button' disabled={!isInStock}>
-          Add To Cart
-        </button>
+        <p>{isInStock ? 'In Stock' : 'Out of Stock'}</p>
+        {isInStock && (
+          <div>
+            <p className='dropdownMenu'>
+              <label htmlFor='quantity'>Quantity:</label>
+              <select
+                name='qty'
+                id='quantity'
+                key='quantity'
+                onChange={addToQuantityHandler}
+              >
+                <option value='0'>0</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+              </select>
+            </p>
+            <button onClick={addToCartHandler} type='button'>
+              Add To Cart
+            </button>
+          </div>
+        )}
         <p>{singleProduct.description}</p>
         <br />
         <br />
