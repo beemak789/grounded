@@ -131,7 +131,6 @@ const Cart = () => {
       0
     );
     const deleteItemHandler = (event) => {
-      console.log(event.target.name);
       products = products.filter(
         (product) => product.id !== +event.target.name
       );

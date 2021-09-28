@@ -6,15 +6,10 @@ import { Link, useHistory } from 'react-router-dom';
 import { priceFunction } from '../frontendFunctions';
 import EditProduct from './EditProduct';
 
-//Notes
-// USER and CART states cannot change or the user cart won't run
-//If things need to change for the guest cart, it must be worked around this code because of the if/else condition
-// Everything changed for the guest cart must borrow from this state [cannot be made null] or else the if statement won't run at all.
-//The variables inside my if block should have no affect on the guest cart "else" block
+
 
 const SingleProduct = ({ match }) => {
-  //This cannot change or update quantity won't run
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
 
   const dispatch = useDispatch();
 
@@ -42,6 +37,7 @@ const SingleProduct = ({ match }) => {
       // USER LOGGED IN*******************************************************
     } else {
 			let selectedProduct = singleProduct;
+      selectedProduct.qtyBags = selectedProduct.qtyBags>1? selectedProduct.qtyBags:1;
       const currProducts = window.localStorage.products || '[]'
       let products = JSON.parse(currProducts);
       if (products.find((product) => product.id === singleProduct.id)) {
