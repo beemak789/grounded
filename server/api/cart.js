@@ -3,6 +3,7 @@ const { reporters } = require("mocha");
 const {
   models: { Cart, User, Product, Cart_Product },
 } = require("../db");
+const { requireToken } = require("./gatekeepingMiddleware")
 //CRUD OPERATIONS [ CREATE, RETRIEVE, UPDATE, DELETE ]
 //@description     Get all items in cart for the user logged in/passed in
 //@router          GET/api/cart/:userId
@@ -24,7 +25,7 @@ router.get("/:userId", async (req, res, next) => {
 //------------------------------------------------------------------------------------
 //@description    Delete the product for the user logged in
 //@router         PUT/api/cart/:userId
-router.put("/:userId", async (req, res, next) => {
+router.put("/:userId", requireToken, async (req, res, next) => {
   try {
     const productId = Number(req.body.productId);
     const [userCart, created] = await Cart.findOrCreate({
@@ -44,7 +45,7 @@ router.put("/:userId", async (req, res, next) => {
 //------------------------------------------------------------------------------------
 //@description    Add products to cart for the user logged in/passed in
 //@router         POST/api/cart/:userId
-router.post("/:userId", async (req, res, next) => {
+router.post("/:userId", requireToken, async (req, res, next) => {
   try {
     let userIdReq = Number(req.params.userId);
     const userCart = await Cart.findOne({
