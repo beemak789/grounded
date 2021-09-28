@@ -42,21 +42,28 @@ const AllUsers = () => {
           {props.users.map((user) => {
             return (
               <div key={user.id} className="list">
-                <Link to={`/users/${user.id}`}>
+                {/* <Link to={`/users/${user.id}`}>
                   <span>
                     <img src={user.imageUrl} width="100" height="100" />
                   </span>
-                </Link>
+                </Link> */}
                 <div>
-                  <Link to= "/users">
-                    <button type="button">Edit</button>
-                  </Link>
-                  <button type="button" onClick={()=>null}>
+                  {/* <button type="button" onClick={()=>null}>
                     X
-                  </button>
+                  </button> */}
                 </div>
-                <span>{`${user.username}`}</span>
-                <span>{`${user.email}`}</span>
+                <span>{`Name: ${user.name}`}</span>
+                <br />
+                <span>{`Username: ${user.username}`}</span>
+                <br />
+                <span>{`Email: ${user.email}`}</span>
+                <br />
+                <Link to= "/users">
+                    <button type="button">View</button>
+                </Link>
+                <br />
+                <br />
+                <br />
               </div>
             );
           })}
