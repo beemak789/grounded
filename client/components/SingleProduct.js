@@ -41,18 +41,19 @@ const SingleProduct = ({ match }) => {
       goCart();
       // USER LOGGED IN*******************************************************
     } else {
-      let selectedProduct = singleProduct;
-      const currProducts = window.localStorage.products || '[]';
+			let selectedProduct = singleProduct;
+      const currProducts = window.localStorage.products || '[]'
       let products = JSON.parse(currProducts);
       if (products.find((product) => product.id === singleProduct.id)) {
-        selectedProduct.qtyBags++;
+        selectedProduct.qtyBags =
+          products.find((product) => product.id === singleProduct.id).qtyBags +
+          selectedProduct.qtyBags;
         products = products.filter(
           (product) => product.id !== singleProduct.id
         );
       }
-      products = [...products, singleProduct];
+      products = [...products, selectedProduct];
       products = JSON.stringify(products);
-
       window.localStorage.products = products;
       goCart();
     }
