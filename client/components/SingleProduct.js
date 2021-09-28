@@ -94,15 +94,16 @@ const SingleProduct = ({ match }) => {
 				<br />
 				<br />
 				<br />
-				{user && user.isAdmin ? (
-					<>
+
+			</div>
+			{user && user.isAdmin ? (
+					<div id = "edit-product">
 						<h2>Edit Product: </h2>
 						<EditProduct />{' '}
-					</>
+					</div>
 				) : (
 					<div> </div>
 				)}
-			</div>
 		</>
 	);
 };
