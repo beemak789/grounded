@@ -30,7 +30,7 @@ const Product = db.define('product', {
   },
   qtyBags: {
     type: Sequelize.INTEGER,
-    defaultValue: 0,
+    defaultValue: 1,
   },
 })
 
