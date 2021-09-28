@@ -9,7 +9,6 @@ import EditProduct from './EditProduct';
 
 
 const SingleProduct = ({ match }) => {
-  //This cannot change or update quantity won't run
   const [qty, setQty] = useState(1);
 
   const dispatch = useDispatch();
@@ -38,6 +37,7 @@ const SingleProduct = ({ match }) => {
       // USER LOGGED IN*******************************************************
     } else {
 			let selectedProduct = singleProduct;
+      selectedProduct.qtyBags = selectedProduct.qtyBags>1? selectedProduct.qtyBags:1;
       const currProducts = window.localStorage.products || '[]'
       let products = JSON.parse(currProducts);
       if (products.find((product) => product.id === singleProduct.id)) {
