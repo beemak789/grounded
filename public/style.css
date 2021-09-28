@@ -170,3 +170,13 @@ form div {
   clear:both;
   margin-top: 3rem;
 }
+
+#add-coffee-container{
+  display: block;
+  text-align: center;
+}
+
+#add-coffee-title{
+  display: block;
+  text-align: center;
+}

@@ -39,7 +39,8 @@ const AddProduct = () => {
     // const disabled =
     // this.state.name === "" || this.state.address === "" ? true : false;
     <div>
-      <h2>Add a Coffee Product</h2>
+      <h2 id = "add-coffee-title">Add a Coffee Product</h2>
+      <div id = "add-coffee-container">
       <form id="add-coffee-form" onSubmit={handleSubmit}>
         <label htmlFor="name">Coffee Name: </label>
         <input
@@ -91,6 +92,7 @@ const AddProduct = () => {
         <br />
         <button type="submit">Submit</button>
       </form>
+      </div>
     </div>
   );
 };
