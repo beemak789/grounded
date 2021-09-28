@@ -43,7 +43,7 @@ export const logout = () => {
   history.push('/')
   return {
     type: SET_AUTH,
-    auth: {}
+    auth: null
   }
 }
 
