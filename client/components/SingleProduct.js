@@ -15,13 +15,12 @@ const SingleProduct = ({ match }) => {
   let user = useSelector((state) => state.auth);
   const history = useHistory();
   useEffect(() => {
-    console.log('in the use effect for single product');
     dispatch(fetchSingleProduct(match.params.id));
   }, []);
   const goCart = () => {
     history.push('/cart');
   };
-  // let userId = useSelector((state) => state.auth.id) || null;
+
   const addToCartHandler = () => {
     if (user && user.id) {
       //the quantity needs to be parsed or else it will change quantity

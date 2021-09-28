@@ -26,8 +26,16 @@ const Cart = () => {
 
 // USER CART BEGINS HERE*
   if (user && user.id) {
-    //dispatch
+
+    //SingleProduct Quantity Totals
     const products = cart.products || [];
+    const singleProductQuantity = products.map((product) => {
+      return product.Cart_Product.quantity
+    }) || {}
+    const cartQuantity = singleProductQuantity.reduce((accumulator, value) => {
+      return accumulator + value
+    }, 0)
+
     //Delete Button
     const deleteItemHandler = (event) => {
       dispatch(deleteProduct(user.id, event.target.name));
@@ -88,7 +96,7 @@ const Cart = () => {
               {products.length === 0 ? (
                 <h3>Your Cart is Empty...</h3>
               ) : (
-                <h3>You have {products.length} items in your cart.</h3>
+                <h3>You have {cartQuantity} items in your cart.</h3>
               )}
             </span>
             <span id="cart-subtotal">
