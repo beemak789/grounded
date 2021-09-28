@@ -84,7 +84,6 @@ const SingleProduct = ({ match }) => {
           Add To Cart
         </button>
         <p>{singleProduct.description}</p>
-        {/* <span>Rating: {singleProduct.stars}</span> */}
         <br />
         <br />
         <br />

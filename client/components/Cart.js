@@ -6,13 +6,7 @@ import { fetchCart, deleteProduct } from "../store/cartReducer";
 import { useHistory, Link } from "react-router-dom";
 import { priceFunction } from "../frontendFunctions";
 
-/**
- *Production Note - once we stay logged in. We won't need to fetch user and set auth. We should have access in hook/state.
- */
 
-/**
- * COMPONENT
- */
 const Cart = () => {
   // const isLoggedIn = useSelector((state) => !!state.auth);
   let history = useHistory();
@@ -30,7 +24,7 @@ const Cart = () => {
     }
   }, [user]);
 
-  //componentDidMount
+// USER CART BEGINS HERE*
   if (user && user.id) {
     //dispatch
     const products = cart.products || [];
@@ -106,7 +100,7 @@ const Cart = () => {
           </div>
         </div>
       </>
-    );
+    ); //USER CART ENDS HERE*
   } else {
     const currProducts = window.localStorage.products || "[]";
     let products = JSON.parse(currProducts);
@@ -170,11 +164,5 @@ const Cart = () => {
     );
   }
 };
-/**
- * CONTAINER
- */
 
-/**
- * CONTAINER
- */
 export default Cart;

@@ -53,7 +53,7 @@ const seed = async () => {
       password: '1234',
       name: 'Tia',
       email: 't@gmail.com',
-      isAdmin: false,
+      isAdmin: true,
     });
 
     const user3 = await User.create({

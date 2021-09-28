@@ -86,4 +86,31 @@ router.post('/:userId', async (req, res, next) => {
   }
 });
 
+//------------------------------------------------------------------------------------
+//@description    Checkout the cart for logged in/passed in
+//@router         PUT/api/cart/:userId/checkout
+router.put("/:userId/checkout", async (req, res, next) => {
+  try {
+    const userCart = await Cart.findOne({
+      where: {
+        orderStatus: 'PAID',
+        userId: req.params.userId,
+        totalPrice: req.body.totalPrice,
+        totalQty: req.body.totalQty
+      }
+    })
+
+    const newCart = await Cart.create(req.body, {
+      where: {
+        orderStatus: "UNPAID",
+        userId: req.params.userId
+      }
+    })
+    res.json(newCart)
+  } catch (err) {
+    console.log(err)
+  }
+})
+
+
 module.exports = router;
