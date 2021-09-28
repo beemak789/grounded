@@ -102,8 +102,8 @@ const seed = async () => {
 
   await user1.addCart(cart1);
   await user2.addCart(cart2);
-  await coffee1.addCart(cart1);
-  await coffee2.addCart(cart1);
+  // await coffee1.addCart(cart1);
+  // await coffee2.addCart(cart1);
 
   } catch (err) {
     console.log(err);
