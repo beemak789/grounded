@@ -42,11 +42,11 @@ const AllUsers = () => {
           {props.users.map((user) => {
             return (
               <div key={user.id} className="list">
-                {/* <Link to={`/users/${user.id}`}>
-                  <span>
+                <Link to={`/users/${user.id}`}>
+                  {/* <span>
                     <img src={user.imageUrl} width="100" height="100" />
-                  </span>
-                </Link> */}
+                  </span> */}
+                </Link>
                 <div>
                   {/* <button type="button" onClick={()=>null}>
                     X
@@ -58,7 +58,7 @@ const AllUsers = () => {
                 <br />
                 <span>{`Email: ${user.email}`}</span>
                 <br />
-                <Link to= "/users">
+                <Link to={`/users/${user.id}`}>
                     <button type="button">View</button>
                 </Link>
                 <br />
