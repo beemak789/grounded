@@ -24,6 +24,13 @@ const Navbar = () => {
             <Link to="/products">All</Link>
             <Link to="/me">Me</Link>
             <Link to="/cart">Cart</Link>
+            {user.isAdmin ? (
+					<>
+						<Link to="/users">All Users</Link>
+					</>
+				) : (
+					<></>
+				)}
             <a href="#" onClick={handleClick}>
               Logout
             </a>
