@@ -6,14 +6,28 @@ import { Link, useHistory } from 'react-router-dom';
 import { priceFunction } from '../frontendFunctions';
 import EditProduct from './EditProduct';
 
-//products/:productId
+//Notes
+// USER and CART states cannot change or the user cart won't run
+//If things need to change for the guest cart, it must be worked around this code because of the if/else condition
+// Everything changed for the guest cart must borrow from this state [cannot be made null] or else the if statement won't run at all.
+//The variables inside my if block should have no affect on the guest cart "else" block
+
 const SingleProduct = ({ match }) => {
+
+	//This cannot change or update quantity won't run
   const [qty, setQty] = useState(0);
+
   const dispatch = useDispatch();
-  // const isLoggedIn = useSelector((state) => state.auth);
+
+	//This cannot change or user cart won't run
   let singleProduct = useSelector((state) => state.singleProduct);
+
+	//This cannot change or user cart won't run
   let user = useSelector((state) => state.auth);
+
   const history = useHistory();
+
+
   useEffect(() => {
     dispatch(fetchSingleProduct(match.params.id));
   }, []);
@@ -22,10 +36,11 @@ const SingleProduct = ({ match }) => {
   };
 
   const addToCartHandler = () => {
+		// USER LOGGED IN*******************************************************
     if (user && user.id) {
-      //the quantity needs to be parsed or else it will change quantity
       dispatch(addProduct(user.id, singleProduct.id, +qty));
       goCart();
+		// USER LOGGED IN*******************************************************
     } else {
       let selectedProduct = singleProduct;
       const currProducts = window.localStorage.products || '[]';
@@ -50,9 +65,12 @@ const SingleProduct = ({ match }) => {
     setQty(event.target.value);
     dispatch(updateQty(qty));
   };
+
   if (!singleProduct) {
     return <h1>Loading...</h1>;
   }
+
+	// SINGLE PRODUCT COMPONENT RENDER*****************************************************
   return (
     <>
       <Link to='/products'>Go Back</Link>

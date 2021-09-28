@@ -6,25 +6,33 @@ import { fetchCart, deleteProduct } from "../store/cartReducer";
 import { useHistory, Link } from "react-router-dom";
 import { priceFunction } from "../frontendFunctions";
 
+//Notes
+// USER and CART states cannot change or the user cart won't run
+//If things need to change for the guest cart, it must be worked around this code because of the if/else condition
+// Everything changed for the guest cart must borrow from this state [cannot be made null] or else the if statement won't run at all.
+//The variables inside my if block should have no affect on the guest cart "else" block
 
 const Cart = () => {
-  // const isLoggedIn = useSelector((state) => !!state.auth);
+
   let history = useHistory();
   const goCart = () => {
     history.push("/cart");
   };
-  //state
+
   const dispatch = useDispatch();
+
+  //This cannot change or user cart won't run****  --- This cannot be null or with an "or" operand.
   const user = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.thisCart);
 
+  //This cannot change or user cart won't run
   useEffect(() => {
     if (user !== null) {
       dispatch(fetchCart(user.id));
     }
   }, [user]);
 
-// USER CART BEGINS HERE*
+// USER CART BEGINS HERE************************************************************************
   if (user && user.id) {
 
     //SingleProduct Quantity Totals
@@ -108,7 +116,7 @@ const Cart = () => {
           </div>
         </div>
       </>
-    ); //USER CART ENDS HERE*
+    ); //USER CART ENDS HERE**************************************************************************
   } else {
     const currProducts = window.localStorage.products || "[]";
     let products = JSON.parse(currProducts);
@@ -129,6 +137,7 @@ const Cart = () => {
       goCart();
     };
 
+  //********* CART COMPONENT ****************************** ****************************************/
     return (
       <>
         <h1 id="cart-title">Shopping Cart</h1>
