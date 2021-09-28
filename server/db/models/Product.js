@@ -14,7 +14,7 @@ const Product = db.define('product', {
     type: Sequelize.TEXT
   },
   price:  {
-    type: Sequelize.FLOAT,
+    type: Sequelize.INTEGER,
     allowNull: false
   },
   //this was changed* - maybe better to call this "inventory"?
