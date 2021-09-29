@@ -162,7 +162,7 @@ const Cart = () => {
                   <span> | {product.qtyBags} bag(s) |</span>
                   <span> ${priceFunction(product.price)} </span>
                   <span>
-                    <button onClick={deleteItemHandler} name={product.id}>
+                    <button class="button2" onClick={deleteItemHandler} name={product.id}>
                       Remove Item
                     </button>
                   </span>
