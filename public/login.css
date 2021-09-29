@@ -2,3 +2,24 @@
   text-align: center;
   margin-bottom: 10px;
 }
+
+.username-form{
+  padding: 0.3em;
+}
+/*
+label{
+  padding: 3.2em;
+} */
+
+.button3:hover {
+  background-color: #dff9b5;
+}
+
+.button3 {
+  padding: 0.3em 3.2em;
+  transition: all 0.2s;
+}
+
+small{
+  padding: 0.3em;
+}

@@ -10,8 +10,8 @@ import {authenticate} from '../store'
 
   return (
     <div className="auth-form">
-      <h1>Sign In </h1>
-      <p>Sign into your Grounded Coffee member account</p>
+      <h1>Hello there </h1>
+      <p>Login or Signup for a Grounded Coffee member account</p>
       <form onSubmit={handleSubmit} name={name}>
         <div className="username-form">
           <label htmlFor="username">
@@ -25,8 +25,9 @@ import {authenticate} from '../store'
           </label>
           <input name="password" type="password" />
         </div>
+        <br />
         <div>
-          <button type="submit">{displayName}</button>
+          <button className="button3" type="submit">{displayName}</button>
         </div>
         {/* {error && error.response && <div> {error.response.data} </div>} */}
       </form>
