@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { priceFunction } from '../frontendFunctions';
-import { fetchProducts, deleteProduct } from '../store/productsReducer';
-import AddProduct from './AddProduct';
+
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { priceFunction } from "../frontendFunctions"
+import { fetchProducts, deleteProduct } from "../store/productsReducer";
+
 
 function allProducts() {
   let products = useSelector((state) => state.allProducts);
