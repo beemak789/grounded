@@ -8,7 +8,7 @@ const DELETE_PRODUCT = "DELETE_PRODUCT";
 
 //This file cannot change or user cart cannot run******
 
-const setCart = (cart) => ({
+export const setCart = (cart) => ({
   type: CART_REQUEST,
   cart,
 });
@@ -16,6 +16,7 @@ const setProduct = (product) => ({
   type: ADD_PRODUCT,
   product,
 });
+
 // Thunk
 export const fetchCart = (id) => {
   return async (dispatch) => {
