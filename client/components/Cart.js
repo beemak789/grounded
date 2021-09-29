@@ -163,7 +163,7 @@ const Cart = () => {
                   <span> ${priceFunction(product.price)} </span>
                   <span>
                     <br />
-                    <button class="button2" onClick={deleteItemHandler} name={product.id}>
+                    <button className="button2" onClick={deleteItemHandler} name={product.id}>
                       Remove Item
                     </button>
                   </span>
@@ -178,7 +178,7 @@ const Cart = () => {
             <br />
             <span id="cart-subtotal">Subtotal: ${subtotal}</span>
             <br />
-            <button class="button2"onClick={checkoutHandler}>Checkout</button>
+            <button className="button2"onClick={checkoutHandler}>Checkout</button>
           </div>
         </div>
       </>

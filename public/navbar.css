@@ -1,17 +1,19 @@
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
-
-/* #nav-container-logged-in {
+#nav-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
 }
 
-#nav-container-logged-out {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-} */
+.nav-links > * {
+ margin-right: 1rem;
+ margin-left: 1rem;
+}
 
+hr {
+  margin-bottom: 0 !important;
+}
+
+.nav-brand a {
+  text-decoration: none;
+}

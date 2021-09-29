@@ -8,7 +8,6 @@ import { Login, Signup } from "./components/AuthForm";
 import AllUsers from "./components/AllUsers";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Home from "./components/Home";
 import Landing from "./components/Landing";
 import Me from "./components/SingleUser";
 import SingleProduct from "./components/SingleProduct";
@@ -33,8 +32,6 @@ function Routes() {
 
   return (
     <div>
-      <Route path="/" component={Home} />
-
       {user && user.id ? (
         user.isAdmin ? (
           <Switch>
@@ -44,7 +41,6 @@ function Routes() {
             <Route path="/products/:id" component={SingleProduct} />
             <Route path="/cart" component={Cart} />
             <Route path="/addProduct" component={AddProduct} />
-            <Route path="/checkout" component={Checkout} />
             <Route path="/users" component={AllUsers} />
             <Redirect to="/" />
           </Switch>
@@ -55,6 +51,7 @@ function Routes() {
             <Route exact path="/products" component={AllProducts} />
             <Route path="/products/:id" component={SingleProduct} />
             <Route path="/cart" component={Cart} />
+            <Route path="/checkout" component={Checkout} />
             <Route path="/addProduct" component={AddProduct} />
             <Redirect to="/" />
           </Switch>
