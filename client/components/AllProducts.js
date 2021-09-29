@@ -9,7 +9,6 @@ import AddProduct from "./AddProduct";
 function allProducts() {
   let products = useSelector((state) => state.allProducts);
   const user = useSelector((state) => state.auth) || null;
-  console.log("user -->", user);
   const dispatch = useDispatch();
 
   const deleteHandler = (evt) => {

@@ -2,8 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { logout, me } from "../store/auth";
+import Navbar from "react-bootstrap/Navbar";
+import Container from 'react-bootstrap/Container';
 
-const Navbar = () => {
+const Header = () => {
   const dispatch = useDispatch();
   let user = useSelector((state) => state.auth);
   useEffect(() => {
@@ -17,7 +19,8 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav>
+      <Navbar>
+      <Container>
         {(user && user.id )? (
           <div id="nav-container-logged-in">
             <Link to="/">grounded</Link>
@@ -44,10 +47,11 @@ const Navbar = () => {
             <Link to="/cart">Cart</Link>
           </div>
         )}
-      </nav>
+        </Container>
+      </Navbar>
       <hr />
     </div>
   );
 };
 
-export default Navbar;
+export default Header;
