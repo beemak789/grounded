@@ -8,8 +8,11 @@ import { singleProductReducer, productsReducer } from "./productsReducer";
 
 import { cartReducer } from "./cartReducer";
 
+import {usersReducer} from "./usersReducer";
+
 const reducer = combineReducers({
   auth: auth,
+  users: usersReducer,
   allProducts: productsReducer,
   singleProduct: singleProductReducer,
   thisCart: cartReducer,

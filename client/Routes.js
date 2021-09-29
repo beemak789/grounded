@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
@@ -33,18 +34,31 @@ function Routes() {
   return (
     <div>
       <Route path="/" component={Home} />
+
       {user && user.id ? (
-        <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/me" component={Me} />
-          <Route exact path="/products" component={AllProducts} />
-          <Route path="/products/:id" component={SingleProduct} />
-          <Route path="/users" component={AllUsers} />
-          <Route path="/cart" component={Cart} />
-          <Route path="/addProduct" component={AddProduct} />
-          <Route path="/checkout" component={Checkout} />
-          <Redirect to="/" />
-        </Switch>
+        user.isAdmin ? (
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/me" component={Me} />
+            <Route exact path="/products" component={AllProducts} />
+            <Route path="/products/:id" component={SingleProduct} />
+            <Route path="/cart" component={Cart} />
+            <Route path="/addProduct" component={AddProduct} />
+            <Route path="/checkout" component={Checkout} />
+            <Route path="/users" component={AllUsers} />
+            <Redirect to="/" />
+          </Switch>
+        ) : (
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/me" component={Me} />
+            <Route exact path="/products" component={AllProducts} />
+            <Route path="/products/:id" component={SingleProduct} />
+            <Route path="/cart" component={Cart} />
+            <Route path="/addProduct" component={AddProduct} />
+            <Redirect to="/" />
+          </Switch>
+        )
       ) : (
         <Switch>
           <Route exact path="/" component={Landing} />
@@ -53,7 +67,6 @@ function Routes() {
           <Route exact path="/products" component={AllProducts} />
           <Route path="/products/:id" component={SingleProduct} />
           <Route path="/cart" component={Cart} />
-          <Route path="/checkout" component={Checkout} />
         </Switch>
       )}
     </div>
