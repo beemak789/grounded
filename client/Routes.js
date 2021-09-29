@@ -67,6 +67,7 @@ function Routes() {
           <Route exact path="/products" component={AllProducts} />
           <Route path="/products/:id" component={SingleProduct} />
           <Route path="/cart" component={Cart} />
+          <Route path="/checkout" component={Checkout} />
         </Switch>
       )}
     </div>
