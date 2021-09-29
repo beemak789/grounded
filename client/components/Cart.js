@@ -110,7 +110,7 @@ const Cart = () => {
               {products.length === 0 ? (
                 <h3>Your Cart is Empty...</h3>
               ) : (
-                <h3>You have {cartQuantity} items in your cart.</h3>
+                <h3>You have {cartQuantity} item(s) in your cart.</h3>
               )}
             </span>
             <span id="cart-subtotal">
@@ -173,7 +173,7 @@ const Cart = () => {
           </div>
           <div className="cart-totals">
             <span id="cart-total-items">
-              You have {totalQuantity} items in your cart.{" "}
+              You have {totalQuantity} item in your cart.{" "}
             </span>
             <br />
             <span id="cart-subtotal">Subtotal: ${subtotal}</span>
