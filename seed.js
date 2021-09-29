@@ -299,74 +299,81 @@ const seed = async () => {
     const gitGoing = await Product.create({
       name: 'Git Going',
       description: `An early morning light roast blend to give you energy to get your day started!`,
-      price: 23.0,
+      price: 2300,
       inventoryQuantity: 120,
       imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
       stars: 4.4,
     });
 
-    // const zemlak = await Product.create({
-    //   name: 'Zemlak',
-    //   description:
-    //     'Impedit earum porro eos sequi velit molestias facere. Ullam est harum repellat saepe et totam explicabo eum labore. Occaecati impedit eum. Voluptates officiis sit in quibusdam molestiae deserunt dicta velit ex. Quas adipisci iure.',
-    //   price: 22.2,
-    //   quantity: 96,
-    //   stars: 1,
-    // });
+    const zemlak = await Product.create({
+      name: 'Zemlak',
+      description:
+        'Impedit earum porro eos sequi velit molestias facere. Ullam est harum repellat saepe et totam explicabo eum labore. Occaecati impedit eum. Voluptates officiis sit in quibusdam molestiae deserunt dicta velit ex. Quas adipisci iure.',
+      price: 2220,
+      inventoryQuantity: 96,
+      imageUrl: "https://i.imgur.com/J0qmJsM.jpeg",
+      stars: 1,
+    });
 
-    // const harvey = await Product.create({
-    //   name: 'Harvey',
-    //   description:
-    //     'Cumque possimus unde vero dolorum maxime in sunt. Rerum nesciunt qui. Officiis hic in ducimus natus vel eum.',
-    //   price: 35.2,
-    //   quantity: 12,
-    //   stars: 5,
-    // });
+    const harvey = await Product.create({
+      name: 'Harvey',
+      description:
+        'Cumque possimus unde vero dolorum maxime in sunt. Rerum nesciunt qui. Officiis hic in ducimus natus vel eum.',
+      price: 3520,
+      inventoryQuantity: 12,
+      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      stars: 5,
+    });
 
-    // const glover = await Product.create({
-    //   name: 'Glover',
-    //   description:
-    //     'Tenetur ipsum eligendi voluptates voluptatem architecto laboriosam totam est. A sed occaecati est. In enim rerum nobis quibusdam accusamus doloremque rerum deleniti.',
-    //   price: 55.8,
-    //   quantity: 80,
-    //   stars: 4,
-    // });
+    const glover = await Product.create({
+      name: 'Glover',
+      description:
+        'Tenetur ipsum eligendi voluptates voluptatem architecto laboriosam totam est. A sed occaecati est. In enim rerum nobis quibusdam accusamus doloremque rerum deleniti.',
+      price: 5580,
+      inventoryQuantity: 80,
+      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      stars: 4,
+    });
 
-    // const nicolas = await Product.create({
-    //   name: 'Nicolas',
-    //   description:
-    //     'Quod labore est. Dolorum porro rem et. Libero voluptatem quidem harum ut.',
-    //   price: 49.9,
-    //   quantity: 73,
-    //   stars: 4,
-    // });
+    const nicolas = await Product.create({
+      name: 'Nicolas',
+      description:
+        'Quod labore est. Dolorum porro rem et. Libero voluptatem quidem harum ut.',
+      price: 4990,
+      inventoryQuantity: 73,
+      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      stars: 4,
+    });
 
-    // const yolanda = await Product.create({
-    //   name: 'Yolanda',
-    //   description:
-    //     'Odio eos aut consectetur eaque. Culpa et excepturi. Ullam quam voluptas porro et sit reiciendis vero vel. Et atque unde amet tempora quia.',
-    //   price: 69.4,
-    //   quantity: 2,
-    //   stars: 2,
-    // });
+    const yolanda = await Product.create({
+      name: 'Yolanda',
+      description:
+        'Odio eos aut consectetur eaque. Culpa et excepturi. Ullam quam voluptas porro et sit reiciendis vero vel. Et atque unde amet tempora quia.',
+      price: 6940,
+      inventoryQuantity: 11,
+      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      stars: 2,
+    });
 
-    // const erdman = await Product.create({
-    //   name: 'Erdman',
-    //   description:
-    //     'Qui sit repudiandae earum. Laboriosam sit et perspiciatis recusandae molestiae exercitationem molestiae ratione ut. Incidunt iste sint eum. Nihil molestias laborum placeat id. Suscipit non dolorum maxime veniam iste.',
-    //   price: 97.0,
-    //   quantity: 33,
-    //   stars: 4,
-    // });
+    const erdman = await Product.create({
+      name: 'Erdman',
+      description:
+        'Qui sit repudiandae earum. Laboriosam sit et perspiciatis recusandae molestiae exercitationem molestiae ratione ut. Incidunt iste sint eum. Nihil molestias laborum placeat id. Suscipit non dolorum maxime veniam iste.',
+      price: 9700,
+      inventoryQuantity: 33,
+      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      stars: 4,
+    });
 
-    // const cole = await Product.create({
-    //   name: 'Cole',
-    //   description:
-    //     'Repellat ut enim magnam possimus amet reiciendis doloremque et nihil. Quia explicabo ullam id iste sunt laudantium pariatur sint. Aspernatur est corporis iste et incidunt consequatur maiores. Pariatur inventore est sit laborum natus. Eligendi dolorem cum hic dolorem corrupti. Voluptates vero corporis cum soluta.',
-    //   price: 86.7,
-    //   quantity: 89,
-    //   stars: 4,
-    // });
+    const cole = await Product.create({
+      name: 'Cole',
+      description:
+        'Repellat ut enim magnam possimus amet reiciendis doloremque et nihil. Quia explicabo ullam id iste sunt laudantium pariatur sint. Aspernatur est corporis iste et incidunt consequatur maiores. Pariatur inventore est sit laborum natus. Eligendi dolorem cum hic dolorem corrupti. Voluptates vero corporis cum soluta.',
+      price: 8670,
+      inventoryQuantity: 89,
+      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      stars: 4,
+    });
 
     // const sheila = await Product.create({
     //   name: 'Sheila',
