@@ -10,8 +10,13 @@ import {authenticate} from '../store'
 
   return (
     <div className="auth-form">
+
+      <h1>Sign In </h1>
+      <p>Sign in or join Grounded for your daily dose of coffee.</p>
+
       <h1>Hello there </h1>
-      <p>Login or Signup for a Grounded Coffee member account</p>
+      <p>Sign in or join Grounded for your daily dose of coffee.</p>
+
       <form onSubmit={handleSubmit} name={name}>
         <div className="username-form">
           <label htmlFor="username">

@@ -12,10 +12,10 @@
 }
 
 .coffee-item {
-  box-shadow: 3px 3px 10px rgb(205, 205, 205);
+  /* box-shadow: 3px 3px 10px rgb(205, 205, 205); */
   margin: 1rem;
-  border-radius: 5px;
-  background-color: rgba(238, 238, 238, 0.774);
+  /* border-radius: 5px; */
+  /* background-color:white; */
   text-decoration: none;
 }
 
