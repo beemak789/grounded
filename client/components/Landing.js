@@ -12,7 +12,8 @@ function Landing() {
 
   return (
     <div className = "landing-container">
-     <div id = "landing-text">grounded</div>
+     <h1 id = "landing-text">grounded</h1>
+     <img className="home-image" src="https://blue-bottle-cms.global.ssl.fastly.net/hbhhv9rz9/image/upload/v1632873419/guqrxpyvr0lscp4jdlor.jpg"></img>
     </div>
   );
 }

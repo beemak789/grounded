@@ -286,24 +286,24 @@ const seed = async () => {
       stars: 4.9,
     });
 
-    // const ifElse = await Product.create({
-    //   name: `If/else`,
-    //   description:
-    //     'If you drink this blend, good things will happen. Else, watch out!',
-    //   price: 24.0,
-    //   quantity: 20,
-    //   imageUrl: null,
-    //   stars: 4.8,
-    // });
+    const ifElse = await Product.create({
+      name: `If Else`,
+      description:
+        'If you drink this blend, good things will happen. Else, watch out!',
+      price: 2400,
+      inventoryQuantity: 200,
+      imageUrl: "https://i.imgur.com/J0qmJsM.jpeg",
+      stars: 4.8,
+    });
 
-    // const gitGoing = await Product.create({
-    //   name: 'Git Going',
-    //   description: `An early morning light roast blend to give you energy to get your day started!`,
-    //   price: 23.0,
-    //   quantity: 20,
-    //   imageUrl: null,
-    //   stars: 4.4,
-    // });
+    const gitGoing = await Product.create({
+      name: 'Git Going',
+      description: `An early morning light roast blend to give you energy to get your day started!`,
+      price: 23.0,
+      inventoryQuantity: 120,
+      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      stars: 4.4,
+    });
 
     // const zemlak = await Product.create({
     //   name: 'Zemlak',
