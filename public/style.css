@@ -1,5 +1,7 @@
 @import url("bootswatch.css");
 @import url("products.css");
+@import url("singleproduct.css");
+@import url("navbar.css");
 
 img {
   width: 200px;

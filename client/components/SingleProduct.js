@@ -71,7 +71,7 @@ const SingleProduct = ({ match }) => {
   // SINGLE PRODUCT COMPONENT RENDER*****************************************************
   return (
     <>
-      <Link to='/products'>Go Back</Link>
+      <Link className="go-back" to='/products'>Go Back</Link>
       <h1 id='single-coffee-title'>{singleProduct.name}</h1>
       <div className='singe-coffee-container'>
         <img src={singleProduct.imageUrl} id='singe-coffee-img' />
@@ -93,7 +93,7 @@ const SingleProduct = ({ match }) => {
                 <option value='3'>3</option>
               </select>
             </p>
-            <button onClick={addToCartHandler} type='button'>
+            <button className="button1" onClick={addToCartHandler} type='button'>
               Add To Cart
             </button>
           </div>
@@ -115,8 +115,6 @@ const SingleProduct = ({ match }) => {
         )}
       </div>
     </div>
-
-
     </>
   );
 
