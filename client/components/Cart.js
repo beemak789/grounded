@@ -13,10 +13,14 @@ import { priceFunction } from "../frontendFunctions";
 //The variables inside my if block should have no affect on the guest cart "else" block
 
 const Cart = () => {
-
   let history = useHistory();
   const goCart = () => {
     history.push("/cart");
+  };
+
+  // Checkout Button
+  const checkoutHandler = () => {
+    history.push("/checkout");
   };
 
   const dispatch = useDispatch();
@@ -25,7 +29,6 @@ const Cart = () => {
   const user = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.thisCart);
 
-
   //This cannot change or user cart won't run
   useEffect(() => {
     if (user !== null) {
@@ -33,24 +36,24 @@ const Cart = () => {
     }
   }, [user]);
 
-
-// USER CART BEGINS HERE************************************************************************
+  // USER CART BEGINS HERE************************************************************************
   if (user && user.id) {
-
     //SingleProduct Quantity Totals
     const products = cart.products || [];
-    const singleProductQuantity = products.map((product) => {
-      return product.Cart_Product.quantity
-    }) || {}
+    const singleProductQuantity =
+      products.map((product) => {
+        return product.Cart_Product.quantity;
+      }) || {};
     const cartQuantity = singleProductQuantity.reduce((accumulator, value) => {
-      return accumulator + value
-    }, 0)
+      return accumulator + value;
+    }, 0);
 
     //Delete Button
     const deleteItemHandler = (event) => {
       dispatch(deleteProduct(user.id, event.target.name));
       goCart();
     };
+
     //Cart Total Derivative Variables
     const cartProductQuantity = products.map((product) => {
       return product.Cart_Product.quantity;
@@ -88,7 +91,8 @@ const Cart = () => {
                   <span>{product.name}</span>
 
                   <span>
-                    | {product.Cart_Product ? product.Cart_Product.quantity : 0} bag(s) |
+                    | {product.Cart_Product ? product.Cart_Product.quantity : 0}{" "}
+                    bag(s) |
                   </span>
                   <span> ${product.price / 100} </span>
 
@@ -113,8 +117,7 @@ const Cart = () => {
               <h2>Subtotal: ${priceFunction(total)} </h2>
             </span>
 
-            <button>Checkout</button>
-
+            <button onClick={checkoutHandler}>Checkout</button>
           </div>
         </div>
       </>
@@ -127,7 +130,7 @@ const Cart = () => {
       0
     );
     const subtotal = products.reduce(
-      (sum, product) => sum + product.price/100 * product.qtyBags,
+      (sum, product) => sum + (product.price / 100) * product.qtyBags,
       0
     );
     const deleteItemHandler = (event) => {
@@ -138,7 +141,7 @@ const Cart = () => {
       goCart();
     };
 
-  //********* CART COMPONENT ****************************** ****************************************/
+    //********* CART COMPONENT ****************************** ****************************************/
     return (
       <>
         <h1 id="cart-title">Shopping Cart</h1>
@@ -174,8 +177,7 @@ const Cart = () => {
             <br />
             <span id="cart-subtotal">Subtotal: ${subtotal}</span>
             <br />
-            <button>Checkout</button>
-            <button>Empty Cart - NA</button>
+            <button onClick={checkoutHandler}>Checkout</button>
           </div>
         </div>
       </>

@@ -15,6 +15,7 @@ import AllProducts from "./components/AllProducts";
 import Cart from "./components/Cart";
 import { me } from "./store/auth";
 import AddProduct from "./components/AddProduct";
+import Checkout from "./components/Checkout";
 
 /**
  * COMPONENT
@@ -41,6 +42,7 @@ function Routes() {
           <Route path="/users" component={AllUsers} />
           <Route path="/cart" component={Cart} />
           <Route path="/addProduct" component={AddProduct} />
+          <Route path="/checkout" component={Checkout} />
           <Redirect to="/" />
         </Switch>
       ) : (
@@ -51,6 +53,7 @@ function Routes() {
           <Route exact path="/products" component={AllProducts} />
           <Route path="/products/:id" component={SingleProduct} />
           <Route path="/cart" component={Cart} />
+          <Route path="/checkout" component={Checkout} />
         </Switch>
       )}
     </div>

@@ -1,4 +1,11 @@
 .all-coffee-container {
   display: flex;
-  justify-content: space-evenly;
+  flex-wrap: wrap,
+  /* justify-content: space-evenly; */
 }
+
+/* #coffee-item {
+  display: flex,
+} */
+
+/* justify content and space between for nav bar container */
