@@ -9,9 +9,11 @@ import {authenticate} from '../store'
   const {name = "", displayName = "", handleSubmit = null, error = {}} = props
 
   return (
-    <div>
+    <div className="auth-form">
+      <h1>Sign In </h1>
+      <p>Sign into your Grounded Coffee member account</p>
       <form onSubmit={handleSubmit} name={name}>
-        <div>
+        <div className="username-form">
           <label htmlFor="username">
             <small>Username</small>
           </label>
