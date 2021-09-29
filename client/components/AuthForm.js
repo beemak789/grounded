@@ -10,8 +10,13 @@ import {authenticate} from '../store'
 
   return (
     <div className="auth-form">
+
       <h1>Sign In </h1>
       <p>Sign in or join Grounded for your daily dose of coffee.</p>
+
+      <h1>Hello there </h1>
+      <p>Sign in or join Grounded for your daily dose of coffee.</p>
+
       <form onSubmit={handleSubmit} name={name}>
         <div className="username-form">
           <label htmlFor="username">
@@ -25,8 +30,9 @@ import {authenticate} from '../store'
           </label>
           <input name="password" type="password" />
         </div>
+        <br />
         <div>
-          <button type="submit">{displayName}</button>
+          <button className="button3" type="submit">{displayName}</button>
         </div>
         {/* {error && error.response && <div> {error.response.data} </div>} */}
       </form>
