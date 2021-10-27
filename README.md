@@ -25,14 +25,18 @@ Checkout our deployed website: https://grounded-cafe.herokuapp.com/.
 
 Whether you are a guest or you are signed up and logged in, you will have access to the folloing functions:
 
-<img src="public/ProductList.png" height=170 width=250>
+
 Browsing: View an up to date list of all of the coffee beans currently in stock.
 
-<img src="public/PurchasingProduct.png" height=170 width=320>
+<img src="public/ProductList.png" height=170 width=250>
+
 Product Info/Add to Cart: View single product information and ability to add to cart.
 
-<img src="public/ShoppingCart.png" height=170 width=300>
+<img src="public/PurchasingProduct.png" height=170 width=320>
+
 Persistent Shopping Cart: Access to a persistent shopping cart that you can modify.
+
+<img src="public/ShoppingCart.png" height=170 width=300>
 
 ## Future Considerations:
     Payment processing
