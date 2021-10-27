@@ -5,11 +5,11 @@
 Checkout our deployed website: https://grounded-cafe.herokuapp.com/.
 
 ## Webpage Snippets
-<img src="public/LandingPage.png" width=250>
-<img src="public/ProductList.png" >
-<img src="public/PurchasingProduct.png" >
-<img src="public/ShoppingCart.png" height=200>
-<img src="public/PurchasingProduct.png">
+<img src="public/LandingPage.png" height= 170 width=250>
+<img src="public/ProductList.png" height=170 width=250>
+<img src="public/PurchasingProduct.png" height=170 width=320>
+<img src="public/ShoppingCart.png" height=170 width=300>
+
 
 
 ## Getting Started
