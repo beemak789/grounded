@@ -16,8 +16,6 @@
     "test:dev": "npm run test -- --watch",
     "test:dev:models": "npm run test:dev -- --grep=model",
     "test:dev:routes": "npm run test:dev -- --grep=route",
-    "heroku-prebuild": "npm install -f",
-    "heroku-postbuild": "npm run prod"
   },
   "author": "Fullstack Academy of Code",
   "license": "MIT",
