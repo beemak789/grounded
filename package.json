@@ -3,6 +3,10 @@
   "version": "2.0.0",
   "description": "An ecommerce website for luxurious and trendy coffees'!",
   "main": "index.js",
+  "engines": {
+    "node": "14.17.0",
+    "npm": "6.14.13"
+  },
   "scripts": {
     "build": "webpack",
     "build:dev": "npm run build -- --watch --mode=development",
