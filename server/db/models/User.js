@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
 const axios = require('axios');
 const sequelize = require('sequelize');
+require("dotenv").config();
 
 const SALT_ROUNDS = 5;
 
