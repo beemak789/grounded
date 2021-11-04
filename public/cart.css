@@ -1,11 +1,17 @@
 .button2:hover {
-  background-color: #dff9b5;
+  background-color: brown;
 }
 
 .button2 {
-  padding: 0.3em 3.2em;
+  padding: 0.5em 5.0em;
   transition: all 0.2s;
+  border-radius: 3px;
+  width: 240px;
+  color: white;
+  background-color: #5a5a5a;
 }
+
+/* #5a5a5a ligher */
 
 .cart-container {
   min-height: 100vh;

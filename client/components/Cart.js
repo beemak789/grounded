@@ -97,9 +97,11 @@ const Cart = () => {
                   <span> ${product.price / 100} </span>
 
                   <span>
-                    <button onClick={deleteItemHandler} name={product.id}>
+                    <div onClick={deleteItemHandler} name={product.id}
+                    className="button"
+                    >
                       Remove Item
-                    </button>
+                    </div>
                   </span>
                 </div>
               );
@@ -163,9 +165,9 @@ const Cart = () => {
                   <span> ${priceFunction(product.price)} </span>
                   <span>
                     <br />
-                    <button className="button2" onClick={deleteItemHandler} name={product.id}>
+                    <div className="button2" onClick={deleteItemHandler} name={product.id}>
                       Remove Item
-                    </button>
+                    </div>
                   </span>
                 </div>
               );

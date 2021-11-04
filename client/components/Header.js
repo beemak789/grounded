@@ -18,9 +18,9 @@ const Header = () => {
   };
 
   return (
-    <div>
-      <Navbar>
-        <Container>
+    <div className="navbar-wrapper">
+      {/* <Navbar> */}
+        {/* <Container> */}
           {user && user.id ? (
             <div id='nav-container'>
               <div className='nav-brand'>
@@ -48,15 +48,15 @@ const Header = () => {
                 <Link to='/'>Grounded</Link>
               </div>
               <div className='nav-links'>
-                <Link to='/products'>All</Link>
-                <Link to='/login'>Login</Link>
-                <Link to='/signup'>Sign Up</Link>
-                <Link to='/cart'>Cart</Link>
+                <Link className='navigation' to='/products'>All</Link>
+                <Link className='navigation' to='/login'>Login</Link>
+                <Link className='navigation' to='/signup'>Sign Up</Link>
+                <Link className='navigation' to='/cart'>Cart</Link>
               </div>
             </div>
           )}
-        </Container>
-      </Navbar>
+        {/* </Container> */}
+      {/* </Navbar> */}
       <hr />
     </div>
   );
