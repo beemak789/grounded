@@ -47,7 +47,7 @@ const Header = () => {
                 <Link to='/'>Grounded</Link>
               </div>
               <div className='nav-links'>
-                <Link className='navigation' to='/products'>All Products</Link>
+                <Link className='navigation' to='/products'>Shop Coffee</Link>
                 <Link className='navigation' to='/login'>Login</Link>
                 <Link className='navigation' to='/signup'>Sign Up</Link>
                 <Link className='navigation' to='/cart'>Cart</Link>
