@@ -97,11 +97,10 @@ const Cart = () => {
                   <span> ${product.price / 100} </span>
 
                   <span>
-                    <div onClick={deleteItemHandler} name={product.id}
-                    className="button"
+                    <button onClick={deleteItemHandler} name={product.id}
                     >
                       Remove Item
-                    </div>
+                    </button>
                   </span>
                 </div>
               );
