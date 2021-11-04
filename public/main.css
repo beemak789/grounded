@@ -13,14 +13,36 @@
 
 
 #landing-text {
-  font-size: 100px;
-  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  color: #3C2F2F;
+  text-transform: lowercase;
+  font-size: 40px;
+  font-weight: bold;
   position: absolute;
-  top: 50%;
-  left: 35%;
+  top: 55%;
+  left: 30%;
   transform: translate(-50%, -50%);
-  text-shadow: 7px 7px rgb(248, 246, 246);
+  /* text-shadow: 7px 7px rgb(248, 246, 246); */
 }
+
+#coffee-span {
+  color: #CD2626;
+}
+
+.shop-now-button {
+  background-color: #DB2929;
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 18px;
+  border-color: whitesmoke;
+  padding: 10px 30px;
+  border-radius: 10px;
+  position: absolute;
+  top:75%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+
 .home-image {
   height: 100vh;
   width: 100%;

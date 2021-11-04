@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { logout, me } from '../store/auth';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
+
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -48,7 +47,7 @@ const Header = () => {
                 <Link to='/'>Grounded</Link>
               </div>
               <div className='nav-links'>
-                <Link className='navigation' to='/products'>All</Link>
+                <Link className='navigation' to='/products'>All Products</Link>
                 <Link className='navigation' to='/login'>Login</Link>
                 <Link className='navigation' to='/signup'>Sign Up</Link>
                 <Link className='navigation' to='/cart'>Cart</Link>

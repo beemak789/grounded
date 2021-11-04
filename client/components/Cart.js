@@ -164,9 +164,9 @@ const Cart = () => {
                   <span> ${priceFunction(product.price)} </span>
                   <span>
                     <br />
-                    <div className="button2" onClick={deleteItemHandler} name={product.id}>
+                    <button className="button2" onClick={deleteItemHandler} name={product.id}>
                       Remove Item
-                    </div>
+                    </button>
                   </span>
                 </div>
               );
