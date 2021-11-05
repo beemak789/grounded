@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { logout, me } from '../store/auth';
 
-
 const Header = () => {
   const dispatch = useDispatch();
   let user = useSelector((state) => state.auth);
@@ -13,49 +12,53 @@ const Header = () => {
 
   const handleClick = () => {
     dispatch(logout());
-    // history.push("/");
+    history.push("/");
   };
 
   return (
-    <div className="navbar-wrapper">
-      {/* <Navbar> */}
-        {/* <Container> */}
-          {user && user.id ? (
-            <div id='nav-container'>
-              <div className='nav-brand'>
-                <Link to='/'>grounded</Link>
-              </div>
-              <div className='nav-links'>
-                <Link to='/products'>All</Link>
-                <Link to='/me'>Me</Link>
-                <Link to='/cart'>Cart</Link>
-                {user.isAdmin ? (
-                  <>
-                    <Link to='/users'>All Users</Link>
-                  </>
-                ) : (
-                  <></>
-                )}
-                <a href='#' onClick={handleClick}>
-                  Logout
-                </a>
-              </div>
-            </div>
+    <div className='navbar-wrapper'>
+      <div id='nav-container'>
+        <div className='nav-brand'>
+          <Link to='/'>Grounded</Link>
+        </div>
+        <div className='nav-links'>
+        {/* if user is admin, access to all users */}
+          {user && user.isAdmin ? (
+            <>
+              <Link to='/users'>All Users</Link>
+            </>
           ) : (
-            <div id='nav-container'>
-              <div className='nav-brand'>
-                <Link to='/'>Grounded</Link>
-              </div>
-              <div className='nav-links'>
-                <Link className='navigation' to='/products'>Shop Coffee</Link>
-                <Link className='navigation' to='/login'>Login</Link>
-                <Link className='navigation' to='/signup'>Sign Up</Link>
-                <Link className='navigation' to='/cart'>Cart</Link>
-              </div>
-            </div>
+            <>
+            {/* else, if just a  user, they can shop coffee and see own profile */}
+              <Link className='navigation' to='/products'>
+                Shop Coffee
+              </Link>
+              {user && user.id && <Link className='navigation' to='/me'>Profile</Link>}
+            </>
           )}
-        {/* </Container> */}
-      {/* </Navbar> */}
+
+          {/* guest */}
+          {!user && (
+            <>
+              <Link className='navigation' to='/login'>
+                Login
+              </Link>
+              <Link className='navigation' to='/signup'>
+                Sign Up
+              </Link>
+            </>
+          )}
+          <Link className='navigation' to='/cart'>
+            Cart
+          </Link>
+          {/* if person is a member, they can logout */}
+          { user && (
+            <Link className='navigation' to='/logout' onClick={handleClick}>
+              Logout
+            </Link>
+          )}
+        </div>
+      </div>
       <hr />
     </div>
   );

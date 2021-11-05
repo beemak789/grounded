@@ -35,7 +35,7 @@
   font-family: 'Ubuntu', sans-serif;
   font-size: 18px;
   border-color: whitesmoke;
-  padding: 10px 30px;
+  padding: 12px 32px;
   border-radius: 10px;
   position: absolute;
   top:75%;
@@ -43,18 +43,27 @@
   transform: translate(-50%, -50%);
 }
 
+.shop-now-button:hover {
+  background-color: #FF5721;
+}
+
 .member-login {
   font-family: 'Ubuntu', sans-serif;
   color: whitesmoke;
   border-color: whitesmoke;
   background-color: 	#8B2500;
-  padding: 10px 30px;
+  padding: 12px 32px;
   border-radius: 10px;
   position: absolute;
   top:75%;
   left: 37%;
   transform: translate(-50%, -50%);
 }
+
+.member-login:hover {
+  background-color: 	#CD5555;
+}
+
 
 .home-image {
   height: 100vh;
