@@ -71,10 +71,11 @@ const SingleProduct = ({ match }) => {
   // SINGLE PRODUCT COMPONENT RENDER*****************************************************
   return (
     <>
+       <div className="go-back">
      <Link
-     className="go-back"
      to='/products'
-     >Go Back</Link>
+     ><img className="go-back-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5E4kteNGkK_V5iCfmX6zfKVRUzXnw-00xcrmv6RzEMNuqa01GcNQXHjyhdQHKXqaVbss&usqp=CAU"/></Link>
+     </div>
     <div className="single-coffee-top">
       <h1 id='single-coffee-title'>{singleProduct.name}</h1>
       <div className='singe-coffee-container'>
