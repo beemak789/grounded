@@ -67,11 +67,15 @@ const SingleProduct = ({ match }) => {
     return <h1>Loading...</h1>;
   }
   const isInStock = singleProduct && singleProduct.inventoryQuantity > 0;
-  console.log('single product --->', singleProduct);
+
   // SINGLE PRODUCT COMPONENT RENDER*****************************************************
   return (
     <>
-      <Link className="go-back" to='/products'>Go Back</Link>
+     <Link
+     className="go-back"
+     to='/products'
+     >Go Back</Link>
+    <div className="single-coffee-top">
       <h1 id='single-coffee-title'>{singleProduct.name}</h1>
       <div className='singe-coffee-container'>
         <img src={singleProduct.imageUrl} id='singe-coffee-img' />
@@ -114,6 +118,7 @@ const SingleProduct = ({ match }) => {
           <div> </div>
         )}
       </div>
+    </div>
     </div>
     </>
   );

@@ -15,7 +15,7 @@ const seed = async () => {
       description:
         'Wind down with our 100% certified organic and non-GMO blend of Hondouran beans. This artisan blend hints at honey, caramel, and cocoa.',
       inventoryQuantity: 10,
-      imageUrl: 'https://i.imgur.com/aNxqxjb.jpeg',
+      imageUrl: 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTgfmph79pQPhUhoJHAVJWJCSgBorACCB5fJzbpHyflhZpQB6Mb5cv4YCAIEaFtTx2wdHCghn8a5etDav9B5gGaTrwu0_vi&usqp=CAE',
       price: 2599,
       stars: 4.0,
     });
@@ -25,7 +25,7 @@ const seed = async () => {
       description:
         'Small batch roasted coffee that has a cult following stronger than qAnon. This blend has a strong but clean taste with no trace of bitterness. The organic beans are sourced from rain forests in Columbia, Guatemala and Sumatra.',
       inventoryQuantity: 5,
-      imageUrl: 'https://i.imgur.com/Ytkx0eq.jpeg',
+      imageUrl: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRfb4pjxEkqRs5KRSobyiKKAYSMxToSvX14yPEeLFA-WFMyDMaPfe9VZpVd9eEQAdNIgx2RGfjgAAiQgA5qC4RKBK7Hbc_zWP9Uplrg6e7phVV8ijkIjoz4&usqp=CAE',
       price: 2999,
       stars: 4.5,
     });
@@ -35,7 +35,7 @@ const seed = async () => {
       description:
         'Feeling like you want some excitement?  Turn to these peaberry coffee beans that offer a tarty blend of acidity and sweetness guaranteed to wake you up and put a mischevious smile on your face.',
       inventoryQuantity: 0,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcScqm-fEo1JcQtZ-35pyKEDDaQkulwrJNnn2Y7tUsRsrkdBgNL9oAifdrVG0VwKF5jeL_e6jyfvO7QEe84FpMzCOYzwh08HsflRKSxB-UbSFF8f--xW9tsQ&usqp=CAE',
       price: 2799,
       stars: 4.0,
     });
@@ -45,7 +45,7 @@ const seed = async () => {
       description:
         'Handcrafted organic blend from Typica and Caturra. Each cup will taste of sweet cherries.',
       inventoryQuantity: 3,
-      imageUrl: "https://i.imgur.com/J0qmJsM.jpeg",
+      imageUrl: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTvo-g3hPlXraTEXaYcWFtmIfAcm-qp3--_BdSOJVyySTQNvUjxs41bJt7fd9swWAq3TcuZJSM--aJnVR6TD2ArSei3uumOxcfNE6vgKSIQT_yC32KdHpXC&usqp=CAE",
       price: 2799,
       stars: 3.5,
     });
@@ -55,7 +55,7 @@ const seed = async () => {
       description:
         'This bold and dark roast has the sweetness of a medium roast and the unique attributes of peaberry. The blend includes ethically sourced organic beans from Colombia, Hondura and Ethiopia.',
       inventoryQuantity: 100,
-      imageUrl: "https://i.imgur.com/aNxqxjb.jpeg",
+      imageUrl: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQlqletA0xRLbet-TNTRJz3Gxh6buqqQPJf3FB3HAQk_BBbeogTae9qIB1ynl3rKkMulHvL_fh44-wtSwyuJrQNO_o89c0S06pPYOPEo5scadS02ttzbsfRPDM&usqp=CAE",
       price: 2999,
       stars: 3.5,
     });
@@ -65,7 +65,7 @@ const seed = async () => {
       description:
         'This 100% free trade Brazilian Arabica blends deep notes of peaches with a smooth and creamy finish.',
       inventoryQuantity: 10,
-      imageUrl: 'https://i.imgur.com/Ytkx0eq.jpeg',
+      imageUrl: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTPanFHms4lJNTzO-XQidxFB_9lsbbxqw8QfStDWb-o4cKYr2PDeRFIm_AXpBwarM72ZUpp0mt9wlcJ15MRx7-GgSTy9iVQ2Fg8973d68qvGTFQfcIk2wLhGg&usqp=CAE',
       price: 2799,
       stars: 4.0,
     });
@@ -75,7 +75,7 @@ const seed = async () => {
       description:
         'Free trade and gluten free Hondouran beans which result in a swirl of vanilla, caramel and roses. Smooth and creamy, this light roast can get you through any week.',
       inventoryQuantity: 20,
-      imageUrl: 'https://i.imgur.com/Ytkx0eq.jpeg',
+      imageUrl: 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTjKLZn8VUZKKbt2-xnOCCxqwJtw7Uuj4T7q8Y6NSg0Lom0adLe_NivDF1t_yhm_ORZNhtPv7cxtJJiPm0CKD9iAMxGqGZHpMnqKw9toOxUmdbwlScf42hP&usqp=CAE',
       price: 2599,
       stars: 4.5,
     });
@@ -85,7 +85,7 @@ const seed = async () => {
       description:
         'Free trade and organic blend of the strongest beans that we could find. Actual beans are a secret. However, this dark roast is creamy and deep. Tastes like hazenut vanilla with a hint of cinnamon.',
       inventoryQuantity: 200,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRry4straAuII_Qvjflzvf7DUurZqS5IzDxqUMsenWRbinyfSgMbdjSLhlYLJJe-K4KQld7gpl1ejnmmGXgk8Ypw63PFvBHl3-WktY3UH-vfZQk0KtjIN8F&usqp=CAE',
       price: 4999,
       stars: 4.5,
     });
@@ -95,7 +95,7 @@ const seed = async () => {
       description:
         'Some days you just want to take your time and that is fine.  Pour yourself a cup of this delicious Kopi luwak coffee from Indonesia.',
       inventoryQuantity: 25,
-      imageUrl: 'https://i.imgur.com/aNxqxjb.jpeg',
+      imageUrl: 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTJTf9oKaKksn32egPVyogaJ5eJcTGvDJ051A110rajvlr4AqvoMd7aPAOSArenwkAP96_kY047mTQLdNcokL0MOV5jCyh2ja0NytEO_Is59rJzT0cQcWA3gg&usqp=CAE',
       price: 5799,
       stars: 5.0,
     });
@@ -105,7 +105,7 @@ const seed = async () => {
       description:
         'Chocolate makes everything okay. This blend of honduran dark roast throws you into chocolate heaven.',
       inventoryQuantity: 200,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR364SRWifpLMELNygVCbreDGZXUN5dsCptf7WNNu71zphBQ5s_gY8At4d-gWemLq6AITH3ZMGPA1b4G37K_dtfNCyDoXtQZ-mFVGwAmqLTMOt8KYqdxNnG4Q&usqp=CAE',
       price: 2799,
       stars: 4.0,
     });
@@ -115,7 +115,7 @@ const seed = async () => {
       description:
         'A complex coffee with an exotic and syrupy body with hints of chocolate, vanilla and spice. Does well as a light roast and dark roast.',
       inventoryQuantity: 60,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSJBTiW-N_9b-MJyspPpHCrIv0F5H1zzGhRTufSqTE1ulyrbqLguIUFDYbK6nC91IC0zhT4OQJzt3pFcfnmw-HzOAXreMMza0XCE_fRy9mYR6P0MG5qrtrH&usqp=CAE',
       price: 3999,
       stars: 3,
     });
@@ -125,7 +125,7 @@ const seed = async () => {
       description:
         'The trademark “Whipped” removes caffeine from coffee without the use of solvents or chemicals. This coffee is characterized by delicate sweetness, gentle acidity and round flavor and suitable for roasting and brewing as either an espresso or drip brew.',
       inventoryQuantity: 10,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcR0yxh8VpgJwYvXc3BAgrGHqF5J8CGr1_vTc-2NIdSU1cI-ZOirnUNuOmC1aRmIe5nP9LaXouacY_KY7gofKRX9FB5HO24JSj3-OeBH4tMofjV5GHE22QUm0g&usqp=CAE',
       price: 1499,
       stars: 4.5,
     });
@@ -135,7 +135,7 @@ const seed = async () => {
       description:
         'An enticing aroma of floral and spice greets the nose. This pleasing cup possesses a sweet and rounded taste along with a delicate acidity and medium body characteristic of coffee blended from South American origins.',
       inventoryQuantity: 200,
-      imageUrl: 'https://i.imgur.com/aNxqxjb.jpeg',
+      imageUrl: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSHyPjOOvoeD8uEZNjEVx2ZGGq-RfpkeY4Ack0CRpIjhRf8Cb3VVKqrosv6kfFLfBvXPJrpknpxYKdaznH9Q8B6c-gKWRTiu2r94X4lY_mWbbWS86Xizhlp&usqp=CAE',
       price: 1499,
       stars: 4.5,
     });
@@ -145,7 +145,7 @@ const seed = async () => {
       description:
         'A soaring lightness and lovely balance of sweet and dry tones distinguishes this Costa Rican coffee. This is the coffee equivalent of a fine Beaujolais, with its dry, bright tones and delicate sweetness. Its clean, crisp character will please coffee lovers.',
       inventoryQuantity: 35,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSsiYhELGO964lsBmQVZP3it91gQjuEFB9ILdvgoG-g_VfC80hRNERoyVzzCZNYoNI5fvCOV0js9Utvwlqfq94biPyuYwLIKO0JMcHa4uqRZN_sotJf_rYgIw&usqp=CAE',
       price: 3599,
       stars: 3.5,
     });
@@ -155,7 +155,7 @@ const seed = async () => {
       description:
         'Another of the classic Ethiopian coffee regions, Sidamo coffees are known for medium body, delicate fruits, spice, and citrus. Our FTO Natural Sidamo fits the bill.',
       inventoryQuantity: 35,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTBUGtN3WoQBnyU9fpd2a9xNJWIbTI7a9DPtAswdC9F65Qi2lMEJIx6hBmorxFFdglxnOxtgaDfd7DsYa43lXPVa1ZTavl-3Bcmt_ByH1g1Sg7o6l0Mb6zi&usqp=CAE',
       price: 4599,
       stars: 3.5,
     });
@@ -166,7 +166,7 @@ const seed = async () => {
         'A striking combination of nutty, chocolaty aromas greet the expectant nose. Careful blending of coffees from Indonesia and Central America creates an exceptionally well balanced taste providing a bright, yet deep-toned acidity with a delicate sweetness. An exceptional cup of coffee!',
       price: 1099,
       inventoryQuantity: 35,
-      imageUrl: 'https://i.imgur.com/aNxqxjb.jpeg',
+      imageUrl: 'https://cdn.shopify.com/s/files/1/0779/9179/products/12oz_right_espresso_1188x1368_ea097999-c09a-4930-8ef0-32c2b90b609a_x390.png?v=1602703524',
       stars: 2.5,
     });
 
@@ -176,17 +176,17 @@ const seed = async () => {
         'This region’s rich volcanic soil and cool weather provide the perfect conditions to produce one of the world’s best coffees.  It offers an exquisite roundness and pleasant mouth-feel, which can satisfy the most demanding palates.',
       price: 3599,
       inventoryQuantity: 250,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSkluaT_oIfBkc8UsSU2xiu85hpPiOsHsJRHs_iFGz4utxWwA_6G1HiS36iNbLNXvcD8MagxIMbcBuYu2QhqYGBvRuEhOu4qkxgeuTInJhWu0HEpplxOYNjd5A&usqp=CAE',
       stars: 3,
     });
 
     const brewedAwake = await Product.create({
-      name: 'Brewed Awakening',
+      name: 'Cold Brewed Awakening',
       description:
         'Aromatic hints of spice and caramel with flavor notes of berries and citrus. Full bodies with honeyed sweetness.',
       price: 1899,
       inventoryQuantity: 250,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQILnDINuRD2xG00hjccwWaMSqpxLi0-8KxoGLXKfAJi-9_1bT9xnJ0FWvOhz32FhepaI_igbnZGEXTjJ662-hRFIPbSx1YsEXww8c_GJrsttMC-vgTvQQssQ&usqp=CAE',
       stars: 3,
     });
 
@@ -196,7 +196,7 @@ const seed = async () => {
         'At their best, Peru coffees are delicately sweet, round, and gentle acidity. This Peru is delicately sweet, fragrant, delicate yet rich, with a discreet but vibrant acidity. Makes a fine single origin espresso in the classic northern Italian style.',
       price: 1899,
       inventoryQuantity: 90,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSZUBFCiflSBA0RcmVCwEPGSeNXP0cmcsLWZnIL4Jr13HiOfZPIJHbNOAf7VLCAqaf6YCZhbplJEwOl1ewJvseqbm1YvfgeiUt4JI0xbpDMsYgvgkOu4gyv&usqp=CAE',
       stars: 4.5,
     });
 
@@ -206,7 +206,7 @@ const seed = async () => {
         'A cosmopolitan blend that combines coffees from Latin America, the Pacific, and east Africa. Fruit and chocolate-toned aromatics shimmer over robust, slightly earthy bottom tones. Edgy yet elegant.',
       price: 2599,
       inventoryQuantity: 200,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSCJapvONY89eX8pfdabJEi6DkpvdQ_AA-BZJ70MtCvgKrJfJrzOKmkbfMy_VAOpeQJl6-nAs1qE9Au4ky1AqBdZejX7QqhLjq4ybAuba2QKVSeEdC-2H7u9g&usqp=CAE',
       stars: 4.5,
     });
 
@@ -216,7 +216,7 @@ const seed = async () => {
         'A smooth light roast with tones of trailblazing and inspiring programming design.',
       price: 2000,
       inventoryQuantity: 20,
-      imageUrl: 'https://i.imgur.com/aNxqxjb.jpeg',
+      imageUrl: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcS8wzUIO5sAD4NlcHVE-Bt7fWFZ1Hm2I56hXEa-otYa8YqpSu1O3n0-IYxwkBkSUol197MM-Cc41wU-yMV66ZHlS2vt5sXp434HsZ2Ck4w&usqp=CAE',
       stars: 4.8,
     });
 
@@ -225,7 +225,7 @@ const seed = async () => {
       description: 'A zangy medium roast that will keep you coding for hours.',
       price: 2400,
       inventoryQuantity: 150,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcR7OpTfn3N8PZRVQT52yOdXVnTtbjAiGNRYLwnTrMrpYiJT4jXO24tik9O37mvP2cGXwSJnSpDNQSzJlE0_uMeIg9N_4WoDIzSEaCcDDQqwJceGKWc0GTIy&usqp=CAE',
       stars: 4.7,
     });
 
@@ -235,7 +235,7 @@ const seed = async () => {
         'A solid dark roast for the days you just need to get things done.',
       price: 2100,
       inventoryQuantity: 100,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ1yyUmmYQ9wQeA9BzUm6vUEvFifJb5pUaHfpbUjdOtyTotYK4x0dcGSqZUw1MwXaPbKEaPAiApXVNvqU-uIFsY697AiUh2idHIEp7kAEwhsUn3vI2fjOTE&usqp=CAE',
       stars: 4.5,
     });
 
@@ -244,7 +244,7 @@ const seed = async () => {
       description: 'A medium blend to accompany all your aha moments in life',
       price: 2200,
       inventoryQuantity: 150,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS3TIMLmxmFSCovL-4cmaOhRC6vFtcI6jw8vBO09HkbEsiOo7ozCdrU9-Qp2ACb1PzaMEV7ztpd-l9zf_KXkO29LClpxVERRA&usqp=CAE',
       stars: 4.8,
     });
 
@@ -254,7 +254,7 @@ const seed = async () => {
         'A hardcore blend for those nonsyncronous nights with a single throughline.',
       price: 2100,
       inventoryQuantity: 60,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRsfLtLXvq_H3h52I1_ehnNncG3OsHkKs5gGe86ypS4W7NCvA6yFAgm6XT95Qa2WnZa15kkGEGBhdzb5JtfhYimqoH-MMwAI57T34mj89Hs&usqp=CAE',
       stars: 4.5,
     });
 
@@ -264,7 +264,7 @@ const seed = async () => {
         'A complex blend with almost circular tones— this blend will leave your head spinning!',
       price: 2000,
       inventoryQuantity: 29,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSykWEvJa7mehJqWivl6XOFvPDojNDuzBbNp8j6k1KWj5pyoQTeqtR8o13ysWJzaers3qhpTF5Wbp803T-3Y_LwUncqj4yWp5Vbbixhj7lQBvXbdFd73EloNw&usqp=CAE',
       stars: 4.1,
     });
 
@@ -273,7 +273,7 @@ const seed = async () => {
       description: 'This blend will put you in a decisive true or false mood.',
       price: 2200,
       inventoryQuantity: 86,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRKD4PRi3cJzlCWXoOsHEZeXBJ3VFuqeIQSuSqcaBclvEiSCqDM6gw1WZPUxxJVivxc8zBkEVC7-zP0VVfK87KhqxnoHsyh6u-X4_43MSibPY_radbDMRHJZQ&usqp=CAE',
       stars: 4.6,
     });
 
@@ -282,7 +282,7 @@ const seed = async () => {
       description: 'A top-ranked blend for those early bootcamp mornings.',
       price: 2100,
       inventoryQuantity: 20,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTpGHxlQunuNxKxFFSEfAlIvg-gENx8_qM1vwenOIqC4wCujAYbDHh1_a8ePVbFAP9RymkZ24n7eltmABGLzw9OOLS9oqZSsRFehH3ucD0&usqp=CAE',
       stars: 4.9,
     });
 
@@ -292,7 +292,7 @@ const seed = async () => {
         'If you drink this blend, good things will happen. Else, watch out!',
       price: 2400,
       inventoryQuantity: 200,
-      imageUrl: "https://i.imgur.com/J0qmJsM.jpeg",
+      imageUrl: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSkOt7ftczvMfELyCKj_Yzl6tl1s4wCZvdcPmgBuyJGHZta3GEA4lSsZ-xlbY9gx5BUBwqHw0_60HpyNrYPhAkuyelAb4BMb7bwXYLAcXOX57g4bAezjj4r&usqp=CAE",
       stars: 4.8,
     });
 
@@ -301,161 +301,9 @@ const seed = async () => {
       description: `An early morning light roast blend to give you energy to get your day started!`,
       price: 2300,
       inventoryQuantity: 120,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
+      imageUrl: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRNqK9b6J8aiwUh7zQUyqeSNM6V7nXdYdFNPqG6tPnEClN9ysC2j7CA3MbUNqsw5CgYlpi0GbQQGJQiws3sb9_aS_05n5pEAexz_ARUjDEnINuDnfoGIxX9&usqp=CAE',
       stars: 4.4,
     });
-
-    const zemlak = await Product.create({
-      name: 'Zemlak',
-      description:
-        'Impedit earum porro eos sequi velit molestias facere. Ullam est harum repellat saepe et totam explicabo eum labore. Occaecati impedit eum. Voluptates officiis sit in quibusdam molestiae deserunt dicta velit ex. Quas adipisci iure.',
-      price: 2220,
-      inventoryQuantity: 96,
-      imageUrl: "https://i.imgur.com/J0qmJsM.jpeg",
-      stars: 1,
-    });
-
-    const harvey = await Product.create({
-      name: 'Harvey',
-      description:
-        'Cumque possimus unde vero dolorum maxime in sunt. Rerum nesciunt qui. Officiis hic in ducimus natus vel eum.',
-      price: 3520,
-      inventoryQuantity: 12,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
-      stars: 5,
-    });
-
-    const glover = await Product.create({
-      name: 'Glover',
-      description:
-        'Tenetur ipsum eligendi voluptates voluptatem architecto laboriosam totam est. A sed occaecati est. In enim rerum nobis quibusdam accusamus doloremque rerum deleniti.',
-      price: 5580,
-      inventoryQuantity: 80,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
-      stars: 4,
-    });
-
-    const nicolas = await Product.create({
-      name: 'Nicolas',
-      description:
-        'Quod labore est. Dolorum porro rem et. Libero voluptatem quidem harum ut.',
-      price: 4990,
-      inventoryQuantity: 73,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
-      stars: 4,
-    });
-
-    const yolanda = await Product.create({
-      name: 'Yolanda',
-      description:
-        'Odio eos aut consectetur eaque. Culpa et excepturi. Ullam quam voluptas porro et sit reiciendis vero vel. Et atque unde amet tempora quia.',
-      price: 6940,
-      inventoryQuantity: 11,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
-      stars: 2,
-    });
-
-    const erdman = await Product.create({
-      name: 'Erdman',
-      description:
-        'Qui sit repudiandae earum. Laboriosam sit et perspiciatis recusandae molestiae exercitationem molestiae ratione ut. Incidunt iste sint eum. Nihil molestias laborum placeat id. Suscipit non dolorum maxime veniam iste.',
-      price: 9700,
-      inventoryQuantity: 33,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
-      stars: 4,
-    });
-
-    const cole = await Product.create({
-      name: 'Cole',
-      description:
-        'Repellat ut enim magnam possimus amet reiciendis doloremque et nihil. Quia explicabo ullam id iste sunt laudantium pariatur sint. Aspernatur est corporis iste et incidunt consequatur maiores. Pariatur inventore est sit laborum natus. Eligendi dolorem cum hic dolorem corrupti. Voluptates vero corporis cum soluta.',
-      price: 8670,
-      inventoryQuantity: 89,
-      imageUrl: 'https://i.imgur.com/T63fRGe.jpeg',
-      stars: 4,
-    });
-
-    // const sheila = await Product.create({
-    //   name: 'Sheila',
-    //   description:
-    //     'Rem commodi et soluta at inventore exercitationem quia. Dignissimos sed quis illum perspiciatis. Totam beatae molestiae iste fugit sed fuga dolorem placeat explicabo. Qui dolorem dolor veniam sequi odit qui. Sed cupiditate repudiandae aut qui impedit est quo illum.',
-    //   price: 39.3,
-    //   quantity: 84,
-    //   stars: 1,
-    // });
-
-    // const carroll = await Product.create({
-    //   name: 'Carroll',
-    //   description:
-    //     'Porro voluptatem dolorum voluptatem maxime libero commodi consectetur. Beatae ut natus tenetur quidem hic suscipit. Ut et quidem in ut tenetur veniam. Quaerat et necessitatibus reprehenderit officiis.',
-    //   price: 12.5,
-    //   quantity: 24,
-    //   stars: 3,
-    // });
-
-    // const jakubowski = await Product.create({
-    //   name: 'Jakubowski',
-    //   description:
-    //     'Sit ut aut nisi quas et autem dolorem eveniet in. Voluptas quo enim numquam voluptate. Sed sequi beatae et modi beatae aspernatur eligendi quo mollitia. Vel tempore minus tenetur impedit voluptas laborum est. Dolore eum qui officia aliquam perferendis assumenda.',
-    //   price: 60.0,
-    //   quantity: 73,
-    //   stars: 3,
-    // });
-
-    // const bergnaum = await Product.create({
-    //   name: 'Bergnaum',
-    //   description:
-    //     'Id maxime consectetur omnis cumque et vel repudiandae. Illum nihil dolorem perspiciatis alias. Ut ducimus quam veritatis possimus et in sequi ipsum. Maiores quos tempora necessitatibus sapiente nihil.',
-    //   price: 80.4,
-    //   quantity: 60,
-    //   stars: 3,
-    // });
-
-    // const carter = await Product.create({
-    //   name: 'Carter',
-    //   description:
-    //     'Reiciendis quis laboriosam quod doloribus. Eius nulla voluptatem. Qui deleniti est asperiores beatae voluptates quam et eos. Libero praesentium quasi unde eius occaecati sit voluptate. Sed quia et. Et ut sed.',
-    //   price: 54.3,
-    //   quantity: 1,
-    //   stars: 3,
-    // });
-
-    // const harris = await Product.create({
-    //   name: 'Harris',
-    //   description:
-    //     'Qui quo in quo nostrum repellat laudantium maiores. Molestiae et at et voluptas harum et saepe magnam beatae. Dolorem praesentium aut saepe. Porro hic maxime porro. Illum sunt non cupiditate aliquid.',
-    //   price: 70.0,
-    //   quantity: 11,
-    //   stars: 2,
-    // });
-
-    // const melba = await Product.create({
-    //   name: 'Melba',
-    //   description:
-    //     'Sint sint et laborum et cupiditate. Eaque veritatis ex nostrum est expedita illo. Rerum id nisi quibusdam vel aut deserunt consequatur ut harum.',
-    //   price: 92.9,
-    //   quantity: 4,
-    //   stars: 1,
-    // });
-
-    // const maggio = await Product.create({
-    //   name: 'Maggio',
-    //   description:
-    //     'Nobis fugit et. Dolorem libero architecto doloribus ut nisi. Et error corporis quia odio dolores aut.',
-    //   price: 28.3,
-    //   quantity: 32,
-    //   stars: 2,
-    // });
-
-    // const skiles = await Product.create({
-    //   name: 'Skiles',
-    //   description:
-    //     'Ullam est sed aliquid. Laborum eaque est ex et quibusdam eaque voluptatibus explicabo voluptas. Et est nihil dignissimos. Magnam perferendis voluptatem aut rem repellat qui ea.',
-    //   price: 50.2,
-    //   quantity: 20,
-    //   stars: 1,
-    // });
-
     //-------------------------------------------------------------------
 
     //User Instances

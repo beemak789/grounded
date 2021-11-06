@@ -1,10 +1,8 @@
-
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { priceFunction } from "../frontendFunctions"
-import { fetchProducts, deleteProduct } from "../store/productsReducer";
-
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { priceFunction } from '../frontendFunctions';
+import { fetchProducts, deleteProduct } from '../store/productsReducer';
 
 function allProducts() {
   let products = useSelector((state) => state.allProducts);
@@ -31,7 +29,9 @@ function allProducts() {
             <div className='coffee-item' key={product.id}>
               <Link to={`/products/${product.id}`}>
                 <img src={product.imageUrl} id='coffee-item-img' />
+
                 <p>{product.name}</p>
+
                 <span id='product-price'>${priceFunction(product.price)}</span>
               </Link>
               <button onClick={deleteHandler} name={product.id}>
@@ -70,8 +70,10 @@ function allProducts() {
 
   return (
     <>
-      <h1 id='all-coffee-title'>Shop Coffee</h1>
-      {isAdmin()}
+      <div className='all-products-page'>
+        {/* <h1 id='all-coffee-title'>Shop Coffee</h1> */}
+        {isAdmin()}
+      </div>
     </>
   );
 }

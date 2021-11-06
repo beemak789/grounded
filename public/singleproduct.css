@@ -1,13 +1,16 @@
+.single-coffee-top {
+  margin-top: 80px;
+  font-family: 'Ubuntu', sans-serif;
+}
 
 #single-coffee-title{
   text-align: center;
-
 }
 
 #singe-coffee-img {
   float: left;
-  width: 400px;
-  height: 400px;
+  width: 250px;
+  height: 250px;
   margin-bottom: 1rem;
   margin-right: 2rem;
   margin-left: 2rem;

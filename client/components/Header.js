@@ -31,7 +31,7 @@ const Header = () => {
             <>
             {/* else, if just a  user, they can shop coffee and see own profile */}
               <Link className='navigation' to='/products'>
-                Shop Coffee
+                Shop
               </Link>
               {user && user.id && <Link className='navigation' to='/me'>Profile</Link>}
             </>

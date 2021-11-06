@@ -5,6 +5,7 @@
   justify-content: space-between;
   width: 70%;
   margin: auto;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 #all-coffee-title {
@@ -26,6 +27,7 @@
   transition: all 0.5s;
 }
 
+
 .product-link {
   display: flex;
   flex-direction: column;
@@ -35,6 +37,9 @@
   width: 100%;
 }
 
+.all-products-page {
+  margin-top: 25px;
+}
 
 .coffee-item:hover {
   transform: scale(1.15);
