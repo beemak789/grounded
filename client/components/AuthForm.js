@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { authenticate } from '../store';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 /**
  * COMPONENT
@@ -16,12 +16,19 @@ const AuthForm = (props) => {
 
   return (
     <div className='auth-form'>
-      <p className='sign-in-title'>Sign In </p>
-      <p className='sign-in-message'>
-        Sign into your Grounded Coffee member account
-      </p>
-
+      <p className='sign-in-title'>{displayName}</p>
       <form onSubmit={handleSubmit} name={name}>
+        {displayName === 'Sign Up' ? (
+          <div className='username-form'>
+            <label htmlFor='username'>
+              <small>First Name</small>
+            </label>
+            <label htmlFor='username'>
+              <small>Last Name</small>
+            </label>
+            <input name='firstname' type='text' />
+          </div>
+        ) : null}
         <div className='username-form'>
           <label htmlFor='username'>
             <small>Username</small>
@@ -37,36 +44,47 @@ const AuthForm = (props) => {
         <br />
         <div>
           <button className='button3' type='submit'>
-            {/* {displayName} */}
-            SIGN IN
+            {displayName}
           </button>
         </div>
       </form>
-      <div className="no-password-message">
-        <p>
-          Forgot Password?
-        </p>
+      <div className='no-password-message'>
+        <p>Forgot Password?</p>
       </div>
-      <div className="no-account-message">
-        <p>
-          Don't have an account? <Link to='/signup'> <span style={{color: "#CD2626"}}>Sign Up </span></Link>
-        </p>
-      </div>
+
+      {displayName === 'Sign Up' ? (
+        <div className='no-account-message'>
+          <p>
+            Already have an account?{' '}
+            <Link to='/login'>
+              {' '}
+              <span style={{ color: '#CD2626', textDecoration: 'none' }}>
+                Sign In{' '}
+              </span>
+            </Link>
+          </p>
+        </div>
+      ) : (
+        <div className='no-account-message'>
+          <p>
+            Don't have an account?{' '}
+            <Link to='/signup'>
+              {' '}
+              <span style={{ color: '#CD2626', textDecoration: 'none' }}>
+                Sign Up{' '}
+              </span>
+            </Link>
+          </p>
+        </div>
+      )}
     </div>
   );
 };
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
+
 const mapLogin = (state) => {
   return {
     name: 'login',
-    displayName: 'Login',
-    // error: state.auth.error
+    displayName: 'Sign In',
   };
 };
 
@@ -74,7 +92,6 @@ const mapSignup = (state) => {
   return {
     name: 'signup',
     displayName: 'Sign Up',
-    // error: state.auth.error
   };
 };
 

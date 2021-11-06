@@ -41,16 +41,15 @@ const Header = () => {
           {!user && (
             <>
               <Link className='navigation' to='/login'>
-                Login
-              </Link>
-              <Link className='navigation' to='/signup'>
-                Sign Up
+                Sign In
               </Link>
             </>
           )}
-          <Link className='navigation' to='/cart'>
-            Cart
+
+          <Link className='navigation' id="cart" to='/cart'>
+            Cart   <i class="fa fa-shopping-cart"></i>
           </Link>
+
           {/* if person is a member, they can logout */}
           { user && (
             <Link className='navigation' to='/logout' onClick={handleClick}>
