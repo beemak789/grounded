@@ -27,6 +27,10 @@
   transition: all 0.5s;
 }
 
+#product-price {
+  margin-top: -10px;
+}
+
 
 .product-link {
   display: flex;

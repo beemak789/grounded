@@ -1,11 +1,27 @@
 const router = require('express').Router();
 const {
   models: { Cart, User, Product, Cart_Product },
-
-} = require("../db");
-const { requireToken } = require("./gatekeepingMiddleware")
+} = require('../db');
+const { requireToken } = require('./gatekeepingMiddleware');
 
 //CRUD OPERATIONS [ CREATE, RETRIEVE, UPDATE, DELETE ]
+
+//@description     Get all items in cart for the guest user
+//@router          GET/api/cart
+router.get('/', async (req, res, next) => {
+  try {
+    const [guestCart, created] = await Cart.findOrCreate({
+      include: Product,
+      where: {
+        orderStatus: 'UNPAID',
+      },
+    });
+    res.send(guestCart);
+  } catch (err) {
+    next(err);
+  }
+});
+
 //@description     Get all items in cart for the user logged in/passed in
 //@router          GET/api/cart/:userId
 // https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findOrCreate
@@ -27,7 +43,7 @@ router.get('/:userId', async (req, res, next) => {
 //@description    Delete the product for the user logged in
 //@router         PUT/api/cart/:userId
 
-router.put("/:userId", requireToken, async (req, res, next) => {
+router.put('/:userId', requireToken, async (req, res, next) => {
   try {
     const productId = Number(req.body.productId);
     const [userCart, created] = await Cart.findOrCreate({
@@ -48,8 +64,7 @@ router.put("/:userId", requireToken, async (req, res, next) => {
 //@description    Add products to cart for the user logged in/passed in
 //@router         POST/api/cart/:userId
 
-router.post("/:userId", requireToken, async (req, res, next) => {
-
+router.post('/:userId', requireToken, async (req, res, next) => {
   try {
     let userIdReq = Number(req.params.userId);
     const userCart = await Cart.findOne({
@@ -91,33 +106,30 @@ router.post("/:userId", requireToken, async (req, res, next) => {
   }
 });
 
-
 //------------------------------------------------------------------------------------
 //@description    Checkout the cart for logged in/passed in
 //@router         PUT/api/cart/:userId/checkout
-router.put("/:userId/checkout", async (req, res, next) => {
+router.put('/:userId/checkout', async (req, res, next) => {
   try {
     const userCart = await Cart.findOne({
       where: {
         orderStatus: 'PAID',
         userId: req.params.userId,
         totalPrice: req.body.totalPrice,
-        totalQty: req.body.totalQty
-      }
-    })
+        totalQty: req.body.totalQty,
+      },
+    });
 
     const newCart = await Cart.create(req.body, {
       where: {
-        orderStatus: "UNPAID",
-        userId: req.params.userId
-      }
-    })
-    res.json(newCart)
+        orderStatus: 'UNPAID',
+        userId: req.params.userId,
+      },
+    });
+    res.json(newCart);
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
-})
-
-
+});
 
 module.exports = router;

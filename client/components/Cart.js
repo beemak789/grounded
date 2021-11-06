@@ -61,11 +61,11 @@ const Cart = () => {
     const productPrice = products.map((product) => {
       return product.price;
     });
-    const subtotal = productPrice.map((price, index) => {
+     const subtotal = productPrice.map((price, index) => {
       const pricePerItem = cartProductQuantity[index] * price;
       return pricePerItem;
     });
-    const total = subtotal.reduce((accumulator, value) => {
+     const total = subtotal.reduce((accumulator, value) => {
       const sum = accumulator + value;
       return sum;
     }, 0);
@@ -174,7 +174,7 @@ const Cart = () => {
           </div>
           <div className="cart-totals">
             <span id="cart-total-items">
-              You have {totalQuantity} item in your cart.{" "}
+              You have {totalQuantity} items in your cart.{" "}
             </span>
             <br />
             <span id="cart-subtotal">Subtotal: ${subtotal}</span>

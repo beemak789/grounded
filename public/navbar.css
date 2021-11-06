@@ -33,6 +33,17 @@
   justify-content: space-between;
 }
 
+.badge-circle {
+  position: 'absolute';
+  width: 38;
+  height: 38;
+  border-radius: 20;
+  margin-left: 72;
+  background-color: #CD2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 .nav-links > * {
@@ -41,6 +52,18 @@ font-weight: 300;
  margin-right: 1rem;
  margin-left: 1rem;
  font-family: 'Ubuntu', sans-serif;
+}
+
+.cart-badge {
+  text-decoration: none !important;
+}
+
+.cart-title {
+  margin-right: 7px;
+}
+
+.cart-title:hover {
+ color: #CD2626;
 }
 
 .nav-brand {

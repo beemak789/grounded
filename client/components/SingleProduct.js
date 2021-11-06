@@ -5,8 +5,7 @@ import { addProduct, increaseQty } from '../store/cartReducer';
 import { Link, useHistory } from 'react-router-dom';
 import { priceFunction } from '../frontendFunctions';
 import EditProduct from './EditProduct';
-
-
+import { Card } from '@mui/material';
 
 const SingleProduct = ({ match }) => {
   const [qty, setQty] = useState(1);
@@ -36,9 +35,10 @@ const SingleProduct = ({ match }) => {
       goCart();
       // USER LOGGED IN*******************************************************
     } else {
-			let selectedProduct = singleProduct;
-      selectedProduct.qtyBags = selectedProduct.qtyBags>1? selectedProduct.qtyBags:1;
-      const currProducts = window.localStorage.products || '[]'
+      let selectedProduct = singleProduct;
+      selectedProduct.qtyBags =
+        selectedProduct.qtyBags > 1 ? selectedProduct.qtyBags : 1;
+      const currProducts = window.localStorage.products || '[]';
       let products = JSON.parse(currProducts);
       if (products.find((product) => product.id === singleProduct.id)) {
         selectedProduct.qtyBags =
@@ -55,7 +55,7 @@ const SingleProduct = ({ match }) => {
     }
   };
 
-	//setQty function cannot be changed* or user cart won't update*
+  //setQty function cannot be changed* or user cart won't update*
   const addToQuantityHandler = (event) => {
     const qty = Number(event.target.value);
     //** Set Qty is required for updating quantity in database, this must be done locally */
@@ -71,58 +71,66 @@ const SingleProduct = ({ match }) => {
   // SINGLE PRODUCT COMPONENT RENDER*****************************************************
   return (
     <>
-       <div className="go-back">
-     <Link
-     to='/products'
-     ><img className="go-back-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5E4kteNGkK_V5iCfmX6zfKVRUzXnw-00xcrmv6RzEMNuqa01GcNQXHjyhdQHKXqaVbss&usqp=CAU"/></Link>
-     </div>
-    <div className="single-coffee-top">
-      <h1 id='single-coffee-title'>{singleProduct.name}</h1>
-      <div className='singe-coffee-container'>
-        <img src={singleProduct.imageUrl} id='singe-coffee-img' />
-        <p>${priceFunction(singleProduct.price)}</p>
-        <p>{isInStock ? 'In Stock' : 'Out of Stock'}</p>
-        {isInStock && (
-          <div>
-            <p className='dropdownMenu'>
-              <label htmlFor='quantity'>Quantity:</label>
-              <select
-                name='qty'
-                id='quantity'
-                key='quantity'
-                onChange={addToQuantityHandler}
-              >
 
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-              </select>
-            </p>
-            <button className="button1" onClick={addToCartHandler} type='button'>
-              Add To Cart
-            </button>
+        <div className='go-back'>
+          <Link to='/products'>
+            <img
+              className='go-back-image'
+              src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5E4kteNGkK_V5iCfmX6zfKVRUzXnw-00xcrmv6RzEMNuqa01GcNQXHjyhdQHKXqaVbss&usqp=CAU'
+            />
+          </Link>
+        </div>
+        <div id='single-coffee-title'>
+          <p>{singleProduct.name}</p>
+        </div>
+        <div className='single-coffee-top'>
+          <div className='singe-coffee-container'>
+            <img src={singleProduct.imageUrl} id='singe-coffee-img' />
+            <p>${priceFunction(singleProduct.price)}</p>
+            <p>{isInStock ? 'In Stock' : 'Out of Stock'}</p>
+            {isInStock && (
+              <div>
+                <p className='dropdownMenu'>
+                  <label htmlFor='quantity'>Quantity:</label>
+                  <select
+                    name='qty'
+                    id='quantity'
+                    key='quantity'
+                    onChange={addToQuantityHandler}
+                  >
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                  </select>
+                </p>
+                <button
+                  className='button1'
+                  onClick={addToCartHandler}
+                  type='button'
+                >
+                  Add To Cart
+                </button>
+              </div>
+            )}
+            <p>{singleProduct.description}</p>
+            <br />
+            <br />
+            <br />
+            <br />
+            <div>
+              {user && user.isAdmin ? (
+                <div id='edit-product'>
+                  <h2>Edit Product: </h2>
+                  <EditProduct />{' '}
+                </div>
+              ) : (
+                <div> </div>
+              )}
+            </div>
           </div>
-        )}
-        <p>{singleProduct.description}</p>
-        <br />
-        <br />
-        <br />
-        <br />
-         <div>
+        </div>
 
-        {user && user.isAdmin ? (
-          <div id = "edit-product" >
-            <h2>Edit Product: </h2>
-            <EditProduct />{' '}
-          </div>
-        ) : (
-          <div> </div>
-        )}
-      </div>
-    </div>
-    </div>
     </>
   );
-
 };
 export default SingleProduct;

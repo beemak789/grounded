@@ -1,10 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 //Action Types
-const CART_REQUEST = "CART_REQUEST";
-const ADD_PRODUCT = "ADD_PRODUCT";
-const DELETE_PRODUCT = "DELETE_PRODUCT";
-//Action Creator
+const CART_REQUEST = 'CART_REQUEST';
+const ADD_PRODUCT = 'ADD_PRODUCT';
+const DELETE_PRODUCT = 'DELETE_PRODUCT';
+const SET_GUEST_CART = 'SET_GUEST_CART';
 
+//Action Creator
 
 //This file cannot change or user cart cannot run******
 
@@ -12,12 +13,12 @@ export const setCart = (cart) => ({
   type: CART_REQUEST,
   cart,
 });
+
 const setProduct = (product) => ({
   type: ADD_PRODUCT,
   product,
 });
 
-// Thunk
 export const fetchCart = (id) => {
   return async (dispatch) => {
     try {
@@ -32,7 +33,7 @@ export const fetchCart = (id) => {
 
 export const addProduct = (userId, productId, qty) => {
   return async (dispatch) => {
-    const TOKEN = "token";
+    const TOKEN = 'token';
     const token = window.localStorage.getItem(TOKEN);
     try {
       if (token) {
@@ -45,7 +46,7 @@ export const addProduct = (userId, productId, qty) => {
             },
           }
         );
-      dispatch(setCart(data));
+        dispatch(setCart(data));
       }
     } catch (err) {
       console.log(err);
@@ -55,7 +56,7 @@ export const addProduct = (userId, productId, qty) => {
 
 export const deleteProduct = (userId, productId) => {
   return async (dispatch) => {
-    const TOKEN = "token";
+    const TOKEN = 'token';
     const token = window.localStorage.getItem(TOKEN);
     try {
       if (token) {
@@ -80,6 +81,8 @@ export const cartReducer = (state = {}, action) => {
   switch (action.type) {
     case CART_REQUEST:
       return action.cart;
+    // case SET_GUEST_CART:
+    //   return action.cart;
     case ADD_PRODUCT: {
       const products = state.products;
       const newArray = products.filter((item) => item.id !== action.product.id);

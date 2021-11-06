@@ -1,10 +1,18 @@
-.single-coffee-top {
-  margin-top: 80px;
-  font-family: 'Ubuntu', sans-serif;
-}
-
 #single-coffee-title{
   text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  border: 2px solid red;
+}
+
+.single-coffee-top {
+  align-items: center;
+  margin-top: 30px;
+  font-family: 'Ubuntu', sans-serif;
+  border: 2px solid blue;
+  width:70%;
+  margin: auto;
 }
 
 #singe-coffee-img {
@@ -38,6 +46,7 @@
 
 .go-back{
   padding: 0.3em 3.2em;
+  border: 2px solid yellow;
 }
 
 .go-back-image {
