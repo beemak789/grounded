@@ -9,7 +9,7 @@ const Home = () => {
   if (user) {
     return (
       <div className='user-welcome'>
-        <h3>Welcome, {user.username}</h3>
+        Hey, Welcome, {user.username}!
       </div>
     );
   }

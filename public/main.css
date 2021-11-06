@@ -77,6 +77,10 @@
 
 .user-welcome {
   text-align: center;
+  background-color: #A02422;
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+  padding: 5px;
 }
 
 
