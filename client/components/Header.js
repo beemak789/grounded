@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { logout, me } from '../store/auth';
 import { Badge } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import CoffeeMakerIcon from '@mui/icons-material/CoffeeMaker';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const Header = () => {
     <div className='navbar-wrapper'>
       <div id='nav-container'>
         <div className='nav-brand'>
-          <Link to='/'>Grounded</Link>
+          <Link to='/'>Grounded</Link> <CoffeeMakerIcon />
         </div>
         <div className='nav-links'>
           {/* if user is admin, access to all users */}
