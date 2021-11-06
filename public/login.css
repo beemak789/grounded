@@ -1,5 +1,24 @@
 .auth-form {
   text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.sign-in-title {
+  color: #5a5a5a;
+  margin-top: 30px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.no-password-message {
+  margin-top: 10px;
+  font-size: small;
+  color:#CD2626;
+}
+
+.no-account-message {
+  margin-top: 5px;
+  font-size: small;
 }
 
 .username-form{
@@ -11,12 +30,16 @@ label{
 } */
 
 .button3:hover {
-  background-color: #dff9b5;
+  background-color: #EE2C2C;
 }
 
 .button3 {
+  background-color: #CD2626;
   padding: 0.3em 3.2em;
   transition: all 0.2s;
+  color: white;
+  border-radius: 5px;
+  border-color: white;
 }
 
 small{
