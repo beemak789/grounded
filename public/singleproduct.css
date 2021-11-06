@@ -3,14 +3,14 @@
   font-family: 'Ubuntu', sans-serif;
   font-size: 30px;
   font-weight: 400;
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 
 .single-coffee-top {
   align-items: center;
   margin-top: 30px;
   font-family: 'Ubuntu', sans-serif;
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   width:70%;
   margin: auto;
 }
@@ -22,6 +22,15 @@
   margin-bottom: 1rem;
   margin-right: 2rem;
   margin-left: 2rem;
+  /* border: 2px solid green; */
+  margin-top: 25px;
+}
+
+.product-price {
+  margin-top: 30px;
+  font-weight: bold;
+  color:#343434;
+  /* border: 2px solid brown; */
 }
 
 .single-coffee-container {
@@ -35,25 +44,41 @@
   margin-bottom: 2rem;
 }
 
-.button1:hover {
-  background-color: #dff9b5;
+.product-details {
+  margin-top: 20px;
+  font-family: 'Rubik', sans-serif;
+}
+
+.select-quantity {
+  margin-left: 10px;
 }
 
 .button1 {
-  padding: 0.3em 3.2em;
+  padding: 0.3em 2.0em;
   transition: all 0.2s;
+  background-color: #DB2929;
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 18px;
+  border-color: whitesmoke;
+  border-radius: 10px;
+}
+
+.button1:hover {
+  background-color: #EE2C2C;
 }
 
 .go-back{
+  margin-top: 5px;
   padding: 0.3em 3.2em;
-  border: 2px solid yellow;
 }
 
 .go-back-image {
   height: 60px;
   width: 60px;
   margin-left: 5px;
-  margin-top: 20px;
+  margin-top: 5px;
+  /* border: 2px solid pink */
 }
 
 p{

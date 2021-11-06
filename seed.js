@@ -23,7 +23,7 @@ const seed = async () => {
     const coffee2 = await Product.create({
       name: 'Cult Classic',
       description:
-        'Small batch roasted coffee that has a cult following stronger than qAnon. This blend has a strong but clean taste with no trace of bitterness. The organic beans are sourced from rain forests in Columbia, Guatemala and Sumatra.',
+        'This blend has a strong but clean taste with no trace of bitterness. The organic beans are sourced from rain forests in Columbia, Guatemala and Sumatra.',
       inventoryQuantity: 5,
       imageUrl: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRfb4pjxEkqRs5KRSobyiKKAYSMxToSvX14yPEeLFA-WFMyDMaPfe9VZpVd9eEQAdNIgx2RGfjgAAiQgA5qC4RKBK7Hbc_zWP9Uplrg6e7phVV8ijkIjoz4&usqp=CAE',
       price: 2999,

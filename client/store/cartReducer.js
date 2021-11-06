@@ -3,11 +3,6 @@ import axios from 'axios';
 const CART_REQUEST = 'CART_REQUEST';
 const ADD_PRODUCT = 'ADD_PRODUCT';
 const DELETE_PRODUCT = 'DELETE_PRODUCT';
-const SET_GUEST_CART = 'SET_GUEST_CART';
-
-//Action Creator
-
-//This file cannot change or user cart cannot run******
 
 export const setCart = (cart) => ({
   type: CART_REQUEST,

@@ -86,13 +86,17 @@ const SingleProduct = ({ match }) => {
         <div className='single-coffee-top'>
           <div className='singe-coffee-container'>
             <img src={singleProduct.imageUrl} id='singe-coffee-img' />
-            <p>${priceFunction(singleProduct.price)}</p>
+
+
+            <p className="product-price">${priceFunction(singleProduct.price)}</p>
+
             <p>{isInStock ? 'In Stock' : 'Out of Stock'}</p>
             {isInStock && (
               <div>
                 <p className='dropdownMenu'>
-                  <label htmlFor='quantity'>Quantity:</label>
+                  <label htmlFor='quantity'>Quantity </label>
                   <select
+                    className="select-quantity"
                     name='qty'
                     id='quantity'
                     key='quantity'
@@ -112,7 +116,7 @@ const SingleProduct = ({ match }) => {
                 </button>
               </div>
             )}
-            <p>{singleProduct.description}</p>
+            <p className="product-details">{singleProduct.description}</p>
             <br />
             <br />
             <br />
