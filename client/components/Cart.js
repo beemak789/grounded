@@ -117,9 +117,13 @@ const Cart = () => {
         <div className='cart-totals'>
           <span id='cart-total-items'>
             {products.length === 0 ? (
-              <div  className="cart-empty-container" >
-              <ShoppingCartIcon style={{fill: "#EE2C2C", width: 50, height: 50}} />
-              <p style={{ textAlign: 'center', marginTop: "20px" }}>Your Cart is Empty!</p>
+              <div className='cart-empty-container'>
+                <ShoppingCartIcon
+                  style={{ fill: '#EE2C2C', width: 50, height: 50 }}
+                />
+                <p style={{ textAlign: 'center', marginTop: '20px' }}>
+                  Your Cart is Empty!
+                </p>
               </div>
             ) : (
               <p>
@@ -173,27 +177,25 @@ const Cart = () => {
             {products.map((product) => {
               return (
                 <div id='cart-item' key={product.id}>
+                <Link to={`/products/${product.id}`}>
                   <span>
                     <img
+                      className='product-image'
                       src={product.imageUrl}
                       alt='product-photo'
                       id='product-photo'
                     />
                   </span>
+                </Link>
 
                   <span>{product.name}</span>
                   <span> | {product.qtyBags} bag(s) |</span>
                   <span> ${priceFunction(product.price)} </span>
-                  <span>
-                    <br />
-                    <button
-                      className='button2'
-                      onClick={deleteItemHandler}
-                      name={product.id}
-                    >
-                      Remove Item
-                    </button>
-                  </span>
+                  <span className='delete-item'>
+                  <button onClick={deleteItemHandler} name={product.id}>
+                    Remove Item
+                  </button>
+                </span>
                 </div>
               );
             })}
@@ -201,12 +203,32 @@ const Cart = () => {
 
           <div className='cart-totals'>
             <span id='cart-total-items'>
-              You have {totalQuantity} items in your cart.{' '}
+              {products.length === 0 ? (
+                <div className='cart-empty-container'>
+                  <ShoppingCartIcon
+                    style={{ fill: '#EE2C2C', width: 50, height: 50 }}
+                  />
+                  <p style={{ textAlign: 'center', marginTop: '20px' }}>
+                    Your Cart is Empty!
+                  </p>
+                </div>
+              ) : (
+                <p>
+                  You have{' '}
+                  <span className='cart-quantity-totals'>{totalQuantity}</span>{' '}
+                  item(s) in your cart.
+                </p>
+              )}
             </span>
-            <br />
-            <span id='cart-subtotal'>Subtotal: ${subtotal}</span>
-            <br />
-            <button className='button2' onClick={checkoutHandler}>
+            <span id='cart-subtotal'>
+              <p>
+                Subtotal:{' '}
+                <span className='cart-quantity-totals'>
+                  ${subtotal}
+                </span>{' '}
+              </p>
+            </span>
+            <button className='checkout-button' onClick={checkoutHandler}>
               Checkout
             </button>
           </div>
