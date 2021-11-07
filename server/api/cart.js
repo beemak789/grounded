@@ -111,22 +111,33 @@ router.post('/:userId', requireToken, async (req, res, next) => {
 //@router         PUT/api/cart/:userId/checkout
 router.put('/:userId/checkout', async (req, res, next) => {
   try {
-    const userCart = await Cart.findOne({
-      where: {
-        orderStatus: 'PAID',
-        userId: req.params.userId,
-        totalPrice: req.body.totalPrice,
-        totalQty: req.body.totalQty,
-      },
-    });
-
-    const newCart = await Cart.create(req.body, {
+    const [userCart, created] = await Cart.findOrCreate({
+      include: Product,
       where: {
         orderStatus: 'UNPAID',
         userId: req.params.userId,
       },
     });
-    res.json(newCart);
+
+    const products = userCart.products;
+
+    products.forEach(async (product) => {
+      const dbProduct = await Product.findByPk(product.id);
+      const productQuantity = product.Cart_Product.quantity;
+      dbProduct.decrement('inventoryQuantity', {
+        by: productQuantity,
+        where: { id: product.id },
+      });
+    });
+
+    const customerCart = await Cart.findByPk(req.params.userId);
+    await customerCart.update({ orderStatus: 'PAID' });
+
+    //NEW CART
+    const newCart = await Cart.create({
+      userId: req.params.userId,
+    });
+    res.status(200).send(customerCart);
   } catch (err) {
     console.log(err);
   }
