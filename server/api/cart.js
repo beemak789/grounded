@@ -131,13 +131,20 @@ router.put('/:userId/checkout', async (req, res, next) => {
     });
 
     const customerCart = await Cart.findByPk(req.params.userId);
-    await customerCart.update({ orderStatus: 'PAID' });
+
+    const customerTotalQty = products.map((product) => {
+      return product.Cart_Product.quantity
+    }).reduce((accumulator, value) => {
+      return accumulator + value
+    }, 0);
+
+    await customerCart.update({ orderStatus: 'PAID', totalQty: customerTotalQty });
 
     //NEW CART
     const newCart = await Cart.create({
       userId: req.params.userId,
     });
-    res.status(200).send(customerCart);
+    res.status(200).send(newCart);
   } catch (err) {
     console.log(err);
   }
