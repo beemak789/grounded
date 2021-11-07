@@ -18,17 +18,6 @@ const AuthForm = (props) => {
     <div className='auth-form'>
       <p className='sign-in-title'>{displayName}</p>
       <form onSubmit={handleSubmit} name={name}>
-        {displayName === 'Sign Up' ? (
-          <div className='username-form'>
-            <label htmlFor='username'>
-              <small>First Name</small>
-            </label>
-            <label htmlFor='username'>
-              <small>Last Name</small>
-            </label>
-            <input name='firstname' type='text' />
-          </div>
-        ) : null}
         <div className='username-form'>
           <label htmlFor='username'>
             <small>Username</small>
