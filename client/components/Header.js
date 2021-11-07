@@ -11,8 +11,6 @@ const Header = () => {
   let user = useSelector((state) => state.auth);
   let cart = useSelector((state) => state.thisCart);
 
-  console.log('the user--->', user);
-
   //User Products in Cart--------------------------------------------------
   const products = cart.products || [];
   const singleProductQuantity =

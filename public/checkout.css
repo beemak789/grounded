@@ -1,10 +1,30 @@
 .checkout-container {
- margin: auto;
  display: flex;
+ flex-direction: row;
  justify-content: center;
  margin-top: 30px;
 }
 
 .card-body-details{
+  display: flex;
+  flex-wrap: wrap;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.checkout-text {
   margin: auto;
+}
+
+
+.items-in-cart-text {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  justify-content: center;
+  text-align: center;
+}
+
+.confirm-button {
+  align-items: center;
+  margin-left: 30px;
 }
