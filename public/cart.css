@@ -14,36 +14,84 @@
 /* #5a5a5a ligher */
 
 .cart-container {
+  /* display: flex;
+  flex-direction: row; */
   min-height: 100vh;
   height: 100vh;
   margin-top: 1.3rem;
   padding: 0.3em 3.2em;
+  border: 2px solid red;
 }
 
 #cart-title {
   text-align: center;
 }
 
+.more-coffee-text {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.cart-summary-text {
+  font-size: large;
+  font-weight: 700;
+  color: black;
+}
+
 .cart-container-items {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin-top: 1.3rem;
-  margin-bottom: 2rem;
+  font-family: 'Ubuntu', sans-serif;
+  /* flex-direction: column; */
+  /* flex-wrap: wrap; */
+  text-align: center;
+  margin: auto;
+  /* margin-bottom: 2rem; */
+  color: #343434;
+  /* border: 2px solid blue; */
 }
 
 .cart-item {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
+  text-align: center;
   align-items: center;
   align-content: center;
-  justify-content: space-evenly;
-  gap: 50px;
+  margin: 30px;
+}
+
+.cart-empty-container {
+  font-size:x-large;
+  font-weight: 900;
 }
 
 .cart-totals{
   text-align: center;
+  font-family: 'Ubuntu', sans-serif;
   padding: 1.5em;
+  margin-top: 5px;
+  margin-left: 10px;
+  color: #343434;
+}
+
+.product-image {
+  height: 10vh;
+  width: 10vh;
+}
+
+.checkout-button {
+  background-color: 	#8B2500;
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 18px;
+  border-color: whitesmoke;
+  padding: 12px 32px;
+  border-radius: 10px;
+}
+
+.checkout-button:hover {
+  background-color: #EE2C2C;
+}
+
+.cart-quantity-totals {
+  color: #CD2626;
+  font-weight: bold;
 }

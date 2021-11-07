@@ -91,7 +91,7 @@ const seed = async () => {
     });
 
     const beLatte = await Product.create({
-      name: 'I will be latte',
+      name: 'I Will Be Latte',
       description:
         'Some days you just want to take your time and that is fine.  Pour yourself a cup of this delicious Kopi luwak coffee from Indonesia.',
       inventoryQuantity: 25,
@@ -101,7 +101,7 @@ const seed = async () => {
     });
 
     const beFine = await Product.create({
-      name: 'It will be fine',
+      name: 'It Will Be Fine',
       description:
         'Chocolate makes everything okay. This blend of honduran dark roast throws you into chocolate heaven.',
       inventoryQuantity: 200,
@@ -123,7 +123,7 @@ const seed = async () => {
     const whipped = await Product.create({
       name: 'Whipped',
       description:
-        'The trademark “Whipped” removes caffeine from coffee without the use of solvents or chemicals. This coffee is characterized by delicate sweetness, gentle acidity and round flavor and suitable for roasting and brewing as either an espresso or drip brew.',
+        'The trademark “Whipped” removes caffeine from coffee without the use of solvents or chemicals. This coffee is characterized by delicate sweetness, gentle acidity and round flavor.',
       inventoryQuantity: 10,
       imageUrl: 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcR0yxh8VpgJwYvXc3BAgrGHqF5J8CGr1_vTc-2NIdSU1cI-ZOirnUNuOmC1aRmIe5nP9LaXouacY_KY7gofKRX9FB5HO24JSj3-OeBH4tMofjV5GHE22QUm0g&usqp=CAE',
       price: 1499,
@@ -135,7 +135,7 @@ const seed = async () => {
       description:
         'An enticing aroma of floral and spice greets the nose. This pleasing cup possesses a sweet and rounded taste along with a delicate acidity and medium body characteristic of coffee blended from South American origins.',
       inventoryQuantity: 200,
-      imageUrl: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSHyPjOOvoeD8uEZNjEVx2ZGGq-RfpkeY4Ack0CRpIjhRf8Cb3VVKqrosv6kfFLfBvXPJrpknpxYKdaznH9Q8B6c-gKWRTiu2r94X4lY_mWbbWS86Xizhlp&usqp=CAE',
+      imageUrl: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRPrI6Wvx2bThDi2BTuHzfIIrgnmILl9FEVBthS_d8bVgYAp-xcdppmol2EHg1vOvo9YZnvnWZw698x7OEFFpwCufq_hbDdhVoiVLtQR5jEyEaZBA4eT7Ge&usqp=CAE',
       price: 1499,
       stars: 4.5,
     });
@@ -143,7 +143,7 @@ const seed = async () => {
     const revival = await Product.create({
       name: 'Revival',
       description:
-        'A soaring lightness and lovely balance of sweet and dry tones distinguishes this Costa Rican coffee. This is the coffee equivalent of a fine Beaujolais, with its dry, bright tones and delicate sweetness. Its clean, crisp character will please coffee lovers.',
+        'A soaring lightness and lovely balance of sweet and dry tones distinguishes this Costa Rican coffee. Its clean, crisp character will please coffee lovers.',
       inventoryQuantity: 35,
       imageUrl: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSsiYhELGO964lsBmQVZP3it91gQjuEFB9ILdvgoG-g_VfC80hRNERoyVzzCZNYoNI5fvCOV0js9Utvwlqfq94biPyuYwLIKO0JMcHa4uqRZN_sotJf_rYgIw&usqp=CAE',
       price: 3599,
@@ -163,7 +163,7 @@ const seed = async () => {
     const mochaMadness = await Product.create({
       name: 'Mocha Madness',
       description:
-        'A striking combination of nutty, chocolaty aromas greet the expectant nose. Careful blending of coffees from Indonesia and Central America creates an exceptionally well balanced taste providing a bright, yet deep-toned acidity with a delicate sweetness. An exceptional cup of coffee!',
+        'A striking combination of nutty, chocolaty aromas greet the expectant nose. Careful blending of coffees from Indonesia and Central America creates an exceptionally well balanced taste.',
       price: 1099,
       inventoryQuantity: 35,
       imageUrl: 'https://cdn.shopify.com/s/files/1/0779/9179/products/12oz_right_espresso_1188x1368_ea097999-c09a-4930-8ef0-32c2b90b609a_x390.png?v=1602703524',
