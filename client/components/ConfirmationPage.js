@@ -1,19 +1,18 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import { fetchCheckoutItems } from '../store/cartReducer';
-
+import { useSelector, useDispatch } from 'react-redux';
 
 const ConfirmationPage = (props) => {
   const user = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.thisCart);
   const userProducts = useSelector((state) => state.thisCart.products) || [];
+  const dispatch = useDispatch();
 
   const confirmOrderHandler = () => {
-    if (user && user.id) {
-      console.log("confirm order handler clicked")
-      dispatch(fetchCheckoutItems(userProducts));
-      props.history.push('/products');
-    }
+    console.log('confirm order handler clicked');
+    dispatch(fetchCheckoutItems(userProducts));
+    props.history.push('/products');
   };
 
   return (

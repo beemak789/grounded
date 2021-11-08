@@ -67,6 +67,7 @@ function Routes() {
           <Route path="/products/:id" component={SingleProduct} />
           <Route path="/cart" component={Cart} />
           <Route path="/checkout" component={Checkout} />
+          <Route path="/confirmation" component={ConfirmationPage} />
         </Switch>
       )}
     </div>

@@ -29,7 +29,7 @@ const Checkout = () => {
   }, [user]);
   //this will run when the user state changes
 
-  //Derivative Variables
+  //Derivative Variables for user cart ---------------------------------------------
   const products = cart.products || [];
   const cartProductQuantity = products
     .map((product) => {
@@ -47,7 +47,7 @@ const Checkout = () => {
       return accumulator + value;
     }, 0);
 
-  //Derivative Variables for Guest Cart
+  //Derivative Variables for Guest Cart -----------------------------------------
   const currProducts = window.localStorage.products || '[]';
 
   const parsedProducts = JSON.parse(currProducts);
@@ -58,13 +58,12 @@ const Checkout = () => {
   );
 
   const subtotal = parsedProducts.reduce(
-    (sum, product) => sum + (product.price) * product.qtyBags,
+    (sum, product) => sum + product.price * product.qtyBags,
     0
   );
-    console.log("!!!!", subtotal)
+
   const cartQty = !user ? totalQuantity : cartProductQuantity;
   const cartTotal = !user ? subtotal : productPrice;
-    console.log("THE CART TOTAL--->", cartTotal)
 
   return (
     <div className='checkout-container'>
@@ -89,10 +88,7 @@ const Checkout = () => {
             </Link>
             <div className='items-in-cart-text'>
               <p>
-                You have{' '}
-                <span className='cart-quantity-totals'>
-                  {cartQty}
-                </span>{' '}
+                You have <span className='cart-quantity-totals'>{cartQty}</span>{' '}
                 item(s) in your cart.
               </p>
 
