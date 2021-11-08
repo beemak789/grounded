@@ -37,14 +37,26 @@
 }
 
 .cart-container-items {
-  font-family: 'Ubuntu', sans-serif;
+  /* font-family: 'Ubuntu', sans-serif; */
   /* flex-direction: column; */
   /* flex-wrap: wrap; */
-  text-align: center;
-  margin: auto;
+  /* text-align: center; */
+  /* margin: auto; */
   /* margin-bottom: 2rem; */
-  color: #343434;
-  /* border: 2px solid blue; */
+  /* color: #343434; */
+  /* border: 2px solid blue;
+
+  background-color: rgba(224, 221, 221, 0.5); */
+  width: 50%;
+  height: 18rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Ubuntu', sans-serif;
+  border-radius: 10px;
+  box-shadow: 4px 5px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 .cart-item {

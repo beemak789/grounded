@@ -148,7 +148,7 @@ const Cart = () => {
           </span>
 
           <button className='checkout-button' onClick={checkoutHandler}>
-            Checkout
+            Proceed to Checkout
           </button>
         </div>
 

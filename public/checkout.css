@@ -15,6 +15,9 @@
   margin: auto;
 }
 
+.checkout-button {
+  padding: 5px;
+}
 
 .items-in-cart-text {
   display: flex;
@@ -58,5 +61,5 @@
 
 .conf-container button {
   margin-top: 2rem;
-  padding: 15px;
+  padding: 10px;
 }
