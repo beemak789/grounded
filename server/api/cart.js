@@ -92,14 +92,14 @@ router.post('/:userId', requireToken, async (req, res, next) => {
 
 //------------------------------------------------------------------------------------
 //@description    Checkout the cart for logged in/passed in
-//@router         PUT/api/cart/:userId/checkout
-router.put('/:userId/checkout', async (req, res, next) => {
+//@router         PUT/api/cart/checkout
+router.put('/checkout', requireToken, async (req, res, next) => {
   try {
     const [userCart, created] = await Cart.findOrCreate({
       include: Product,
       where: {
         orderStatus: 'UNPAID',
-        userId: req.params.userId,
+        userId: req.user.id
       },
     });
 
@@ -114,7 +114,8 @@ router.put('/:userId/checkout', async (req, res, next) => {
       });
     });
 
-    const customerCart = await Cart.findByPk(req.params.userId);
+    const customerCart = await Cart.findByPk(req.user.id);
+    console.log("THE CUSTOMER CART---->", customerCart);
 
     const customerTotalQty = products.map((product) => {
       return product.Cart_Product.quantity
@@ -126,7 +127,7 @@ router.put('/:userId/checkout', async (req, res, next) => {
 
     //NEW CART
     const newCart = await Cart.create({
-      userId: req.params.userId,
+      userId: req.user.id
     });
     res.status(200).send(newCart);
   } catch (err) {
@@ -135,3 +136,4 @@ router.put('/:userId/checkout', async (req, res, next) => {
 });
 
 module.exports = router;
+

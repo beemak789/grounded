@@ -21,33 +21,42 @@ export const fetchCart = () => {
     const TOKEN = 'token';
     const token = window.localStorage.getItem(TOKEN);
     try {
-      // PROBLEM SOURCE
-      // ***** Send token with request *****
-      const { data: userCart } = await axios.get('/api/cart', {
-        headers: {
-          authorization: token,
-        },
-      });
-      dispatch(setCart(userCart));
+      if (token) {
+        const { data: userCart } = await axios.get('/api/cart', {
+          headers: {
+            authorization: token,
+          },
+        });
+        dispatch(setCart(userCart));
+      }
     } catch (err) {
       console.log(err);
     }
   };
 };
 
-export const fetchCheckoutItems = (userId, items) => {
+export const fetchCheckoutItems = (items) => {
   return async (dispatch) => {
+    const TOKEN = 'token';
+    const token = window.localStorage.getItem(TOKEN);
     try {
-      const response = await axios.put(`/api/cart/${userId}/checkout`, {
-        items,
-      });
-      console.log('THE DATA!!!! --->', response.data);
+      if (token) {
+        const response = await axios.put(
+          `/api/cart/checkout`,
+          { items },
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+        dispatch(setCheckoutItems(items));
+      }
     } catch (err) {
       console.log(err);
     }
   };
 };
-
 export const addProduct = (userId, productId, qty) => {
   return async (dispatch) => {
     const TOKEN = 'token';
@@ -98,8 +107,11 @@ export const cartReducer = (state = {}, action) => {
   switch (action.type) {
     case CART_REQUEST:
       return action.cart;
-    // case SET_GUEST_CART:
-    //   return action.cart;
+    case SET_CHECKOUT_ITEMS:
+      return {
+        ...state,
+        items: action.items,
+      };
     case ADD_PRODUCT: {
       const products = state.products;
       const newArray = products.filter((item) => item.id !== action.product.id);

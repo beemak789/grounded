@@ -23,6 +23,13 @@ const Checkout = () => {
     }
   };
 
+  const checkoutItemsHandler = () => {
+    if (user && user.id) {
+      dispatch(fetchCheckoutItems(userProducts))
+      dispatch(fetchCart({}));
+    }
+  }
+
   useEffect(() => {
     if (user !== null) {
       checkoutHandler();
@@ -92,6 +99,7 @@ const Checkout = () => {
             <div className="confirm-button">
             <Button
               variant='contained'
+              onClick={checkoutItemsHandler}
               style={{
                 fontSize: '10px',
                 marginLeft: '100px',
