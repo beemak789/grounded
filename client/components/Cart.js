@@ -158,6 +158,13 @@ const Cart = () => {
   } else {
     const currProducts = window.localStorage.products || '[]';
     let products = JSON.parse(currProducts);
+    console.log("the products in guest cart--->", products)
+
+    // const deleteItemHandler = (productId) => {
+    //   dispatch(deleteProduct(productId));
+    //   goCart();
+    // };
+
     const totalQuantity = products.reduce(
       (sum, product) => sum + product.qtyBags,
       0
@@ -196,11 +203,15 @@ const Cart = () => {
                   <span>{product.name}</span>
                   <span> | {product.qtyBags} bag(s) |</span>
                   <span> ${priceFunction(product.price)} </span>
-                  <span className='delete-item'>
-                    <button onClick={deleteItemHandler} name={product.id}>
-                      Remove Item
-                    </button>
-                  </span>
+                  <span name={product.id}>
+                  <button
+                    className='delete-item'
+                    onClick={() => deleteItemHandler(product.id)}
+                    name={product.id}
+                  >
+                    <i className='fas fa-trash'></i>
+                  </button>
+                </span>
                 </div>
               );
             })}

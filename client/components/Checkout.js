@@ -5,7 +5,6 @@ import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { fetchCart } from '../store/cartReducer';
-import { fetchCheckoutItems } from '../store/cartReducer';
 
 const Checkout = () => {
   const user = useSelector((state) => state.auth);
@@ -21,8 +20,6 @@ const Checkout = () => {
       window.localStorage.removeItem('products');
     }
   };
-
-
 
   useEffect(() => {
     if (user !== null) {

@@ -1,15 +1,19 @@
 import React from 'react';
 import { Button } from '@mui/material';
+import { fetchCheckoutItems } from '../store/cartReducer';
 
-const checkoutItemsHandler = () => {
-  if (user && user.id) {
-    dispatch(fetchCheckoutItems(userProducts));
-  }
-};
 
 const ConfirmationPage = (props) => {
-  const handleClick = () => {
-    props.history.push('/products');
+  const user = useSelector((state) => state.auth);
+  const cart = useSelector((state) => state.thisCart);
+  const userProducts = useSelector((state) => state.thisCart.products) || [];
+
+  const confirmOrderHandler = () => {
+    if (user && user.id) {
+      console.log("confirm order handler clicked")
+      dispatch(fetchCheckoutItems(userProducts));
+      props.history.push('/products');
+    }
   };
 
   return (
@@ -23,7 +27,7 @@ const ConfirmationPage = (props) => {
             color: 'white',
             fontSize: '12px',
           }}
-          onClick={handleClick}
+          onClick={confirmOrderHandler}
         >
           {' '}
           Continue Shopping
