@@ -36,7 +36,7 @@ export const fetchCart = () => {
   };
 };
 
-export const fetchCheckoutItems = (items) => {
+export const checkoutCart = (items) => {
   return async (dispatch) => {
     const TOKEN = 'token';
     const token = window.localStorage.getItem(TOKEN);

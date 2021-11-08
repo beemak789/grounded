@@ -4,7 +4,7 @@ import { setCart } from '../store/cartReducer';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
-import { fetchCart, fetchCheckoutItems } from '../store/cartReducer';
+import { fetchCart, checkoutCart } from '../store/cartReducer';
 
 
 const Checkout = () => {
@@ -16,7 +16,7 @@ const Checkout = () => {
 
   const checkoutHandler = () => {
     if (user && user.id) {
-      dispatch(fetchCheckoutItems(userProducts));
+      dispatch(checkoutCart(userProducts));
     } else {
       window.localStorage.removeItem('products');
     }
