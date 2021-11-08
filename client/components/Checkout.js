@@ -97,6 +97,10 @@ const Checkout = () => {
             </div>
 
             <div className="confirm-button">
+          <Link
+          to="/confirmation"
+          style={{textDecoration: "none"}}
+          >
             <Button
               variant='contained'
               onClick={checkoutItemsHandler}
@@ -112,6 +116,7 @@ const Checkout = () => {
               {' '}
               <span className='return-to-cart-text'>Confirm Order</span>
             </Button>
+          </Link>
             </div>
           </div>
         </Card.Body>

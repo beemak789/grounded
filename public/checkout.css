@@ -28,3 +28,35 @@
   align-items: center;
   margin-left: 30px;
 }
+
+
+.checkout-confirmation {
+  background-color: rgba(224, 221, 221, 0.5);
+  margin: auto;
+  width: 40%;
+  height: 18rem;
+  margin-top: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Ubuntu', sans-serif;
+  border-radius: 10px;
+}
+
+.order-confirmed-text {
+  font-weight: bold;
+  font-size: large;
+}
+.conf-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #802A2A;
+  text-align: center;
+}
+
+.conf-container button {
+  margin-top: 2rem;
+  padding: 15px;
+}

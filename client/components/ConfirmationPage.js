@@ -1,9 +1,21 @@
 import React from 'react'
+import { Button } from "@mui/material";
 
-const ConfirmationPage = () => {
+const ConfirmationPage = (props) => {
+  const handleClick = () => {
+    props.history.push("/products");
+  };
+
   return (
-    <div>
-      confirmation page
+    <div className="checkout-confirmation">
+      <div className="conf-container">
+        <p className="order-confirmed-text">Order confirmed!</p>
+        <p>You'll be able to brew that coffee really soon!</p>
+        <Button style={{backgroundColor: "#EE3B3B", color: "white"}} onClick={handleClick}>
+          {" "}
+          Continue Shopping
+        </Button>
+      </div>
     </div>
   )
 }
