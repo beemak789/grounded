@@ -1,6 +1,12 @@
 import React from 'react';
 import { Button } from '@mui/material';
 
+const checkoutItemsHandler = () => {
+  if (user && user.id) {
+    dispatch(fetchCheckoutItems(userProducts));
+  }
+};
+
 const ConfirmationPage = (props) => {
   const handleClick = () => {
     props.history.push('/products');

@@ -51,12 +51,14 @@ export const fetchCheckoutItems = (items) => {
           }
         );
         dispatch(setCheckoutItems(items));
+        dispatch(fetchCart({}));
       }
     } catch (err) {
       console.log(err);
     }
   };
 };
+
 export const addProduct = (userId, productId, qty) => {
   return async (dispatch) => {
     const TOKEN = 'token';

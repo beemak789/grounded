@@ -12,7 +12,6 @@ const Checkout = () => {
   const cart = useSelector((state) => state.thisCart);
   const userProducts = useSelector((state) => state.thisCart.products) || [];
 
-
   const dispatch = useDispatch();
 
   const checkoutHandler = () => {
@@ -23,12 +22,7 @@ const Checkout = () => {
     }
   };
 
-  const checkoutItemsHandler = () => {
-    if (user && user.id) {
-      dispatch(fetchCheckoutItems(userProducts))
-      dispatch(fetchCart({}));
-    }
-  }
+
 
   useEffect(() => {
     if (user !== null) {
@@ -95,28 +89,23 @@ const Checkout = () => {
                 </p>
               </span>
             </div>
-
-            <div className="confirm-button">
-          <Link
-          to="/confirmation"
-          style={{textDecoration: "none"}}
-          >
-            <Button
-              variant='contained'
-              onClick={checkoutItemsHandler}
-              style={{
-                fontSize: '10px',
-                marginLeft: '100px',
-                padding: '10px',
-                backgroundColor: '#EE3B3B',
-                borderRadius: '3px',
-                alignItems: "center"
-              }}
-            >
-              {' '}
-              <span className='return-to-cart-text'>Confirm Order</span>
-            </Button>
-          </Link>
+            <div className='confirm-button'>
+              <Link to='/confirmation' style={{ textDecoration: 'none' }}>
+                <Button
+                  variant='contained'
+                  style={{
+                    fontSize: '10px',
+                    marginLeft: '100px',
+                    padding: '10px',
+                    backgroundColor: '#EE3B3B',
+                    borderRadius: '3px',
+                    alignItems: 'center',
+                  }}
+                >
+                  {' '}
+                  <span className='return-to-cart-text'>Confirm Order</span>
+                </Button>
+              </Link>
             </div>
           </div>
         </Card.Body>
