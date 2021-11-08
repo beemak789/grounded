@@ -10,8 +10,6 @@ const ConfirmationPage = (props) => {
   const dispatch = useDispatch();
 
   const confirmOrderHandler = () => {
-    console.log('confirm order handler clicked');
-    dispatch(fetchCheckoutItems(userProducts));
     props.history.push('/products');
   };
 

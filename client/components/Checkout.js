@@ -4,7 +4,8 @@ import { setCart } from '../store/cartReducer';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
-import { fetchCart } from '../store/cartReducer';
+import { fetchCart, fetchCheckoutItems } from '../store/cartReducer';
+
 
 const Checkout = () => {
   const user = useSelector((state) => state.auth);
@@ -15,7 +16,7 @@ const Checkout = () => {
 
   const checkoutHandler = () => {
     if (user && user.id) {
-      dispatch(setCart({}));
+      dispatch(fetchCheckoutItems(userProducts));
     } else {
       window.localStorage.removeItem('products');
     }
@@ -23,7 +24,6 @@ const Checkout = () => {
 
   useEffect(() => {
     if (user !== null) {
-      checkoutHandler();
       dispatch(fetchCart());
     }
   }, [user]);
@@ -113,6 +113,7 @@ const Checkout = () => {
                     borderRadius: '3px',
                     alignItems: 'center',
                   }}
+                  onClick={checkoutHandler}
                 >
                   {' '}
                   <span className='return-to-cart-text'>Confirm Order</span>

@@ -42,7 +42,7 @@ export const fetchCheckoutItems = (items) => {
     const token = window.localStorage.getItem(TOKEN);
     try {
       if (token) {
-        const response = await axios.put(
+        const { data } = await axios.put(
           `/api/cart/checkout`,
           { items },
           {
@@ -51,8 +51,8 @@ export const fetchCheckoutItems = (items) => {
             },
           }
         );
-        dispatch(setCheckoutItems(items));
-        dispatch(fetchCart({}));
+        //no new products so no need to put the items back into the cart*
+        dispatch(setCart(data));
       }
     } catch (err) {
       console.log(err);

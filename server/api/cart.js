@@ -28,7 +28,7 @@ router.get('/', requireToken, async (req, res, next) => {
 
 router.put('/', requireToken, async (req, res, next) => {
   try {
-    console.log(req.user)
+    console.log(req.user);
     const productId = Number(req.body.productId);
     const [userCart, created] = await Cart.findOrCreate({
       where: {
@@ -95,13 +95,15 @@ router.post('/:userId', requireToken, async (req, res, next) => {
 //@router         PUT/api/cart/checkout
 router.put('/checkout', requireToken, async (req, res, next) => {
   try {
-    const [userCart, created] = await Cart.findOrCreate({
+    //Need to change the actual user cart that matches the user id, will have cart id associated with it.
+    const userCart = await Cart.findOne({
       include: Product,
       where: {
         orderStatus: 'UNPAID',
-        userId: req.user.id
+        userId: req.user.id, //1
       },
     });
+    // user id= 1, cartid = 5
 
     const products = userCart.products;
 
@@ -114,20 +116,22 @@ router.put('/checkout', requireToken, async (req, res, next) => {
       });
     });
 
-    const customerCart = await Cart.findByPk(req.user.id);
-    console.log("THE CUSTOMER CART---->", customerCart);
 
-    const customerTotalQty = products.map((product) => {
-      return product.Cart_Product.quantity
-    }).reduce((accumulator, value) => {
-      return accumulator + value
-    }, 0);
+    // const customerCart = await Cart.findOne({ where: userId: req.user.id});
+    // finds a cart by its primary key
+    //** REQ.USER.ID = 1 [BRANDY] */
+    //await Cart.findByPk(req.user.id) --> find the cart with an id (iin this case, user id) = 1, every single time not really knowing its associated with a "user"
 
-    await customerCart.update({ orderStatus: 'PAID', totalQty: customerTotalQty });
+    await userCart.update({
+      orderStatus: 'PAID',
+    });
+    //Close the user's cart
+    //Then create a new cart with a NEW CART ID where orderStatus is UNPAID.
 
     //NEW CART
     const newCart = await Cart.create({
-      userId: req.user.id
+      //CREATE - CREATES A NEW ROW [has a unique primary key] FOR THE CART.
+      userId: req.user.id,
     });
     res.status(200).send(newCart);
   } catch (err) {
@@ -136,4 +140,3 @@ router.put('/checkout', requireToken, async (req, res, next) => {
 });
 
 module.exports = router;
-
