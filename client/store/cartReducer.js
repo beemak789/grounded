@@ -14,11 +14,20 @@ export const setCheckoutItems = (items) => {
   type: SET_CHECKOUT_ITEMS, items;
 };
 
-export const fetchCart = (id) => {
+//Do not pass userid into the routes - instead, verify by token
+
+export const fetchCart = () => {
   return async (dispatch) => {
+    const TOKEN = 'token';
+    const token = window.localStorage.getItem(TOKEN);
     try {
-      const { data: userCart } = await axios.get(`/api/cart/${id}`);
-      //moves the through tables property into the actual product (from the products array)
+      // PROBLEM SOURCE
+      // ***** Send token with request *****
+      const { data: userCart } = await axios.get('/api/cart', {
+        headers: {
+          authorization: token,
+        },
+      });
       dispatch(setCart(userCart));
     } catch (err) {
       console.log(err);
@@ -62,14 +71,14 @@ export const addProduct = (userId, productId, qty) => {
   };
 };
 
-export const deleteProduct = (userId, productId) => {
+export const deleteProduct = (productId) => {
   return async (dispatch) => {
     const TOKEN = 'token';
     const token = window.localStorage.getItem(TOKEN);
     try {
       if (token) {
         await axios.put(
-          `/api/cart/${userId}`,
+          '/api/cart',
           { productId },
           {
             headers: {
@@ -77,7 +86,7 @@ export const deleteProduct = (userId, productId) => {
             },
           }
         );
-        dispatch(fetchCart(userId));
+        dispatch(fetchCart());
       }
     } catch (err) {
       console.log(err);

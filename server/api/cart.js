@@ -6,32 +6,15 @@ const { requireToken } = require('./gatekeepingMiddleware');
 
 //CRUD OPERATIONS [ CREATE, RETRIEVE, UPDATE, DELETE ]
 
-//@description     Get all items in cart for the guest user
-//@router          GET/api/cart
-router.get('/', async (req, res, next) => {
-  try {
-    const [guestCart, created] = await Cart.findOrCreate({
-      include: Product,
-      where: {
-        orderStatus: 'UNPAID',
-      },
-    });
-    res.send(guestCart);
-  } catch (err) {
-    next(err);
-  }
-});
-
 //@description     Get all items in cart for the user logged in/passed in
-//@router          GET/api/cart/:userId
-// https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findOrCreate
-router.get('/:userId', async (req, res, next) => {
+//@router          GET/api/cart
+router.get('/', requireToken, async (req, res, next) => {
   try {
     const [currentCart, created] = await Cart.findOrCreate({
       include: Product,
       where: {
         orderStatus: 'UNPAID',
-        userId: req.params.userId,
+        userId: req.user.id,
       },
     });
     res.send(currentCart);
@@ -41,15 +24,16 @@ router.get('/:userId', async (req, res, next) => {
 });
 //------------------------------------------------------------------------------------
 //@description    Delete the product for the user logged in
-//@router         PUT/api/cart/:userId
+//@router         PUT/api/cart
 
-router.put('/:userId', requireToken, async (req, res, next) => {
+router.put('/', requireToken, async (req, res, next) => {
   try {
+    console.log(req.user)
     const productId = Number(req.body.productId);
     const [userCart, created] = await Cart.findOrCreate({
       where: {
         orderStatus: 'UNPAID',
-        userId: req.params.userId,
+        userId: req.user.id,
       },
     });
     const deleteThisProduct = await Product.findByPk(productId);

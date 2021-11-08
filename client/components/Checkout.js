@@ -11,7 +11,7 @@ const Checkout = () => {
   const user = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.thisCart);
   const userProducts = useSelector((state) => state.thisCart.products) || [];
-  console.log('the user products---->', userProducts);
+
 
   const dispatch = useDispatch();
 
@@ -26,7 +26,7 @@ const Checkout = () => {
   useEffect(() => {
     if (user !== null) {
       checkoutHandler();
-      dispatch(fetchCart(user.id));
+      dispatch(fetchCart());
     }
   }, [user]);
   //this will run when the user state changes

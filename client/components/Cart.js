@@ -6,6 +6,7 @@ import { fetchCart, deleteProduct } from '../store/cartReducer';
 import { useHistory, Link } from 'react-router-dom';
 import { priceFunction } from '../frontendFunctions';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Button } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Cart = () => {
@@ -26,7 +27,7 @@ const Cart = () => {
 
   useEffect(() => {
     if (user !== null) {
-      dispatch(fetchCart(user.id));
+      dispatch(fetchCart());
     }
   }, [user]);
 
@@ -43,8 +44,8 @@ const Cart = () => {
     }, 0);
 
     //Delete Button
-    const deleteItemHandler = (event) => {
-      dispatch(deleteProduct(user.id, event.target.name));
+    const deleteItemHandler = (productId) => {
+      dispatch(deleteProduct(productId));
       goCart();
     };
 
@@ -104,9 +105,13 @@ const Cart = () => {
                 </span>
                 <span> ${product.price / 100} </span>
 
-                <span className='delete-item'>
-                  <button onClick={deleteItemHandler} name={product.id}>
-                    Remove Item
+                <span name={product.id}>
+                  <button
+                    className='delete-item'
+                    onClick={() => deleteItemHandler(product.id)}
+                    name={product.id}
+                  >
+                    <i className='fas fa-trash'></i>
                   </button>
                 </span>
               </div>
@@ -177,25 +182,25 @@ const Cart = () => {
             {products.map((product) => {
               return (
                 <div id='cart-item' key={product.id}>
-                <Link to={`/products/${product.id}`}>
-                  <span>
-                    <img
-                      className='product-image'
-                      src={product.imageUrl}
-                      alt='product-photo'
-                      id='product-photo'
-                    />
-                  </span>
-                </Link>
+                  <Link to={`/products/${product.id}`}>
+                    <span>
+                      <img
+                        className='product-image'
+                        src={product.imageUrl}
+                        alt='product-photo'
+                        id='product-photo'
+                      />
+                    </span>
+                  </Link>
 
                   <span>{product.name}</span>
                   <span> | {product.qtyBags} bag(s) |</span>
                   <span> ${priceFunction(product.price)} </span>
                   <span className='delete-item'>
-                  <button onClick={deleteItemHandler} name={product.id}>
-                    Remove Item
-                  </button>
-                </span>
+                    <button onClick={deleteItemHandler} name={product.id}>
+                      Remove Item
+                    </button>
+                  </span>
                 </div>
               );
             })}
@@ -223,9 +228,7 @@ const Cart = () => {
             <span id='cart-subtotal'>
               <p>
                 Subtotal:{' '}
-                <span className='cart-quantity-totals'>
-                  ${subtotal}
-                </span>{' '}
+                <span className='cart-quantity-totals'>${subtotal}</span>{' '}
               </p>
             </span>
             <button className='checkout-button' onClick={checkoutHandler}>

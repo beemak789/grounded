@@ -94,3 +94,14 @@
   color: #CD2626;
   font-weight: bold;
 }
+
+
+.delete-item {
+  border: none;
+  background-color: transparent;
+  height: 20px;
+}
+
+.delete-item:hover {
+  color: #CD2626;
+}
