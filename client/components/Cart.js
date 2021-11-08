@@ -20,6 +20,12 @@ const Cart = () => {
     history.push('/checkout');
   };
 
+  //Delete Item Handler
+  const deleteUserItemHandler = (productId) => {
+    dispatch(deleteProduct(productId));
+    goCart();
+  };
+
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.auth);
@@ -42,12 +48,6 @@ const Cart = () => {
     const cartQuantity = singleProductQuantity.reduce((accumulator, value) => {
       return accumulator + value;
     }, 0);
-
-    //Delete Button
-    const deleteItemHandler = (productId) => {
-      dispatch(deleteProduct(productId));
-      goCart();
-    };
 
     //Cart Total Derivative Variables
     const cartProductQuantity = products.map((product) => {
@@ -108,7 +108,7 @@ const Cart = () => {
                 <span name={product.id}>
                   <button
                     className='delete-item'
-                    onClick={() => deleteItemHandler(product.id)}
+                    onClick={() => deleteUserItemHandler(product.id)}
                     name={product.id}
                   >
                     <i className='fas fa-trash'></i>
@@ -148,7 +148,7 @@ const Cart = () => {
           </span>
 
           <button className='checkout-button' onClick={checkoutHandler}>
-            Proceed to Checkout
+            Checkout
           </button>
         </div>
 
@@ -158,12 +158,7 @@ const Cart = () => {
   } else {
     const currProducts = window.localStorage.products || '[]';
     let products = JSON.parse(currProducts);
-    console.log("the products in guest cart--->", products)
 
-    // const deleteItemHandler = (productId) => {
-    //   dispatch(deleteProduct(productId));
-    //   goCart();
-    // };
 
     const totalQuantity = products.reduce(
       (sum, product) => sum + product.qtyBags,
@@ -173,7 +168,7 @@ const Cart = () => {
       (sum, product) => sum + (product.price / 100) * product.qtyBags,
       0
     );
-    const deleteItemHandler = (event) => {
+    const deleteGuestItemHandler = (event) => {
       products = products.filter(
         (product) => product.id !== +event.target.name
       );
@@ -203,15 +198,13 @@ const Cart = () => {
                   <span>{product.name}</span>
                   <span> | {product.qtyBags} bag(s) |</span>
                   <span> ${priceFunction(product.price)} </span>
-                  <span name={product.id}>
-                  <button
-                    className='delete-item'
-                    onClick={() => deleteItemHandler(product.id)}
-                    name={product.id}
-                  >
-                    <i className='fas fa-trash'></i>
-                  </button>
-                </span>
+
+                  {/* this works */}
+                  <span >
+                    <button className='delete-guest-item' onClick={deleteGuestItemHandler} name={product.id}>
+                      Remove
+                    </button>
+                  </span>
                 </div>
               );
             })}

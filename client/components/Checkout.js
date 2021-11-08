@@ -47,6 +47,25 @@ const Checkout = () => {
       return accumulator + value;
     }, 0);
 
+  //Derivative Variables for Guest Cart
+  const currProducts = window.localStorage.products || '[]';
+
+  const parsedProducts = JSON.parse(currProducts);
+
+  const totalQuantity = parsedProducts.reduce(
+    (sum, product) => sum + product.qtyBags,
+    0
+  );
+
+  const subtotal = parsedProducts.reduce(
+    (sum, product) => sum + (product.price) * product.qtyBags,
+    0
+  );
+    console.log("!!!!", subtotal)
+  const cartQty = !user ? totalQuantity : cartProductQuantity;
+  const cartTotal = !user ? subtotal : productPrice;
+    console.log("THE CART TOTAL--->", cartTotal)
+
   return (
     <div className='checkout-container'>
       <Card style={{ width: '25rem' }}>
@@ -72,7 +91,7 @@ const Checkout = () => {
               <p>
                 You have{' '}
                 <span className='cart-quantity-totals'>
-                  {cartProductQuantity}
+                  {cartQty}
                 </span>{' '}
                 item(s) in your cart.
               </p>
@@ -81,7 +100,7 @@ const Checkout = () => {
                 <p>
                   Subtotal:{' '}
                   <span className='cart-quantity-totals'>
-                    ${productPrice / 100}
+                    ${cartTotal / 100}
                   </span>{' '}
                 </p>
               </span>

@@ -10,9 +10,10 @@ export const setCart = (cart) => ({
   cart,
 });
 
-export const setCheckoutItems = (items) => {
-  type: SET_CHECKOUT_ITEMS, items;
-};
+export const setCheckoutItems = (items) => ({
+  type: SET_CHECKOUT_ITEMS,
+  items,
+});
 
 //Do not pass userid into the routes - instead, verify by token
 

@@ -79,9 +79,9 @@
   background-color: 	#8B2500;
   color: white;
   font-family: 'Ubuntu', sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   border-color: whitesmoke;
-  padding: 12px 32px;
+  padding: 10px 15px;
   border-radius: 10px;
 }
 
@@ -103,4 +103,18 @@
 
 .delete-item:hover {
   color: #CD2626;
+}
+
+.delete-guest-item {
+  background-color: #DB2929;
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 15px;
+  border-color: whitesmoke;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.delete-guest-item:hover {
+  background-color: #EE2C2C;
 }
