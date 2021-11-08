@@ -16,6 +16,7 @@ import Cart from "./components/Cart";
 import { me } from "./store/auth";
 import AddProduct from "./components/AddProduct";
 import Checkout from "./components/Checkout";
+import ConfirmationPage from "./components/ConfirmationPage";
 
 /**
  * COMPONENT
@@ -52,6 +53,7 @@ function Routes() {
             <Route path="/products/:id" component={SingleProduct} />
             <Route path="/cart" component={Cart} />
             <Route path="/checkout" component={Checkout} />
+            <Route path="/confirmation" component={ConfirmationPage} />
             <Route path="/addProduct" component={AddProduct} />
             <Redirect to="/" />
           </Switch>
