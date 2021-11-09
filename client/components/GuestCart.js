@@ -4,7 +4,7 @@ import { fetchCart, deleteProduct } from '../store/cartReducer';
 
 import { useHistory, Link } from 'react-router-dom';
 import { priceFunction } from '../frontendFunctions';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const GuestCart = () => {
   const dispatch = useDispatch();
@@ -12,16 +12,16 @@ const GuestCart = () => {
   const user = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.thisCart);
 
-   //Handlers and Derivative Variables
-   let history = useHistory();
-   const goCart = () => {
-     history.push('/cart');
-   };
+  //Handlers and Derivative Variables
+  let history = useHistory();
+  const goCart = () => {
+    history.push('/cart');
+  };
 
-   // Checkout Button
-   const checkoutHandler = () => {
-     history.push('/checkout');
-   };
+  // Checkout Button
+  const checkoutHandler = () => {
+    history.push('/checkout');
+  };
 
   useEffect(() => {
     if (user !== null) {
@@ -48,7 +48,7 @@ const GuestCart = () => {
     goCart();
   };
 
-    return (
+  return (
     <>
       <div className='cart-container'>
         <div className='cart-container-items'>
@@ -116,7 +116,7 @@ const GuestCart = () => {
         </div>
       </div>
     </>
-    );
+  );
 };
 
 export default GuestCart;
