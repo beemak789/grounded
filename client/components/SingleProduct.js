@@ -32,7 +32,7 @@ const SingleProduct = ({ match }) => {
     // USER LOGGED IN*******************************************************
     if (user && user.id) {
       dispatch(addProduct(user.id, singleProduct.id, +qty));
-      goCart();
+      // goCart();
       // USER LOGGED IN*******************************************************
     } else {
       let selectedProduct = singleProduct;
@@ -73,11 +73,14 @@ const SingleProduct = ({ match }) => {
     <>
 
         <div className='go-back'>
-          <Link to='/products'>
+          <Link to='/products'
+          style={{textDecoration: "none"}}
+          >
             <img
               className='go-back-image'
               src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5E4kteNGkK_V5iCfmX6zfKVRUzXnw-00xcrmv6RzEMNuqa01GcNQXHjyhdQHKXqaVbss&usqp=CAU'
             />
+            <span className="more-coffee-text">Continue Shopping</span>
           </Link>
         </div>
         <div id='single-coffee-title'>

@@ -45,11 +45,12 @@ const AuthForm = (props) => {
         <div className='no-account-message'>
           <p>
             Already have an account?{' '}
-            <Link to='/login'>
+            <Link
+              to='/login'
+              style={{ color: '#CD2626', textDecoration: 'none' }}
+            >
               {' '}
-              <span style={{ color: '#CD2626', textDecoration: 'none' }}>
-                Sign In{' '}
-              </span>
+              <span>Sign In </span>
             </Link>
           </p>
         </div>
@@ -57,7 +58,10 @@ const AuthForm = (props) => {
         <div className='no-account-message'>
           <p>
             Don't have an account?{' '}
-            <Link to='/signup'>
+            <Link
+              to='/signup'
+              style={{ color: '#CD2626', textDecoration: 'none' }}
+            >
               {' '}
               <span style={{ color: '#CD2626', textDecoration: 'none' }}>
                 Sign Up{' '}

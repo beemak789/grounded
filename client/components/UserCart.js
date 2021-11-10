@@ -4,7 +4,6 @@ import { fetchCart, deleteProduct } from '../store/cartReducer';
 import { useHistory, Link } from 'react-router-dom';
 import { priceFunction } from '../frontendFunctions';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { useTable } from 'react-table';
 
 const UserCart = () => {
   const dispatch = useDispatch();
@@ -15,11 +14,6 @@ const UserCart = () => {
   let history = useHistory();
   const goCart = () => {
     history.push('/cart');
-  };
-
-  // Checkout Button
-  const checkoutHandler = () => {
-    history.push('/checkout');
   };
 
   //Delete Item Handler
@@ -44,6 +38,11 @@ const UserCart = () => {
     return accumulator + value;
   }, 0);
 
+  // Checkout Button
+  const checkoutHandler = ({ alert }) => {
+    history.push('/checkout');
+  };
+
   //Cart Total Derivative Variables
   const cartProductQuantity = products.map((product) => {
     return product.Cart_Product.quantity;
@@ -60,7 +59,9 @@ const UserCart = () => {
     return sum;
   }, 0);
 
-  const disableCheckoutButton = products.length === 0 ? true : false
+  const disableCheckoutButton = products.length === 0 ? true : false;
+
+  const checkoutButtonColor = disableCheckoutButton ? "disable-checkout" : "checkout-button"
 
   // RENDER METHOD HERE *********************************************************************
   return (
@@ -82,11 +83,16 @@ const UserCart = () => {
       {/* <div className='cart-container'> */}
       <div className='cart-container-items'>
         {products.map((product) => {
+          console.log('product--->', product);
+
+          const qtyBags = product.Cart_Product
+            ? product.Cart_Product.quantity
+            : 1;
           return (
             <div className='cart-item' key={product.id}>
               <div id='product-name'>
                 <Link to={`/products/${product.id}`}>
-                  <span style={{ margin: 'auto', paddingTop: '10px'}}>
+                  <span style={{ margin: 'auto', paddingTop: '10px' }}>
                     <img
                       className='product-image'
                       src={product.imageUrl}
@@ -94,14 +100,19 @@ const UserCart = () => {
                       id='product-photo'
                     />
                   </span>
-                  </Link>
-                  <span>{product.name} </span>
-
+                </Link>
+                <span>{product.name} </span>
               </div>
               <div className='cart-qty'>
                 <span>
-                  {product.Cart_Product ? product.Cart_Product.quantity : 0}{' '}
-                  bag(s)
+                  {/* {product.Cart_Product ? product.Cart_Product.quantity : 0}{' '}
+                  bag(s) */}
+                  <select value={qtyBags}>
+                {/* What you are presented with first, upon entering the page */}
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                  </select>
                 </span>
                 <span name={product.id}>
                   <button
@@ -127,7 +138,12 @@ const UserCart = () => {
           {products.length === 0 ? (
             <div className='cart-empty-container'>
               <ShoppingCartIcon
-                style={{ fill: '#EE2C2C', width: 50, height: 50, transform: "scale(1.03)" }}
+                style={{
+                  fill: '#EE2C2C',
+                  width: 50,
+                  height: 50,
+                  transform: 'scale(1.03)',
+                }}
               />
               <p style={{ textAlign: 'center', marginTop: '20px' }}>
                 Your Cart is Empty!
@@ -150,11 +166,10 @@ const UserCart = () => {
           </p>
         </span>
 
-
         <button
-        className='checkout-button'
-        onClick={checkoutHandler}
-        disabled={disableCheckoutButton}
+          className={checkoutButtonColor}
+          onClick={checkoutHandler}
+          disabled={disableCheckoutButton}
         >
           Checkout
         </button>

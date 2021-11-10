@@ -5,6 +5,10 @@ import { logout, me } from '../store/auth';
 import { Badge } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CoffeeMakerIcon from '@mui/icons-material/CoffeeMaker';
+import PersonIcon from '@mui/icons-material/Person';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import DrawerToggle from './DrawerToggle';
+
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -51,7 +55,9 @@ const Header = () => {
     <div className='navbar-wrapper'>
       <div id='nav-container'>
         <div className='nav-brand'>
-          <Link to='/'>Grounded</Link> <CoffeeMakerIcon />
+          <Link to='/'>
+            Grounded{' '} <CoffeeMakerIcon />
+          </Link>
         </div>
         <div className='nav-links'>
           {/* if user is admin, access to all users */}
@@ -64,10 +70,13 @@ const Header = () => {
               {/* else, if just a  user, they can shop coffee and see own profile */}
               <Link className='navigation' to='/products'>
                 Shop
+               <ShoppingBasketIcon />
               </Link>
               {user && user.id && (
                 <Link className='navigation' to='/me'>
-                  Profile
+                  {user.username}
+                  <PersonIcon />
+                  {/* <DrawerToggle /> */}
                 </Link>
               )}
             </>
