@@ -173,6 +173,10 @@
   width: 9vh;
 }
 
+.product-image:hover {
+  transform: scale(1.02);
+}
+
 .checkout-button {
   background-color:   #8B2500;
   color: white;
@@ -215,4 +219,5 @@
 
 .delete-guest-item:hover {
   background-color: #EE2C2C !important;
+  transform: scale(1.03);
 }

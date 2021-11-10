@@ -127,7 +127,7 @@ const UserCart = () => {
           {products.length === 0 ? (
             <div className='cart-empty-container'>
               <ShoppingCartIcon
-                style={{ fill: '#EE2C2C', width: 50, height: 50 }}
+                style={{ fill: '#EE2C2C', width: 50, height: 50, transform: "scale(1.03)" }}
               />
               <p style={{ textAlign: 'center', marginTop: '20px' }}>
                 Your Cart is Empty!
