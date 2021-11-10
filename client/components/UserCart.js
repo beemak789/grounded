@@ -78,13 +78,12 @@ const UserCart = () => {
 
       {/* <div className='cart-container'> */}
       <div className='cart-container-items'>
-        {/* <hr style={{ width: '45%', marginLeft: '10px', marginTop: '5px' }}></hr> */}
         {products.map((product) => {
           return (
             <div className='cart-item' key={product.id}>
               <div id='product-name'>
                 <Link to={`/products/${product.id}`}>
-                  <span style={{ margin: 'auto', paddingTop: '10px' }}>
+                  <span style={{ margin: 'auto', paddingTop: '10px'}}>
                     <img
                       className='product-image'
                       src={product.imageUrl}
@@ -92,8 +91,9 @@ const UserCart = () => {
                       id='product-photo'
                     />
                   </span>
-                </Link>
-                <span>{product.name} </span>
+                  </Link>
+                  <span>{product.name} </span>
+
               </div>
               <div className='cart-qty'>
                 <span>
