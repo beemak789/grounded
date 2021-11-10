@@ -48,14 +48,66 @@
   color: #343434;
 }
 
-.cart-item {
-  /* display: flex;
+.cart-labels {
+  display: flex;
   flex-direction: row;
-  flex-wrap: wrap; */
+  margin-top: 30px;
+  /* border: 2px solid red; */
+  align-items: center;
+}
+
+.cart-labels-2 {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 65%;
+}
+
+#shopping-cart {
+  font-weight:500;
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+#cart-deets {
+  font-size: 15px;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+
+#product-name {
+  font-size: 11px;
+  margin-left: 5px;
+  /* border: 2px solid yellow; */
+}
+
+.cart-picture-name {
+  /* border: 2px solid black; */
+  margin-left: 25px;
+}
+
+
+.cart-item {
+  display: flex;
+  /* border: 2px solid pink; */
+  margin-top: 20px;
+  margin: auto;
+  align-items: center;
+  justify-content: space-between;
+  width: 65%;
+  /* flex-wrap: wrap;
   text-align: center;
   align-items: center;
   align-content: center;
-  margin: 30px;
+  margin: 30px; */
+}
+
+
+
+.cart-qty {
+  border: 2px solid red;
+  margin-left: 10px;
 }
 
 .cart-empty-container {

@@ -278,7 +278,7 @@ const seed = async () => {
     });
 
     const fullstack = await Product.create({
-      name: 'Fullstack Flavor Bomb',
+      name: 'Fullstack Flavor',
       description: 'A top-ranked blend for those early bootcamp mornings.',
       price: 2100,
       inventoryQuantity: 20,

@@ -4,6 +4,7 @@ import { fetchCart, deleteProduct } from '../store/cartReducer';
 import { useHistory, Link } from 'react-router-dom';
 import { priceFunction } from '../frontendFunctions';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useTable } from 'react-table';
 
 const UserCart = () => {
   const dispatch = useDispatch();
@@ -58,7 +59,7 @@ const UserCart = () => {
     const sum = accumulator + value;
     return sum;
   }, 0);
-// RENDER METHOD HERE *********************************************************************
+  // RENDER METHOD HERE *********************************************************************
   return (
     <>
       <div className='go-back'>
@@ -77,37 +78,42 @@ const UserCart = () => {
 
       {/* <div className='cart-container'> */}
       <div className='cart-container-items'>
+        {/* <hr style={{ width: '45%', marginLeft: '10px', marginTop: '5px' }}></hr> */}
         {products.map((product) => {
           return (
             <div className='cart-item' key={product.id}>
-              <Link to={`/products/${product.id}`}>
+              <div id='product-name'>
+                <Link to={`/products/${product.id}`}>
+                  <span style={{ margin: 'auto', paddingTop: '10px' }}>
+                    <img
+                      className='product-image'
+                      src={product.imageUrl}
+                      alt='product-photo'
+                      id='product-photo'
+                    />
+                  </span>
+                </Link>
+                <span>{product.name} </span>
+              </div>
+              <div className='cart-qty'>
                 <span>
-                  <img
-                    className='product-image'
-                    src={product.imageUrl}
-                    alt='product-photo'
-                    id='product-photo'
-                  />
+                  {product.Cart_Product ? product.Cart_Product.quantity : 0}{' '}
+                  bag(s)
                 </span>
-              </Link>
+                <span name={product.id}>
+                  <button
+                    className='delete-item'
+                    onClick={() => deleteUserItemHandler(product.id)}
+                    name={product.id}
+                  >
+                    <i className='fas fa-trash'></i>
+                  </button>
+                </span>
+              </div>
 
-              <span>{product.name} </span>
-
-              <span>
-                | {product.Cart_Product ? product.Cart_Product.quantity : 0}{' '}
-                bag(s) |
-              </span>
-              <span> ${product.price / 100} </span>
-
-              <span name={product.id}>
-                <button
-                  className='delete-item'
-                  onClick={() => deleteUserItemHandler(product.id)}
-                  name={product.id}
-                >
-                  <i className='fas fa-trash'></i>
-                </button>
-              </span>
+              <div className='cart-price'>
+                <span> ${product.price / 100} </span>
+              </div>
             </div>
           );
         })}
@@ -150,3 +156,20 @@ const UserCart = () => {
 };
 
 export default UserCart;
+
+{
+  /* <p className='dropdownMenu'>
+<label htmlFor='quantity'>Quantity </label>
+<select
+  className="select-quantity"
+  name='qty'
+  id='quantity'
+  key='quantity'
+  onChange={addToQuantityHandler}
+>
+  <option value='1'>1</option>
+  <option value='2'>2</option>
+  <option value='3'>3</option>
+</select>
+</p> */
+}
