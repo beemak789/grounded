@@ -59,6 +59,9 @@ const UserCart = () => {
     const sum = accumulator + value;
     return sum;
   }, 0);
+
+  const disableCheckoutButton = products.length === 0 ? true : false
+
   // RENDER METHOD HERE *********************************************************************
   return (
     <>
@@ -147,7 +150,12 @@ const UserCart = () => {
           </p>
         </span>
 
-        <button className='checkout-button' onClick={checkoutHandler}>
+
+        <button
+        className='checkout-button'
+        onClick={checkoutHandler}
+        disabled={disableCheckoutButton}
+        >
           Checkout
         </button>
       </div>

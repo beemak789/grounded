@@ -5,6 +5,7 @@ import { fetchCart, deleteProduct } from '../store/cartReducer';
 import { useHistory, Link } from 'react-router-dom';
 import { priceFunction } from '../frontendFunctions';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Button } from '@mui/material';
 
 const GuestCart = () => {
   const dispatch = useDispatch();
@@ -48,13 +49,30 @@ const GuestCart = () => {
     goCart();
   };
 
+  const disableCheckoutButton = products.length === 0 ? true : false
+
   return (
     <>
-      <div className='cart-container'>
-        <div className='cart-container-items'>
-          {products.map((product) => {
-            return (
-              <div id='cart-item' key={product.id}>
+      <div className='go-back'>
+        <Link
+          to='/products'
+          className='navigation'
+          style={{ textDecoration: 'none' }}
+        >
+          <img
+            className='go-back-image'
+            src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5E4kteNGkK_V5iCfmX6zfKVRUzXnw-00xcrmv6RzEMNuqa01GcNQXHjyhdQHKXqaVbss&usqp=CAU'
+          />
+          <span className='more-coffee-text'>Continue Shopping</span>
+        </Link>
+      </div>
+
+      {/* <div className='cart-container'> */}
+      <div className='cart-container-guest'>
+        {products.map((product) => {
+          return (
+            <div className='cart-item-guest' key={product.id}>
+              <div id='product-name'>
                 <Link to={`/products/${product.id}`}>
                   <span>
                     <img
@@ -67,54 +85,68 @@ const GuestCart = () => {
                 </Link>
 
                 <span>{product.name}</span>
-                <span> | {product.qtyBags} bag(s) |</span>
-                <span> ${priceFunction(product.price)} </span>
+              </div>
+              <div className='cart-qty'>
+                <span> {product.qtyBags} bag(s) </span>
 
                 {/* this works */}
                 <span>
-                  <button
+                  <Button
                     className='delete-guest-item'
+                    style={{
+                      backgroundColor: '#EE3B3B',
+                      color: 'white',
+                      fontSize: '10px',
+                      marginLeft: "5px"
+                    }}
                     onClick={deleteGuestItemHandler}
                     name={product.id}
                   >
                     Remove
-                  </button>
+                  </Button>
                 </span>
               </div>
-            );
-          })}
-        </div>
-
-        <div className='cart-totals'>
-          <span id='cart-total-items'>
-            {products.length === 0 ? (
-              <div className='cart-empty-container'>
-                <ShoppingCartIcon
-                  style={{ fill: '#EE2C2C', width: 50, height: 50 }}
-                />
-                <p style={{ textAlign: 'center', marginTop: '20px' }}>
-                  Your Cart is Empty!
-                </p>
+              <div className='cart-price'>
+                <span> ${priceFunction(product.price)} </span>
               </div>
-            ) : (
-              <p>
-                You have{' '}
-                <span className='cart-quantity-totals'>{totalQuantity}</span>{' '}
-                item(s) in your cart.
-              </p>
-            )}
-          </span>
-          <span id='cart-subtotal'>
-            <p>
-              Subtotal:{' '}
-              <span className='cart-quantity-totals'>${subtotal}</span>{' '}
-            </p>
-          </span>
-          <button className='checkout-button' onClick={checkoutHandler}>
-            Checkout
-          </button>
-        </div>
+            </div>
+          );
+        })}
       </div>
+
+      <div className='cart-totals'>
+        <span id='cart-total-items'>
+          {products.length === 0 ? (
+            <div className='cart-empty-container'>
+              <ShoppingCartIcon
+                style={{ fill: '#EE2C2C', width: 50, height: 50 }}
+              />
+              <p style={{ textAlign: 'center', marginTop: '20px' }}>
+                Your Cart is Empty!
+              </p>
+            </div>
+          ) : (
+            <p>
+              You have{' '}
+              <span className='cart-quantity-totals'>{totalQuantity}</span>{' '}
+              item(s) in your cart.
+            </p>
+          )}
+        </span>
+        <span id='cart-subtotal'>
+          <p>
+            Subtotal: <span className='cart-quantity-totals'>${subtotal}</span>{' '}
+          </p>
+        </span>
+        <button
+        className='checkout-button'
+        onClick={checkoutHandler}
+        disabled={disableCheckoutButton}
+        >
+          Checkout
+        </button>
+      </div>
+      {/* </div> */}
     </>
   );
 };

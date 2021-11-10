@@ -49,6 +49,17 @@
   color: #343434;
 }
 
+.cart-container-guest {
+  font-family: 'Ubuntu', sans-serif;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  /* margin: auto; */
+  margin-top: 20px;
+  margin-bottom: 2rem;
+  color: #343434;
+}
+
 .cart-labels {
   display: flex;
   flex-direction: row;
@@ -115,6 +126,23 @@
   align-content: center;
   margin: 30px; */
 }
+
+.cart-item-guest {
+  display: flex;
+
+  /* border: 2px solid pink; */
+  margin-top: 2rem;
+  margin: auto;
+  /* align-items: center; */
+  justify-content: space-between;
+  width: 50%;
+  /* flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  margin: 30px; */
+}
+
 
 
 
@@ -186,5 +214,5 @@
 }
 
 .delete-guest-item:hover {
-  background-color: #EE2C2C;
+  background-color: #EE2C2C !important;
 }
