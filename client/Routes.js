@@ -17,7 +17,7 @@ import { me } from "./store/auth";
 import AddProduct from "./components/AddProduct";
 import Checkout from "./components/Checkout";
 import ConfirmationPage from "./components/ConfirmationPage";
-import NavDrawer from "./components/NavDrawer";
+import Profile from "./components/Profile";
 
 /**
  * COMPONENT
@@ -49,7 +49,7 @@ function Routes() {
         ) : (
           <Switch>
             <Route exact path="/" component={Landing} />
-            {/* <Route exact path="/me" component={NavDrawer} /> */}
+            <Route exact path="/me" component={Profile} />
             <Route exact path="/products" component={AllProducts} />
             <Route path="/products/:id" component={SingleProduct} />
             <Route path="/cart" component={Cart} />

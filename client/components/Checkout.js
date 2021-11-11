@@ -116,7 +116,7 @@ const Checkout = () => {
                   onClick={checkoutHandler}
                 >
                   {' '}
-                  <span className='return-to-cart-text'>Confirm Order</span>
+                  <span className='return-to-cart-text'>Proceed To Order</span>
                 </Button>
               </Link>
             </div>

@@ -5,10 +5,8 @@ import { logout, me } from '../store/auth';
 import { Badge } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CoffeeMakerIcon from '@mui/icons-material/CoffeeMaker';
-import PersonIcon from '@mui/icons-material/Person';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import HamburgerNav from './HamburgerNav';
-
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -56,7 +54,7 @@ const Header = () => {
       <div id='nav-container'>
         <div className='nav-brand'>
           <Link to='/'>
-            Grounded{' '} <CoffeeMakerIcon />
+            Grounded <CoffeeMakerIcon />
           </Link>
         </div>
         <div className='nav-links'>
@@ -70,15 +68,10 @@ const Header = () => {
               {/* else, if just a  user, they can shop coffee and see own profile */}
               <Link className='navigation' to='/products'>
                 Shop
-               <ShoppingBasketIcon />
+                <ShoppingBasketIcon />
               </Link>
-              {user && user.id && (
-                <Link className='navigation' >
-                  {user.username}
-                  <PersonIcon />
-                  {/* <DrawerToggle style={{width: "20%"}}/> */}
-                </Link>
-              )}
+
+
             </>
           )}
 
@@ -98,20 +91,19 @@ const Header = () => {
             to='/cart'
             className='cart-badge'
           >
-            <span className='cart-title'>Cart</span>
             <ShoppingCartIcon />
           </Badge>
 
           {/* if person is a member, they can logout */}
-          {user && (
+          {/* {user && (
             <Link className='navigation' to='/logout' onClick={handleClick}>
               Logout
             </Link>
-          )}
+          )} */}
         </div>
-
       </div>
-      <HamburgerNav />
+      {user && <HamburgerNav />}
+
       <hr />
     </div>
   );
@@ -140,3 +132,13 @@ style={{
 }}
 > */
 }
+
+
+//The user Profile
+// {user && user.id && (
+//   <Link className='navigation'>
+//     {user.username}
+//     <PersonIcon />
+//     {/* <DrawerToggle style={{width: "20%"}}/> */}
+//   </Link>
+// )}
