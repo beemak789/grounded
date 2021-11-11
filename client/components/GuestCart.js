@@ -146,7 +146,7 @@ const GuestCart = () => {
         </span>
         <span id='cart-subtotal'>
           <p>
-            Subtotal: <span className='cart-quantity-totals'>${subtotal}</span>{' '}
+            Subtotal: <span className='cart-quantity-totals'>${(subtotal * 100) / 100}</span>{' '}
           </p>
         </span>
         <button
