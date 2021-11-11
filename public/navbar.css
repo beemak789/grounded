@@ -52,7 +52,7 @@ font-size: large;
 font-weight: 300;
  margin-right: 1rem;
  margin-left: 1rem;
- font-family: 'Ubuntu', sans-serif;
+ font-family: "Helvetica Neue", "Arial", sans-serif;
 }
 
 .cart-badge {
@@ -70,7 +70,7 @@ font-weight: 300;
 .nav-brand {
   font-size: large;
   font-weight:500;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Helvetica Neue", "Arial", sans-serif;
 }
 
 .nav-brand:hover {

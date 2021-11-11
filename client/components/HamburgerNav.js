@@ -52,12 +52,12 @@ const HamburgerNav = (props) => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem to='/me' component={Link}>
-        <PersonIcon style={{width: "15px", height: "15px"}} />   Account
+        <MenuItem to='/me' component={Link} >
+          <PersonIcon style={{ width: '15px', height: '15px' }} /> Account
         </MenuItem>
         <MenuItem>Order History</MenuItem>
         <MenuItem onClick={handleSignOutClose} to='/logout'>
-          Sign Out  <ExitToAppIcon style={{width: "15px", height: "15px"}}/>
+          Sign Out <ExitToAppIcon style={{ width: '15px', height: '15px' }} />
         </MenuItem>
       </Menu>
     </div>
