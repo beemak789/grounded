@@ -1,0 +1,48 @@
+.profile-container {
+  /* display: flex;
+  flex-direction: row; */
+  font-family: 'Ubuntu', sans-serif;
+  margin: auto;
+  margin-top: 30px;
+  justify-content: center;
+  /* border: 2px solid red; */
+  text-align: center;
+  width: 40%;
+  background-color: #EEE9E9;
+  border-radius: 5px;
+  color: black;
+  box-shadow: 10px 5px 5px lightgray;
+  padding: 20px;
+}
+
+.profile-fields {
+  font-family: 'Ubuntu', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* border: 2px solid blue; */
+  margin-bottom: 20px;
+}
+
+
+.label-divs {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+.input-fields {
+  /* border: 2px solid pink; */
+  margin-left: 10px;
+}
+
+.update-button {
+  margin: auto;
+}
+
+.update-button:hover {
+  transform: scale(1.07);
+}

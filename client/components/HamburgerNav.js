@@ -53,7 +53,7 @@ const HamburgerNav = (props) => {
         }}
       >
         <MenuItem to='/me' component={Link}>
-        <PersonIcon style={{width: "15px", height: "15px"}} />   My Account
+        <PersonIcon style={{width: "15px", height: "15px"}} />   Account
         </MenuItem>
         <MenuItem>Order History</MenuItem>
         <MenuItem onClick={handleSignOutClose} to='/logout'>

@@ -38,7 +38,7 @@ function Routes() {
         user.isAdmin ? (
           <Switch>
             <Route exact path="/" component={Landing} />
-            <Route exact path="/me" component={Me} />
+            <Route exact path="/me" component={Profile} />
             <Route exact path="/products" component={AllProducts} />
             <Route path="/products/:id" component={SingleProduct} />
             <Route path="/cart" component={Cart} />

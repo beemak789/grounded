@@ -17,3 +17,8 @@ const MemberLandingPage = () => {
 };
 
 export default MemberLandingPage;
+
+
+// https://pontevecchiosrl.it/wp-content/uploads/2020/08/profili-instagram-se-ami-il-caffe-2.jpg
+
+// https://images.pexels.com/photos/6347/coffee-cup-working-happy.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2
