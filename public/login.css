@@ -1,6 +1,6 @@
 .auth-form {
   text-align: center;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Helvetica Neue", "Arial", sans-serif;
 }
 
 .sign-in-title {
@@ -8,6 +8,7 @@
   margin-top: 30px;
   font-size: 30px;
   font-weight: bold;
+  font-family: "Helvetica Neue", "Arial", sans-serif;
 }
 
 .no-password-message {

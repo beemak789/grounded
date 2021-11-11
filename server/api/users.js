@@ -6,9 +6,7 @@ const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 module.exports = router;
 
 //for admin view
-router.get('/', requireToken,
-isAdmin,
-async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
       attributes: ['id', 'username', 'email', 'name']
@@ -31,15 +29,13 @@ async (req, res, next) => {
 // })
 
 //for admin view
-router.get('/:id', requireToken,
-isAdmin,
-async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
     const user = await User.findOne({
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'username']
+      attributes: ['email', 'username', 'name']
     })
     res.json(user)
   } catch (err) {
@@ -48,16 +44,23 @@ async (req, res, next) => {
 })
 
 
-//may need these later for admin view, if admin wants to edit/or delete users
+//@description     UPDATE user profile information
+//@router          PUT/api/users/:userId
+router.put('/:userId', async (req, res, next) => {
+  try {
+    const user = await User.findOne({
+      where: {
+        id: req.params.userId
+      }
+    });
+    const updatedUser = await user.update(req.body)
+    console.log("the updated user--->", updatedUser)
+    res.json(updatedUser)
+  } catch (error) {
+    next(error);
+  }
+});
 
-// router.put('/:id', async (req, res, next) => {
-//   try {
-//     const user = await User.findByPk(req.params.id);
-//     res.send(await user.update(req.body));
-//   } catch (error) {
-//     next(error);
-//   }
-// });
 
 // router.delete('/:id', async (req, res, next) => {
 //   try {
