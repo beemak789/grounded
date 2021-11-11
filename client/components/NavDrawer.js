@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   }
 });
 
-const DrawerToggle = () => {
+const NavDrawer = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const toggleDrawer = () => {
@@ -37,4 +37,4 @@ const DrawerToggle = () => {
   );
 };
 
-export default DrawerToggle;
+export default NavDrawer;

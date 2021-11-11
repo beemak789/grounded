@@ -49,7 +49,10 @@ const GuestCart = () => {
     goCart();
   };
 
-  const disableCheckoutButton = products.length === 0 ? true : false
+  const disableCheckoutButton = products.length === 0 ? true : false;
+  const checkoutButtonColor = disableCheckoutButton
+    ? 'disable-checkout'
+    : 'checkout-button';
 
   return (
     <>
@@ -70,6 +73,7 @@ const GuestCart = () => {
       {/* <div className='cart-container'> */}
       <div className='cart-container-guest'>
         {products.map((product) => {
+          const qtyBags = !product ? 1 : product.qtyBags;
           return (
             <div className='cart-item-guest' key={product.id}>
               <div id='product-name'>
@@ -87,7 +91,14 @@ const GuestCart = () => {
                 <span>{product.name}</span>
               </div>
               <div className='cart-qty'>
-                <span> {product.qtyBags} bag(s) </span>
+                {/* <span> {product.qtyBags} bag(s) </span> */}
+                <span>
+                  <select value={qtyBags}>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                  </select>
+                </span>
 
                 {/* this works */}
                 <span>
@@ -97,7 +108,7 @@ const GuestCart = () => {
                       backgroundColor: '#EE3B3B',
                       color: 'white',
                       fontSize: '10px',
-                      marginLeft: "5px"
+                      marginLeft: '5px',
                     }}
                     onClick={deleteGuestItemHandler}
                     name={product.id}
@@ -139,9 +150,9 @@ const GuestCart = () => {
           </p>
         </span>
         <button
-        className='checkout-button'
-        onClick={checkoutHandler}
-        disabled={disableCheckoutButton}
+          className={checkoutButtonColor}
+          onClick={checkoutHandler}
+          disabled={disableCheckoutButton}
         >
           Checkout
         </button>

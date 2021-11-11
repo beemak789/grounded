@@ -83,7 +83,7 @@ const UserCart = () => {
       {/* <div className='cart-container'> */}
       <div className='cart-container-items'>
         {products.map((product) => {
-          console.log('product--->', product);
+
 
           const qtyBags = product.Cart_Product
             ? product.Cart_Product.quantity
