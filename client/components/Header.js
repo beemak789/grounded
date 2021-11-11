@@ -7,7 +7,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CoffeeMakerIcon from '@mui/icons-material/CoffeeMaker';
 import PersonIcon from '@mui/icons-material/Person';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import DrawerToggle from './DrawerToggle';
+import HamburgerNav from './HamburgerNav';
 
 
 const Header = () => {
@@ -73,10 +73,10 @@ const Header = () => {
                <ShoppingBasketIcon />
               </Link>
               {user && user.id && (
-                <Link className='navigation' to='/me'>
+                <Link className='navigation' >
                   {user.username}
                   <PersonIcon />
-                  {/* <DrawerToggle /> */}
+                  {/* <DrawerToggle style={{width: "20%"}}/> */}
                 </Link>
               )}
             </>
@@ -109,7 +109,9 @@ const Header = () => {
             </Link>
           )}
         </div>
+
       </div>
+      <HamburgerNav />
       <hr />
     </div>
   );
