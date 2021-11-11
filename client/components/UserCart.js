@@ -4,6 +4,7 @@ import { fetchCart, deleteProduct } from '../store/cartReducer';
 import { useHistory, Link } from 'react-router-dom';
 import { priceFunction } from '../frontendFunctions';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 const UserCart = () => {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const UserCart = () => {
   }, 0);
 
   // Checkout Button
-  const checkoutHandler = ({ alert }) => {
+  const checkoutHandler = () => {
     history.push('/checkout');
   };
 
@@ -61,7 +62,9 @@ const UserCart = () => {
 
   const disableCheckoutButton = products.length === 0 ? true : false;
 
-  const checkoutButtonColor = disableCheckoutButton ? "disable-checkout" : "checkout-button"
+  const checkoutButtonColor = disableCheckoutButton
+    ? 'disable-checkout'
+    : 'checkout-button';
 
   // RENDER METHOD HERE *********************************************************************
   return (
@@ -72,10 +75,7 @@ const UserCart = () => {
           className='navigation'
           style={{ textDecoration: 'none' }}
         >
-          <img
-            className='go-back-image'
-            src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5E4kteNGkK_V5iCfmX6zfKVRUzXnw-00xcrmv6RzEMNuqa01GcNQXHjyhdQHKXqaVbss&usqp=CAU'
-          />
+          <ArrowBackIosIcon />
           <span className='more-coffee-text'>Continue Shopping</span>
         </Link>
       </div>
@@ -83,8 +83,6 @@ const UserCart = () => {
       {/* <div className='cart-container'> */}
       <div className='cart-container-items'>
         {products.map((product) => {
-
-
           const qtyBags = product.Cart_Product
             ? product.Cart_Product.quantity
             : 1;
@@ -108,7 +106,7 @@ const UserCart = () => {
                   {/* {product.Cart_Product ? product.Cart_Product.quantity : 0}{' '}
                   bag(s) */}
                   <select value={qtyBags}>
-                {/* What you are presented with first, upon entering the page */}
+                    {/* What you are presented with first, upon entering the page */}
                     <option value='1'>1</option>
                     <option value='2'>2</option>
                     <option value='3'>3</option>

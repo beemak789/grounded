@@ -6,6 +6,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { priceFunction } from '../frontendFunctions';
 import EditProduct from './EditProduct';
 import { Card } from '@mui/material';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 const SingleProduct = ({ match }) => {
   const [qty, setQty] = useState(1);
@@ -76,10 +77,7 @@ const SingleProduct = ({ match }) => {
           <Link to='/products'
           style={{textDecoration: "none"}}
           >
-            <img
-              className='go-back-image'
-              src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5E4kteNGkK_V5iCfmX6zfKVRUzXnw-00xcrmv6RzEMNuqa01GcNQXHjyhdQHKXqaVbss&usqp=CAU'
-            />
+           <ArrowBackIosIcon />
             <span className="more-coffee-text">Continue Shopping</span>
           </Link>
         </div>

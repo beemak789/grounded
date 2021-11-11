@@ -6,6 +6,7 @@ import { useHistory, Link } from 'react-router-dom';
 import { priceFunction } from '../frontendFunctions';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Button } from '@mui/material';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 const GuestCart = () => {
   const dispatch = useDispatch();
@@ -62,10 +63,7 @@ const GuestCart = () => {
           className='navigation'
           style={{ textDecoration: 'none' }}
         >
-          <img
-            className='go-back-image'
-            src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5E4kteNGkK_V5iCfmX6zfKVRUzXnw-00xcrmv6RzEMNuqa01GcNQXHjyhdQHKXqaVbss&usqp=CAU'
-          />
+          <ArrowBackIosIcon />
           <span className='more-coffee-text'>Continue Shopping</span>
         </Link>
       </div>
@@ -146,7 +144,10 @@ const GuestCart = () => {
         </span>
         <span id='cart-subtotal'>
           <p>
-            Subtotal: <span className='cart-quantity-totals'>${(subtotal * 100) / 100}</span>{' '}
+            Subtotal:{' '}
+            <span className='cart-quantity-totals'>
+              ${(subtotal * 100) / 100}
+            </span>{' '}
           </p>
         </span>
         <button
