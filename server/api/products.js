@@ -46,7 +46,6 @@ router.get('/:id', async (req, res, next) => {
 //POST /api/products
 router.post('/', requireToken, isAdmin, async (req, res, next) => {
 	try {
-		console.log(req.headers, "this is headers")
 		res.status(201).send(await Product.create(req.body));
 	} catch (error) {
 		next(error);

@@ -1,45 +1,46 @@
 import axios from 'axios';
 
 //ACTION TYPES:
-const USERS_REQUEST = 'USERS_REQUEST';
+const USER_REQUEST = 'USER_REQUEST';
 const UPDATE_USER = 'UPDATE_USER';
 //action creator
-const setUsers = (users) => ({
-  type: USERS_REQUEST,
-  users,
+
+const setUser = (user) => ({
+  type: USER_REQUEST,
+  user,
 });
 
-const setUpdateUser = (user) => {
+const setUpdatedUser = (user) => {
   return {
     type: UPDATE_USER,
     user,
   };
 };
 
-//thunk creator
-export const fetchUsers = () => async (dispatch) => {
-  const TOKEN = 'token';
-  const token = window.localStorage.getItem(TOKEN);
-  try {
-    if (token) {
-      const { data } = await axios.get('/api/users', {
-        headers: {
-          authorization: token,
-        },
-      });
-      dispatch(setUsers(data));
-    }
-  } catch (err) {
-    console.log('error in get users thunk');
-  }
-};
+// //thunk creator
+// export const fetchUsers = () => async (dispatch) => {
+//   const TOKEN = 'token';
+//   const token = window.localStorage.getItem(TOKEN);
+//   try {
+//     if (token) {
+//       const { data } = await axios.get('/api/users', {
+//         headers: {
+//           authorization: token,
+//         },
+//       });
+//       dispatch(setUsers(data));
+//     }
+//   } catch (err) {
+//     console.log('error in get users thunk');
+//   }
+// };
 
 export const updateUser = (user) => {
   return async (dispatch) => {
     try {
-			const { id } = user;
-      const { data: updatedUser } = await axios.put(`/api/users/${id}`, user);
-      dispatch(setUpdateUser(updatedUser));
+      const { data: updatedUser } = await axios.put(`/api/users/${user.id}`, user);
+      console.log("DATA IN THE THUNK---->", updatedUser)
+      dispatch(setUpdatedUser(updatedUser));
     } catch (err) {
       console.log(err);
     }
@@ -47,12 +48,13 @@ export const updateUser = (user) => {
 };
 
 //reducer
-export function usersReducer(state = [], action) {
+export function usersReducer(state = {}, action) {
   switch (action.type) {
-    case USERS_REQUEST:
-      return action.users;
+    case USER_REQUEST:
+      return action.user;
     case UPDATE_USER:
       const updatedUser = state.id === action.user.id ? action.user : state;
+      console.log("THE UPDATED USER IN THE REDUCER--->", updatedUser)
       return updatedUser;
     default:
       return state;

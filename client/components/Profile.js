@@ -8,13 +8,13 @@ const Profile = () => {
   const user = useSelector((state) => state.auth);
   console.log('the user in state-->', user);
 
-  const [username, setUsername] = useState(user.username);
-  const [userEmail, setUserEmail] = useState(user.email);
-  const [name, setName] = useState(user.name);
-
-  console.log('the username in local state--->', username);
-  console.log('the email in local state--->', userEmail);
-  console.log('the name in local state--->', name);
+  const [userData, setUserData] = useState({
+    id: user.id,
+    name: user.name,
+    username: user.username,
+    email: user.email
+  })
+  console.log("THE USER DATA --->", userData)
 
   const dispatch = useDispatch();
 
@@ -30,9 +30,9 @@ const Profile = () => {
               <input
                 type='text'
                 placeholder={user.name}
-                name={user.name}
+                name={userData.name}
                 onChange={(event) =>
-                  setName({ ...user, name: event.target.value })
+                  setUserData({ ...userData, name: event.target.value })
                 }
               />
             </div>
@@ -45,9 +45,9 @@ const Profile = () => {
               <input
                 type='text'
                 placeholder={user.username}
-                name={user.username}
+                name={userData.username}
                 onChange={(event) =>
-                  setUsername({ ...user, username: event.target.value })
+                  setUserData({ ...userData, username: event.target.value })
                 }
               />
             </div>
@@ -61,9 +61,9 @@ const Profile = () => {
               <input
                 type='text'
                 placeholder={user.email}
-                name={user.email}
+                name={userData.email}
                 onChange={(event) =>
-                  setUserEmail({ ...user, email: event.target.value })
+                  setUserData({ ...userData, email: event.target.value })
                 }
               />
             </div>
@@ -73,7 +73,7 @@ const Profile = () => {
       <div className="update-button">
       <Button
           onClick={() => {
-            dispatch(updateUser(user))
+            dispatch(updateUser(userData))
           }}
           style={{
             backgroundColor: '#EE3B3B',
