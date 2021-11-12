@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '@mui/material';
-import { FormatAlignJustify } from '@mui/icons-material';
 import { updateUser } from '../store/usersReducer';
 
 const Profile = () => {
   const user = useSelector((state) => state.auth);
-  console.log('the user in state-->', user);
 
   const [userData, setUserData] = useState({
     id: user.id,
     name: user.name,
     username: user.username,
-    email: user.email
-  })
-  console.log("THE USER DATA --->", userData)
+    email: user.email,
+  });
 
   const dispatch = useDispatch();
-
 
   return (
     <div className='profile-container'>
@@ -70,22 +66,22 @@ const Profile = () => {
           </span>
         </label>
       </div>
-      <div className="update-button">
-      <Button
+      <div className='update-button'>
+        <Button
           onClick={() => {
-            dispatch(updateUser(userData))
+            dispatch(updateUser(userData));
           }}
           style={{
             backgroundColor: '#EE3B3B',
             color: 'white',
             fontSize: '12px',
-            width: "25%"
+            width: '25%',
           }}
         >
           {' '}
           Update
         </Button>
-        </div>
+      </div>
     </div>
   );
 };

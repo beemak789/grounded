@@ -26,7 +26,6 @@ const User = db.define('user', {
   },
   name: {
     type: Sequelize.STRING,
-    defaultValue: "Guest"
   },
   email: {
     type: Sequelize.STRING,
