@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCart, deleteProduct } from '../store/cartReducer';
 
@@ -7,6 +7,8 @@ import { priceFunction } from '../frontendFunctions';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Button } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { updateQty } from '../store/productsReducer';
+import { fetchSingleProduct } from '../store/productsReducer';
 
 const GuestCart = () => {
   const dispatch = useDispatch();
@@ -14,28 +16,17 @@ const GuestCart = () => {
   const user = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.thisCart);
 
-  //Handlers and Derivative Variables
-  let history = useHistory();
-  const goCart = () => {
-    history.push('/cart');
-  };
-
-  // Checkout Button
-  const checkoutHandler = () => {
-    history.push('/checkout');
-  };
-
-  useEffect(() => {
-    if (user !== null) {
-      dispatch(fetchCart());
-    }
-  }, [user]);
+  console.log("the single product--->", singleProduct)
 
   //Derivative Variables
   const currProducts = window.localStorage.products || '[]';
 
   let products = JSON.parse(currProducts);
 
+  const qtyBags = products.map((product) => {
+    return product.qtyBags;
+  });
+  console.log("-------", qtyBags)
   const totalQuantity = products.reduce(
     (sum, product) => sum + product.qtyBags,
     0
@@ -49,6 +40,36 @@ const GuestCart = () => {
     window.localStorage.products = JSON.stringify(products);
     goCart();
   };
+
+
+  //Handlers and Derivative Variables
+  let history = useHistory();
+  const goCart = () => {
+    history.push('/cart');
+  };
+
+  const [qty, setQty] = useState(qtyBags);
+  //editQtyHandler
+  const editQtyHandler = (event) => {
+    console.log("!!!!!")
+    const qty = Number(event.target.value);
+    console.log("edit qty", qty)
+    setQty(event.target.value)
+    console.log("after---->",qty)
+    dispatch(updateQty(qtyBags));
+    dispatch(fetchSingleProduct(singleProduct))
+  }
+
+  // Checkout Button
+  const checkoutHandler = () => {
+    history.push('/checkout');
+  };
+
+  useEffect(() => {
+    if (user !== null) {
+      dispatch(fetchCart());
+    }
+  }, [user, qty]);
 
   const disableCheckoutButton = products.length === 0 ? true : false;
   const checkoutButtonColor = disableCheckoutButton
@@ -91,7 +112,10 @@ const GuestCart = () => {
               <div className='cart-qty'>
                 {/* <span> {product.qtyBags} bag(s) </span> */}
                 <span>
-                  <select value={qtyBags}>
+                  <select
+                  value={qtyBags}
+                  onChange={editQtyHandler}
+                  >
                     <option value='1'>1</option>
                     <option value='2'>2</option>
                     <option value='3'>3</option>

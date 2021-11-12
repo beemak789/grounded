@@ -71,6 +71,7 @@ export const setSingleProduct = (product) => {
 	};
 };
 export const updateQty = (qty) => {
+	console.log("the qty in update--->", qty)
 	return {
 		type: UPDATE_QTY_REQUEST,
 		qty,
@@ -94,6 +95,7 @@ export const fetchSingleProduct = (id) => {
 		}
 	};
 };
+
 
 export const editProduct = (product) => {
 	const TOKEN = 'token';
