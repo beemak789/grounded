@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 //ACTION TYPES:
-const USER_REQUEST = 'USER_REQUEST';
+const SET_USER = 'SET_USERT';
 const UPDATE_USER = 'UPDATE_USER';
 //action creator
 
 export const setUser = (user) => ({
-  type: USER_REQUEST,
+  type: SET_USER,
   user,
 });
 
@@ -45,7 +45,7 @@ export const updateUser = (user) => {
 
 export function usersReducer(state = {}, action) {
   switch (action.type) {
-    case USER_REQUEST:
+    case SET_USER:
       return action.user;
     case UPDATE_USER:
       const updatedUser = state.id === action.user.id ? action.user : state;

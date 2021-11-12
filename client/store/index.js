@@ -12,7 +12,7 @@ import {usersReducer} from "./usersReducer";
 
 const reducer = combineReducers({
   auth: auth,
-  users: usersReducer,
+  user: usersReducer,
   allProducts: productsReducer,
   singleProduct: singleProductReducer,
   thisCart: cartReducer,

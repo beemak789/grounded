@@ -15,7 +15,7 @@ const Profile = () => {
   });
 
   const dispatch = useDispatch();
-  console.log("USER DATA--->", userData)
+
 
   return (
     <div className='profile-container'>
@@ -28,7 +28,7 @@ const Profile = () => {
               <input
                 type='text'
                 placeholder={user.name}
-                name={userData.name}
+                value={userData.name}
                 onChange={(event) =>
                   setUserData({ ...userData, name: event.target.value })
                 }
@@ -43,7 +43,7 @@ const Profile = () => {
               <input
                 type='text'
                 placeholder={user.username}
-                name={userData.username}
+                value={userData.username}
                 onChange={(event) =>
                   setUserData({ ...userData, username: event.target.value })
                 }
@@ -59,7 +59,7 @@ const Profile = () => {
               <input
                 type='text'
                 placeholder={user.email}
-                name={userData.email}
+                value={userData.email}
                 onChange={(event) =>
                   setUserData({ ...userData, email: event.target.value })
                 }
