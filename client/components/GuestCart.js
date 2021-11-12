@@ -8,7 +8,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Button } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { updateQty } from '../store/productsReducer';
-import { fetchSingleProduct } from '../store/productsReducer';
+import { editProduct } from '../store/productsReducer';
+
 
 const GuestCart = () => {
   const dispatch = useDispatch();
@@ -16,17 +17,26 @@ const GuestCart = () => {
   const user = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.thisCart);
 
-  console.log("the single product--->", singleProduct)
+
+
+
+
 
   //Derivative Variables
   const currProducts = window.localStorage.products || '[]';
 
   let products = JSON.parse(currProducts);
 
+
+
+
+
+
+
   const qtyBags = products.map((product) => {
     return product.qtyBags;
   });
-  console.log("-------", qtyBags)
+
   const totalQuantity = products.reduce(
     (sum, product) => sum + product.qtyBags,
     0
@@ -57,7 +67,6 @@ const GuestCart = () => {
     setQty(event.target.value)
     console.log("after---->",qty)
     dispatch(updateQty(qtyBags));
-    dispatch(fetchSingleProduct(singleProduct))
   }
 
   // Checkout Button
@@ -69,7 +78,7 @@ const GuestCart = () => {
     if (user !== null) {
       dispatch(fetchCart());
     }
-  }, [user, qty]);
+  }, [user]);
 
   const disableCheckoutButton = products.length === 0 ? true : false;
   const checkoutButtonColor = disableCheckoutButton

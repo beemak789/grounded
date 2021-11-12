@@ -71,11 +71,12 @@ export const setSingleProduct = (product) => {
 	};
 };
 export const updateQty = (qty) => {
-	console.log("the qty in update--->", qty)
+
 	return {
 		type: UPDATE_QTY_REQUEST,
 		qty,
 	};
+
 };
 
 export const updateProduct = (product) => ({
@@ -107,6 +108,7 @@ export const editProduct = (product) => {
 					`/api/products/${product.id}`,
 					product
 				);
+				console.log("THE UPDATED PRODUCT---->", updated)
 				dispatch(updateProduct(updated));
 			};
 		}
@@ -120,7 +122,7 @@ export const singleProductReducer = (state = {}, action) => {
 		case SINGLE_PRODUCT_REQUEST:
 			return action.product;
 		case UPDATE_QTY_REQUEST:
-			return { ...state, qtyBags: action.qty || 1 };
+			return { ...state, qtyBags: action.qty  };
 		case UPDATE_PRODUCT:
 			return state.id === action.product.id ? action.product : state;
 		default:
