@@ -5,15 +5,27 @@ const USER_REQUEST = 'USER_REQUEST';
 const UPDATE_USER = 'UPDATE_USER';
 //action creator
 
-const setUser = (user) => ({
+export const setUser = (user) => ({
   type: USER_REQUEST,
   user,
 });
 
-const setUpdatedUser = (user) => {
+export const setUpdatedUser = (user) => {
   return {
     type: UPDATE_USER,
     user,
+  };
+};
+
+export const fetchUser = (user) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/api/users/${user.id}`);
+      console.log("FETCH USER THUNK--->", data)
+      dispatch(setUser(data));
+    } catch (err) {
+      console.log(err);
+    }
   };
 };
 
@@ -21,7 +33,9 @@ export const updateUser = (user) => {
   return async (dispatch) => {
     try {
       const { data: updatedUser } = await axios.put(`/api/users/${user.id}`, user);
-      dispatch(setUpdatedUser(updatedUser));
+      console.log("UPDATED USER THUNK--->", updatedUser)
+      // dispatch(setUpdatedUser(updatedUser));
+      dispatch(setUser(updatedUser))
     } catch (err) {
       console.log(err);
     }

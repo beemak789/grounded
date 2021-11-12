@@ -32,7 +32,6 @@ router.put('/:userId', async (req, res, next) => {
       }
     });
     const updatedUser = await user.update(req.body)
-    console.log("the updated user--->", updatedUser)
     res.json(updatedUser)
   } catch (error) {
     next(error);

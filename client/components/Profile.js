@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '@mui/material';
-import { updateUser } from '../store/usersReducer';
+import { updateUser, fetchUser } from '../store/usersReducer';
+
 
 const Profile = () => {
   const user = useSelector((state) => state.auth);
@@ -14,6 +15,7 @@ const Profile = () => {
   });
 
   const dispatch = useDispatch();
+  console.log("USER DATA--->", userData)
 
   return (
     <div className='profile-container'>
@@ -70,6 +72,7 @@ const Profile = () => {
         <Button
           onClick={() => {
             dispatch(updateUser(userData));
+            // dispatch(fetchUser(userData));
           }}
           style={{
             backgroundColor: '#EE3B3B',
