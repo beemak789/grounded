@@ -5,12 +5,13 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import { logout } from '../store/auth';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PersonIcon from '@mui/icons-material/Person';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const HamburgerNav = (props) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   let user = useSelector((state) => state.auth);
   let cart = useSelector((state) => state.thisCart);
 

@@ -1,19 +1,6 @@
-/* #landing-text {
-  display: absolute;
-  top: 500px;
-  font-size: 100px;
-  text-align: center;
-  text-shadow: 5px 5px rgb(241, 239, 239);
+.container {
+  height: 70vh;
 }
-
-.home-image {
-  height: auto;
-  width: 100%
-} */
-
-/* .landing-container {
-  max-width: 1024px;
-} */
 
 #landing-text {
   font-family: "Helvetica Neue", "Arial", sans-serif;

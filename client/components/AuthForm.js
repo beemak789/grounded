@@ -14,32 +14,46 @@ const AuthForm = (props) => {
     error = {},
   } = props;
 
+
+  const handleDemoSignin = () => {
+    const fakeEvent = {
+      preventDefault: () => null,
+      target: {
+        name: "login",
+        username: { value: "sonja"},
+        password: { value: "1234"}
+      }
+    };
+   handleSubmit(fakeEvent)
+  }
+
   return (
     <div className='auth-form'>
+    <div className="sign-in-card">
       <p className='sign-in-title'>{displayName}</p>
       <form onSubmit={handleSubmit} name={name}>
-        <div className='username-form'>
+        <div className="input-container">
           <label htmlFor='username'>
             <small>Username</small>
           </label>
-          <input name='username' type='text' />
+          <input className="input-field" name='username' type='text' />
         </div>
-        <div>
+        <div className="input-container">
           <label htmlFor='password'>
             <small>Password</small>
           </label>
-          <input name='password' type='password' />
+          <input className="input-field" name='password' type='password' />
         </div>
         <br />
-        <div>
+        <div className="button3-wrapper">
           <button className='button3' type='submit'>
             {displayName}
           </button>
+          <button className='button3' onClick={handleDemoSignin}>
+            Demo Sign In
+          </button>
         </div>
       </form>
-      <div className='no-password-message'>
-        <p>Forgot Password?</p>
-      </div>
 
       {displayName === 'Sign Up' ? (
         <div className='no-account-message'>
@@ -47,7 +61,7 @@ const AuthForm = (props) => {
             Already have an account?{' '}
             <Link
               to='/login'
-              style={{ color: '#CD2626', textDecoration: 'none' }}
+              style={{ color: '#CD2626', textDecoration: 'none'}}
             >
               {' '}
               <span>Sign In </span>
@@ -63,13 +77,14 @@ const AuthForm = (props) => {
               style={{ color: '#CD2626', textDecoration: 'none' }}
             >
               {' '}
-              <span style={{ color: '#CD2626', textDecoration: 'none' }}>
+              <span style={{ color: '#CD2626', textDecoration: 'none'}}>
                 Sign Up{' '}
               </span>
             </Link>
           </p>
         </div>
       )}
+    </div>
     </div>
   );
 };
@@ -91,6 +106,7 @@ const mapSignup = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     handleSubmit(evt) {
+      console.log(evt.target.username);
       evt.preventDefault();
       const formName = evt.target.name;
       const username = evt.target.username.value;
