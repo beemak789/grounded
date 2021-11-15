@@ -33,7 +33,7 @@ function Routes() {
   }, []);
 
   return (
-    <div className="container">
+    <div>
       {user && user.id ? (
         user.isAdmin ? (
           <Switch>

@@ -20,8 +20,8 @@ const AuthForm = (props) => {
       preventDefault: () => null,
       target: {
         name: "login",
-        username: { value: "sonja"},
-        password: { value: "1234"}
+        username: { value: "brandy"},
+        password: { value: "apple"}
       }
     };
    handleSubmit(fakeEvent)
