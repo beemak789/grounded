@@ -29,8 +29,8 @@
   padding: 12px 32px;
   border-radius: 10px;
   position: absolute;
-  top:85%;
-  left: 18%;
+  top:70%;
+  left: 10%;
   transform: translate(-50%, -50%);
   box-shadow: 4px 5px 10px 0 rgba(0, 0, 0, 0.2)
 }
@@ -49,7 +49,7 @@
   padding: 12px 32px;
   border-radius: 10px;
   position: absolute;
-  top:85%;
+  top:70%;
   left: 40%;
   transform: translate(-50%, -50%);
   box-shadow: 4px 5px 10px 0 rgba(0, 0, 0, 0.2)
