@@ -29,7 +29,7 @@
   padding: 12px 32px;
   border-radius: 10px;
   position: absolute;
-  top:75%;
+  top:85%;
   left: 18%;
   transform: translate(-50%, -50%);
   box-shadow: 4px 5px 10px 0 rgba(0, 0, 0, 0.2)
@@ -39,6 +39,8 @@
   background-color: #EE2C2C;
 }
 
+
+
 .member-login {
   font-family: "Helvetica Neue", "Arial", sans-serif;
   color: whitesmoke;
@@ -47,8 +49,8 @@
   padding: 12px 32px;
   border-radius: 10px;
   position: absolute;
-  top:75%;
-  left: 37%;
+  top:85%;
+  left: 40%;
   transform: translate(-50%, -50%);
   box-shadow: 4px 5px 10px 0 rgba(0, 0, 0, 0.2)
 }

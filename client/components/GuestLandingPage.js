@@ -25,3 +25,6 @@ const GuestLandingPage = () => {
 };
 
 export default GuestLandingPage;
+
+
+// https://blue-bottle-cms.global.ssl.fastly.net/hbhhv9rz9/image/upload/v1632873419/guqrxpyvr0lscp4jdlor.jpg
