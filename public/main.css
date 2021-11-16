@@ -29,6 +29,7 @@
   top:70%;
   left: 5%;
   text-decoration: none !important;
+  max-width: 1024px;
   /* transform: translate(-50%, -50%); */
 }
 
