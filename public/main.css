@@ -20,7 +20,19 @@
   font-weight: 500;
 }
 
-.shop-now-button {
+.landing-page-buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+  margin-left: 150px;
+  position: absolute;
+  top:70%;
+  left: 5%;
+  text-decoration: none !important;
+  /* transform: translate(-50%, -50%); */
+}
+
+/* .shop-now-button {
   background-color: #DB2929;
   color: white;
   font-family: "Helvetica Neue", "Arial", sans-serif;
@@ -29,19 +41,19 @@
   padding: 12px 32px;
   border-radius: 10px;
   position: absolute;
-  top:70%;
+  top:50%;
   left: 20%;
   transform: translate(-50%, -50%);
   box-shadow: 4px 5px 10px 0 rgba(0, 0, 0, 0.2)
-}
+} */
 
 .shop-now-button:hover {
-  background-color: #EE2C2C;
+  background-color: #ee2c2c !important;
 }
 
 
 
-.member-login {
+/* .member-login {
   font-family: "Helvetica Neue", "Arial", sans-serif;
   color: whitesmoke;
   border-color: whitesmoke;
@@ -53,10 +65,10 @@
   left: 40%;
   transform: translate(-50%, -50%);
   box-shadow: 4px 5px 10px 0 rgba(0, 0, 0, 0.2)
-}
+} */
 
 .member-login:hover {
-  background-color: #B3432B;
+  background-color: #B3432B !important;
 }
 
 
