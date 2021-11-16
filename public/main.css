@@ -32,7 +32,7 @@
   /* transform: translate(-50%, -50%); */
 }
 
-/* .shop-now-button {
+.shop-now-button {
   background-color: #DB2929;
   color: white;
   font-family: "Helvetica Neue", "Arial", sans-serif;
@@ -45,7 +45,7 @@
   left: 20%;
   transform: translate(-50%, -50%);
   box-shadow: 4px 5px 10px 0 rgba(0, 0, 0, 0.2)
-} */
+}
 
 .shop-now-button:hover {
   background-color: #ee2c2c !important;
@@ -53,7 +53,7 @@
 
 
 
-/* .member-login {
+ .member-login {
   font-family: "Helvetica Neue", "Arial", sans-serif;
   color: whitesmoke;
   border-color: whitesmoke;
@@ -61,11 +61,11 @@
   padding: 12px 32px;
   border-radius: 10px;
   position: absolute;
-  top:70%;
-  left: 40%;
+  top:50%;
+  left: 20%;
   transform: translate(-50%, -50%);
   box-shadow: 4px 5px 10px 0 rgba(0, 0, 0, 0.2)
-} */
+}
 
 .member-login:hover {
   background-color: #B3432B !important;
