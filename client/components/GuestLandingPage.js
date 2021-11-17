@@ -15,10 +15,10 @@ const GuestLandingPage = () => {
       ></img>
       <div className='landing-page-buttons'>
         <Link to='/products' style={{textDecoration: "none"}}>
-          <button className='shop-now-button' style={{padding: "10px", fontSize: "13px", backgroundColor: "#DB2929", color: "white"}}>Get Started</button>{' '}
+          <button className='shop-now-button' >Get Started</button>{' '}
         </Link>
-        <Link to='/login' style={{textDecoration: "none", padding: "5px"}}>
-          <button className='member-login' style={{padding: "10px", fontSize: "13px", backgroundColor: "#DB2929", color: "white"}}>A Member? Log In</button>
+        <Link to='/login' style={{textDecoration: "none"}}>
+          <button className='member-login'>A Member? Log In</button>
         </Link>
       </div>
     </div>
