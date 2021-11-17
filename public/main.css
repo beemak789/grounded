@@ -43,7 +43,7 @@
   border-radius: 10px;
   position: absolute;
   top: 5vh;
-  left: 5vh;
+  left: 0.5vh;
   transform: translate(-50%, -50%);
   box-shadow: 4px 5px 10px 0 rgba(0, 0, 0, 0.2)
 }
