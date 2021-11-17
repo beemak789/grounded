@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "../store/usersReducer";
+import { fetchUser } from "../store/usersReducer";
 
 const AllUsers = () => {
   let users = useSelector((state) => state.users) || [];

@@ -5,8 +5,10 @@ import { addProduct, increaseQty } from '../store/cartReducer';
 import { Link, useHistory } from 'react-router-dom';
 import { priceFunction } from '../frontendFunctions';
 import EditProduct from './EditProduct';
-import { Card } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+
+
+
 
 const SingleProduct = ({ match }) => {
   const [qty, setQty] = useState(1);
@@ -25,6 +27,7 @@ const SingleProduct = ({ match }) => {
   useEffect(() => {
     dispatch(fetchSingleProduct(match.params.id));
   }, []);
+
   const goCart = () => {
     history.push('/cart');
   };
@@ -33,6 +36,7 @@ const SingleProduct = ({ match }) => {
     // USER LOGGED IN*******************************************************
     if (user && user.id) {
       dispatch(addProduct(user.id, singleProduct.id, +qty));
+      // toast("You have added a coffee to your cart")
       // goCart();
       // USER LOGGED IN*******************************************************
     } else {
