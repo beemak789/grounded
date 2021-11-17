@@ -13,7 +13,7 @@ const GuestLandingPage = () => {
         className='home-image'
         src='https://blue-bottle-cms.global.ssl.fastly.net/hbhhv9rz9/image/upload/v1632873419/guqrxpyvr0lscp4jdlor.jpg'
       ></img>
-      <div className='landing-page-buttons'>
+      <div className='landing-page-buttons' style={{display: "flex", flexWrap: "wrap"}}>
         <Link to='/products' style={{textDecoration: "none"}}>
           <button className='shop-now-button' >Get Started</button>{' '}
         </Link>
