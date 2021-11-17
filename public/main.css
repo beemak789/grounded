@@ -119,7 +119,36 @@
 
 }
 
-/*
-@media only screen  and (min-width : 1824px) {
 
-} */
+@media only screen  and (min-width : 1824px) {
+  .shop-now-button {
+    background-color: #DB2929;
+    color: white;
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    font-size: 18px;
+    border-color: whitesmoke;
+    padding: 12px 32px;
+    border-radius: 10px;
+    position: absolute;
+    top: 5vh;
+    left: 1.0vh;
+    transform: translate(-50%, -50%);
+    box-shadow: 4px 5px 10px 0 rgba(0, 0, 0, 0.2)
+  }
+
+
+
+ .member-login {
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+  color: whitesmoke;
+  border-color: whitesmoke;
+  background-color: 	#8B2500;
+  padding: 12px 32px;
+  border-radius: 10px;
+  position: absolute;
+  top:5vh;
+  left: 1.0vh;
+  transform: translate(-50%, -50%);
+  box-shadow: 4px 5px 10px 0 rgba(0, 0, 0, 0.2)
+}
+}
