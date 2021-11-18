@@ -308,10 +308,10 @@ const seed = async () => {
 
     //User Instances
     const user1 = await User.create({
-      username: 'brandy',
+      username: 'Brandy',
       password: 'apple',
       name: 'Brandy',
-      email: 'brandy@gmail.com',
+      email: 'brandy@email.com',
       isAdmin: false,
     });
 

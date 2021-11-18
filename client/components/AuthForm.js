@@ -20,7 +20,7 @@ const AuthForm = (props) => {
       preventDefault: () => null,
       target: {
         name: "login",
-        username: { value: "brandy"},
+        username: { value: "Brandy"},
         password: { value: "apple"}
       }
     };
