@@ -6,12 +6,13 @@ import { Link, useHistory } from 'react-router-dom';
 import { priceFunction } from '../frontendFunctions';
 import EditProduct from './EditProduct';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-
+import { useSnackbar } from 'notistack';
 
 
 
 const SingleProduct = ({ match }) => {
   const [qty, setQty] = useState(1);
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const dispatch = useDispatch();
 
@@ -36,7 +37,10 @@ const SingleProduct = ({ match }) => {
     // USER LOGGED IN*******************************************************
     if (user && user.id) {
       dispatch(addProduct(user.id, singleProduct.id, +qty));
-      // toast("You have added a coffee to your cart")
+      enqueueSnackbar("Your coffee was added to the cart!", {
+        variant: "success",
+        autoHideDuration: 3000,
+      });
       // goCart();
       // USER LOGGED IN*******************************************************
     } else {
@@ -56,7 +60,10 @@ const SingleProduct = ({ match }) => {
       products = [...products, selectedProduct];
       products = JSON.stringify(products);
       window.localStorage.products = products;
-      goCart();
+      enqueueSnackbar("Your coffee was added to the cart!", {
+        variant: "success",
+        autoHideDuration: 3000,
+      });
     }
   };
 

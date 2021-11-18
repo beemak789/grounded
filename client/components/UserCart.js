@@ -6,10 +6,12 @@ import { priceFunction } from '../frontendFunctions';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
+
 const UserCart = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.thisCart);
+
 
   //Handlers and Derivative Variables
   let history = useHistory();
@@ -62,7 +64,7 @@ const UserCart = () => {
 
   const disableCheckoutButton = products.length === 0 ? true : false;
 
-  const checkoutButtonColor = disableCheckoutButton
+  const checkoutButtonColor = products.length === 0
     ? 'disable-checkout'
     : 'checkout-button';
 
