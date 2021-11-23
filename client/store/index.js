@@ -10,12 +10,15 @@ import { cartReducer } from "./cartReducer";
 
 import {usersReducer} from "./usersReducer";
 
+import { ordersReducer } from "./ordersReducer";
+
 const reducer = combineReducers({
   auth: auth,
   user: usersReducer,
   allProducts: productsReducer,
   singleProduct: singleProductReducer,
   thisCart: cartReducer,
+  userOrders: ordersReducer,
 });
 
 const middleware = composeWithDevTools(

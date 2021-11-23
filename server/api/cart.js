@@ -139,4 +139,24 @@ router.put('/checkout', requireToken, async (req, res, next) => {
   }
 });
 
+//@description    Obtain the products from the cart for logged in/passed in
+//@router         PUT/api/cart/checkout/orders
+
+router.get('/checkout/orders', requireToken, async (req, res, next) => {
+  try {
+    //Need to change the actual user cart that matches the user id, will have cart id associated with it.
+    const userCart = await Cart.findAll({
+      include: Product,
+      where: {
+        orderStatus: 'PAID',
+        userId: req.user.id, //1
+      },
+    });
+    res.json(userCart);
+  } catch(err) {
+    console.log(err)
+  }
+})
+
+
 module.exports = router;

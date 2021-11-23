@@ -4,6 +4,7 @@ const CART_REQUEST = 'CART_REQUEST';
 const ADD_PRODUCT = 'ADD_PRODUCT';
 const DELETE_PRODUCT = 'DELETE_PRODUCT';
 const SET_CHECKOUT_ITEMS = 'SET_CHECKOUT_ITEMS';
+// const SET_USER_ORDERS = 'SET_USER_ORDERS';
 
 export const setCart = (cart) => ({
   type: CART_REQUEST,
@@ -14,6 +15,11 @@ export const setCheckoutItems = (items) => ({
   type: SET_CHECKOUT_ITEMS,
   items,
 });
+
+// export const setUserOrders = (cartOrders) => ({
+//   type: SET_USER_ORDERS,
+//   cartOrders
+// });
 
 //Do not pass userid into the routes - instead, verify by token
 
@@ -59,6 +65,26 @@ export const checkoutCart = (items) => {
     }
   };
 };
+
+// export const fetchOrderHistory = (cartOrders) => {
+//   return async (dispatch) => {
+//     const TOKEN = 'token';
+//     const token = window.localStorage.getItem(TOKEN);
+//     try {
+//       if (token) {
+//         const { data: orders } = await axios.get('/api/cart/checkout/orders', {
+//           headers: {
+//             authorization: token,
+//           },
+//         });
+//         console.log("the orders in the thunk--->", orders)
+//         dispatch(setUserOrders(orders));
+//       }
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+// };
 
 export const addProduct = (userId, productId, qty) => {
   return async (dispatch) => {
@@ -106,6 +132,7 @@ export const deleteProduct = (productId) => {
   };
 };
 //reducer
+
 export const cartReducer = (state = {}, action) => {
   switch (action.type) {
     case CART_REQUEST:
@@ -121,6 +148,11 @@ export const cartReducer = (state = {}, action) => {
       newArray.push(action.product);
       return { ...state, products: newArray };
     }
+    // case SET_USER_ORDERS:
+    //   return {
+    //     ...state,
+    //     orders: action.orders, // this is an array
+    //   };
     default:
       return state;
   }
