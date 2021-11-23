@@ -45,8 +45,8 @@ const OrderHistory = () => {
          return (
            <div key={order.id}>
 
-             <span>{order.id}</span>
-             <span>{order.orderStatus}</span>
+             <span>Order #: {order.id}</span>
+             <span>Order Status: {order.orderStatus}</span>
              <span>Purchase Date: {`${month}/${day}/${year}`}</span>
              {/* <span>{orderProductNames}</span> */}
 
