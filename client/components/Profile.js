@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '@mui/material';
 import { updateUser, fetchUser } from '../store/usersReducer';
-
+import { useSnackbar } from 'notistack';
 
 const Profile = () => {
   const user = useSelector((state) => state.auth);
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const [userData, setUserData] = useState({
     id: user.id,
@@ -16,6 +17,13 @@ const Profile = () => {
 
   const dispatch = useDispatch();
 
+  const updateHandler  = () => {
+    dispatch(updateUser(userData));
+    enqueueSnackbar('Your profile was updated.', {
+      variant: 'success',
+      autoHideDuration: 3000,
+    });
+  }
 
   return (
     <div className='profile-container'>
@@ -70,15 +78,13 @@ const Profile = () => {
       </div>
       <div className='update-button'>
         <Button
-          onClick={() => {
-            dispatch(updateUser(userData));
-            // dispatch(fetchUser(userData));
-          }}
+          onClick={updateHandler}
           style={{
             backgroundColor: '#EE3B3B',
             color: 'white',
             fontSize: '12px',
             width: '25%',
+            border: "none"
           }}
         >
           {' '}

@@ -18,6 +18,7 @@ import AddProduct from "./components/AddProduct";
 import Checkout from "./components/Checkout";
 import ConfirmationPage from "./components/ConfirmationPage";
 import Profile from "./components/Profile";
+import OrderHistory from "./components/OrderHistory";
 
 /**
  * COMPONENT
@@ -39,6 +40,7 @@ function Routes() {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/me" component={Profile} />
+            <Route path="/orders" component={OrderHistory} />
             <Route exact path="/products" component={AllProducts} />
             <Route path="/products/:id" component={SingleProduct} />
             <Route path="/cart" component={Cart} />
@@ -50,6 +52,7 @@ function Routes() {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/me" component={Profile} />
+            <Route path="/orders" component={OrderHistory} />
             <Route exact path="/products" component={AllProducts} />
             <Route path="/products/:id" component={SingleProduct} />
             <Route path="/cart" component={Cart} />

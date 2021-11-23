@@ -8,6 +8,7 @@ import { logout } from '../store/auth';
 import { Link, useHistory } from 'react-router-dom';
 import PersonIcon from '@mui/icons-material/Person';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import TimelineIcon from '@mui/icons-material/Timeline';
 
 const HamburgerNav = (props) => {
   const dispatch = useDispatch();
@@ -53,12 +54,16 @@ const HamburgerNav = (props) => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem to='/me' component={Link} >
-          <PersonIcon style={{ width: '15px', height: '15px' }} /> Account
+        <MenuItem to='/me' component={Link}>
+          <PersonIcon style={{ width: '25px', height: '15px' }} /> Account
         </MenuItem>
-        <MenuItem>Order History</MenuItem>
+        <MenuItem to='/orders' component={Link}>
+          {' '}
+          <TimelineIcon style={{ width: '25px', height: '15px' }} />
+          Order History
+        </MenuItem>
         <MenuItem onClick={handleSignOutClose} to='/logout'>
-          Sign Out <ExitToAppIcon style={{ width: '15px', height: '15px' }} />
+        <ExitToAppIcon style={{ width: '25px', height: '15px' }} /> Sign Out
         </MenuItem>
       </Menu>
     </div>
