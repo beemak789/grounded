@@ -139,7 +139,7 @@ router.put('/checkout', requireToken, async (req, res, next) => {
   }
 });
 
-//@description    Obtain the products from the cart for logged in/passed in
+//@description    Obtain the paid orders from the cart for logged in/passed in
 //@router         PUT/api/cart/checkout/orders
 
 router.get('/checkout/orders', requireToken, async (req, res, next) => {
@@ -157,6 +157,25 @@ router.get('/checkout/orders', requireToken, async (req, res, next) => {
     console.log(err)
   }
 })
+
+//@description    Obtain the paid orders and corresponding products from the cart for logged in/passed in
+//@router         GET/api/cart/checkout/orders/products
+
+router.get("/checkout/orders/products", requireToken, async(req, res, next) => {
+  try {
+    const userCart = await Cart.findOne({
+      include: Cart_Product,
+      where: {
+        orderStatus: 'PAID',
+        userId: req.user.id, //1
+      },
+    });
+    res.json(userCart);
+  } catch (err) {
+    console.log(err)
+  }
+})
+
 
 
 module.exports = router;

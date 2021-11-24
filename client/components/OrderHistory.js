@@ -1,61 +1,69 @@
-import React, {useState, useEffect} from 'react'
-import { fetchOrderHistory } from "../store/ordersReducer";
-import { useSelector, useDispatch } from 'react-redux'
-import { Link } from "react-router-dom";
-import { setUserOrders } from '../store/ordersReducer';
-
-
+import React, { useState, useEffect } from 'react';
+import { fetchOrderHistory } from '../store/ordersReducer';
+import { useSelector, useDispatch } from 'react-redux';
+import { Button } from '@material-ui/core';
 
 const OrderHistory = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  console.log('the user--->', user);
   const cart = useSelector((state) => state.thisCart);
-  const userOrders = useSelector((state) => state.userOrders) || []
+  const userOrders = useSelector((state) => state.userOrders) || [];
 
-
-  console.log("the orders!!!!--->", userOrders);
-
+  //You want the entire "paid" cart orders once a purchase is made
   useEffect(() => {
     dispatch(fetchOrderHistory(cart));
   }, []);
 
-  const orderProductNames = userOrders.map((order) => {
-    return order.products
-  })
+  const orderProductNames = userOrders.map((order, idx) => {
+    return order.products;
+  });
 
+  const products = orderProductNames.map((order) => {
+    return order;
+  });
+  const orderProducts = products.map((product) => {
+    return product;
+  });
 
+  let list = [];
+  for (let i = 0; i < orderProducts.length; i++) {
+    for (let j = 0; j < orderProducts[i].length; j++) {
+      list.push(orderProducts[i][j]);
+    }
+  }
 
-  // for (let i = 0; i < orderProductNames.length; i++) {
+  const productName = list
+    .map((product) => {
+      return product.name;
+    })
+    .map((element, idx) => {
+      return element;
+    });
 
-  //   for (let j = 0; j < orderProductNames[i].length; j++) {
-  //     console.log(orderProductNames[i][j].name)
-  //   }
-  // }
-
-
+  console.log('!!!', productName);
 
   return (
     <>
-    order history
-     {
-      userOrders &&  userOrders.map((order) => {
-        const month = new Date(order.createdAt).getMonth() + 1;
-        const day = new Date(order.createdAt).getDate();
-        var year =new Date(order.createdAt).getFullYear();
+      {userOrders.length === 0 ? (
+        <div> {user.username}, you have no history of orders with us. </div>
+      ) : (
+        userOrders.map((order) => {
+          const month = new Date(order.createdAt).getMonth() + 1;
+          const day = new Date(order.createdAt).getDate();
+          var year = new Date(order.createdAt).getFullYear();
 
-         return (
-           <div key={order.id}>
-
-             <span>Order #: {order.id}</span>
-             <span>Order Status: {order.orderStatus}</span>
-             <span>Purchase Date: {`${month}/${day}/${year}`}</span>
-             {/* <span>{orderProductNames}</span> */}
-
-           </div>
-         )
-       })
-     }
+          return (
+            <div className='orders-container' key={order.id}>
+              <p style={{ fontWeight: 'bold' }}>Order #{order.id}</p>
+              <p>Purchased On: {`${month}/${day}/${year}`}</p>
+              <button className='order-details'>Details</button>
+            </div>
+          );
+        })
+      )}
     </>
-  )
-}
+  );
+};
 
-export default OrderHistory
+export default OrderHistory;
