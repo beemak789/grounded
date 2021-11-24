@@ -158,16 +158,15 @@ router.get('/checkout/orders', requireToken, async (req, res, next) => {
   }
 })
 
-//@description    Obtain the paid orders and corresponding products from the cart for logged in/passed in
-//@router         GET/api/cart/checkout/orders/products
+//@description    Obtain the paid orders and corresponding products for the specific orderId
+//@router         GET/api/cart/checkout/orders/:orderId
 
-router.get("/checkout/orders/products", requireToken, async(req, res, next) => {
+router.get("/checkout/orders/:orderId", requireToken, async(req, res, next) => {
   try {
     const userCart = await Cart.findOne({
-      include: Cart_Product,
+      include: Product,
       where: {
-        orderStatus: 'PAID',
-        userId: req.user.id, //1
+        id: req.params.orderId,
       },
     });
     res.json(userCart);
